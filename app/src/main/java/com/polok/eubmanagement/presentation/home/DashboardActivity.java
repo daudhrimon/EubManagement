@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation;
+package com.polok.eubmanagement.presentation.home;
 
 import android.os.Bundle;
 import androidx.navigation.NavController;

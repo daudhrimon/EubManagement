@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_notice"
+    app:startDestination="@id/viewNoticeFragment">
+
+    <fragment
+        android:id="@+id/viewNoticeFragment"
+        android:name="com.polok.eubmanagement.presentation.notice.viewnotice.ViewNoticeFragment"
+        android:label="fragment_view_notice"
+        tools:layout="@layout/fragment_view_notice">
+        <action
+            android:id="@+id/action_viewNoticeFragment_to_addNoticeFragment"
+            app:destination="@id/addNoticeFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNoticeFragment"
+        android:name="com.polok.eubmanagement.presentation.notice.addnotice.AddNoticeFragment"
+        android:label="fragment_add_notice"
+        tools:layout="@layout/fragment_add_notice" />
+
+</navigation>

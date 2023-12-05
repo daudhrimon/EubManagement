@@ -67,14 +67,14 @@
         android:layout_marginTop="@dimen/spacing_primary"
         android:layout_marginEnd="@dimen/spacing_6dp"
         app:image="@drawable/ic_calendar"
-        app:layout_constraintEnd_toStartOf="@id/add_notice_button"
+        app:layout_constraintEnd_toStartOf="@id/notice_button"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recent_notice_recycler"
         app:text="Add Class\nSchedule" />
 
     <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/add_notice_button"
+        android:id="@+id/notice_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_6dp"
@@ -84,7 +84,7 @@
         app:layout_constraintEnd_toStartOf="@id/add_assignment_button"
         app:layout_constraintStart_toEndOf="@id/add_class_schedule_button"
         app:layout_constraintTop_toTopOf="@id/add_class_schedule_button"
-        app:text="Add\nNotice" />
+        app:text="Notice" />
 
     <com.polok.eubmanagement.widget.DashboardButton
         android:id="@+id/add_assignment_button"
@@ -92,10 +92,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_6dp"
         app:image="@drawable/ic_assignment"
-        app:layout_constraintBottom_toBottomOf="@id/add_notice_button"
+        app:layout_constraintBottom_toBottomOf="@id/notice_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/add_notice_button"
-        app:layout_constraintTop_toTopOf="@id/add_notice_button"
+        app:layout_constraintStart_toEndOf="@id/notice_button"
+        app:layout_constraintTop_toTopOf="@id/notice_button"
         app:text="Add\nAssignment" />
 
     <com.polok.eubmanagement.widget.DashboardButton

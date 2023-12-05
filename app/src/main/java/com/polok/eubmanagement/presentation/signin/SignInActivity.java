@@ -19,7 +19,7 @@ import com.polok.eubmanagement.base.BaseApp;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.data.model.UserProfileData;
 import com.polok.eubmanagement.databinding.ActivitySigninBinding;
-import com.polok.eubmanagement.presentation.DashboardActivity;
+import com.polok.eubmanagement.presentation.home.DashboardActivity;
 import com.polok.eubmanagement.presentation.signup.SignupActivity;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.util.Extension;

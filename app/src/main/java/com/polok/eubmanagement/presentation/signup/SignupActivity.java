@@ -1,9 +1,11 @@
 package com.polok.eubmanagement.presentation.signup;
 
+import static com.polok.eubmanagement.util.Extension.showErrorOnUi;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
+
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -75,23 +77,23 @@ public class SignupActivity extends BaseActivity<ActivitySignupBinding> {
 
         binding.signupButton.setOnClickListener(view -> {
             if (binding.studentId.getText().toString().isEmpty()) {
-                showError(binding.studentId, "Enter Student ID");
+                showErrorOnUi(binding.studentId, "Enter Student ID");
                 return;
             }
             if (binding.fullName.getText().toString().isEmpty()) {
-                showError(binding.fullName, "Enter Full Name");
+                showErrorOnUi(binding.fullName, "Enter Full Name");
                 return;
             }
             if (binding.mobileInput.getText().toString().isEmpty()) {
-                showError(binding.mobileInput, "Enter Mobile Number");
+                showErrorOnUi(binding.mobileInput, "Enter Mobile Number");
                 return;
             }
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailInput.getText().toString()).matches()) {
-                showError(binding.emailInput, "Enter A Valid Email Address");
+                showErrorOnUi(binding.emailInput, "Enter A Valid Email Address");
                 return;
             }
             if (binding.passwordInput.getText().toString().isEmpty() || binding.passwordInput.getText().length() < 6) {
-                showError(binding.passwordInput, "Enter at Least 6 Digit Password");
+                showErrorOnUi(binding.passwordInput, "Enter at Least 6 Digit Password");
                 return;
             }
             if (gender == null || gender.isEmpty() || gender.equals(genderZero)) {
@@ -152,10 +154,5 @@ public class SignupActivity extends BaseActivity<ActivitySignupBinding> {
                 }
             }
         });
-    }
-
-    private void showError(EditText inputField, String errorMessage) {
-        inputField.setError(errorMessage);
-        inputField.requestFocus();
     }
 }
