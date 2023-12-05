@@ -38,7 +38,7 @@ android {
 dependencies {
     // android dependencies
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     // firebase
     implementation(platform("com.google.firebase:firebase-bom:30.1.0"))
@@ -47,8 +47,8 @@ dependencies {
     // gson
     implementation("com.google.code.gson:gson:2.10.1")
     // navigation-component
-    implementation("androidx.navigation:navigation-fragment:2.7.5")
-    implementation("androidx.navigation:navigation-ui:2.7.5")
+    implementation("androidx.navigation:navigation-fragment:2.5.3")
+    implementation("androidx.navigation:navigation-ui:2.5.3")
     // tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
