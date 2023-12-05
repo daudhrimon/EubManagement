@@ -49,6 +49,9 @@ dependencies {
     // navigation-component
     implementation("androidx.navigation:navigation-fragment:2.5.3")
     implementation("androidx.navigation:navigation-ui:2.5.3")
+    // glide
+    //implementation("com.github.bumptech.glide:glide:4.13.0")
+    //annotationProcessor("com.github.bumptech.glide:compiler:4.13.0")
     // tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

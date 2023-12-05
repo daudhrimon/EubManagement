@@ -1,47 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.chat.ChatFragment"
+    tools:context=".presentation.home.chat.ChatFragment">
 
-    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_primary"
+        android:gravity="center"
+        android:text="Chat Feature Coming Soon..."
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold" />
 
-    <ImageView
-        android:layout_width="95dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/avaterprof"
-        >
-    </ImageView>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Welcome"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="UserName"
-            android:textStyle="bold">
-
-        </TextView>
-
-
-    </LinearLayout>
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

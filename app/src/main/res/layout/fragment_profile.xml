@@ -4,6 +4,165 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/spacing_primary"
     tools:context=".presentation.home.profile.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/user_avatar"
+        android:layout_width="@dimen/primary_icon_size"
+        android:layout_height="@dimen/primary_icon_size"
+        android:layout_marginStart="@dimen/spacing_primary_half"
+        android:src="@drawable/avaterprof"
+        app:layout_constraintBottom_toBottomOf="@id/user_name_and_batch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/user_name_and_batch"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/user_name_and_batch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/user_avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="UserName\nCSE Batch-23 (EVE)" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_background_white"
+        android:padding="@dimen/spacing_12dp"
+        app:constraint_referenced_ids="student_id_label, student_id" />
+
+    <TextView
+        android:id="@+id/student_id_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_large_plus"
+        android:text="Student ID"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintTop_toBottomOf="@id/user_avatar" />
+
+    <TextView
+        android:id="@+id/student_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_primary_half"
+        android:textSize="@dimen/text_size_secondary"
+        app:layout_constraintTop_toBottomOf="@id/student_id_label"
+        tools:text="123456" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_background_white"
+        android:padding="@dimen/spacing_12dp"
+        app:constraint_referenced_ids="mobile_number_label, mobile_number" />
+
+    <TextView
+        android:id="@+id/mobile_number_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_large_plus"
+        android:text="Mobile Number"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintTop_toBottomOf="@id/student_id" />
+
+    <TextView
+        android:id="@+id/mobile_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_primary_half"
+        android:textSize="@dimen/text_size_secondary"
+        app:layout_constraintTop_toBottomOf="@id/mobile_number_label"
+        tools:text="01777777777777" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_background_white"
+        android:padding="@dimen/spacing_12dp"
+        app:constraint_referenced_ids="email_label, email" />
+
+    <TextView
+        android:id="@+id/email_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_large_plus"
+        android:text="Email Address"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintTop_toBottomOf="@id/mobile_number" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_primary_half"
+        android:textSize="@dimen/text_size_secondary"
+        app:layout_constraintTop_toBottomOf="@id/email_label"
+        tools:text="abc@cd.com" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_background_white"
+        android:padding="@dimen/spacing_12dp"
+        app:constraint_referenced_ids="gender_label, gender" />
+
+    <TextView
+        android:id="@+id/gender_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_large_plus"
+        android:text="Gender"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintTop_toBottomOf="@id/email" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_primary_half"
+        android:textSize="@dimen/text_size_secondary"
+        app:layout_constraintTop_toBottomOf="@id/gender_label"
+        tools:text="Male" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_background_white"
+        android:padding="@dimen/spacing_12dp"
+        app:constraint_referenced_ids="blood_label, blood" />
+
+    <TextView
+        android:id="@+id/blood_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_large_plus"
+        android:text="Blood Group"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintTop_toBottomOf="@id/gender" />
+
+    <TextView
+        android:id="@+id/blood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_primary_half"
+        android:textSize="@dimen/text_size_secondary"
+        app:layout_constraintTop_toBottomOf="@id/blood_label"
+        tools:text="A+" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

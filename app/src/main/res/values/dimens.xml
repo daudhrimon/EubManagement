@@ -1,9 +1,18 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+    <dimen name="spacing_large_plus">38dp</dimen>
     <dimen name="spacing_primary">16dp</dimen>
+    <dimen name="spacing_semi_large">24dp</dimen>
     <dimen name="spacing_12dp">12dp</dimen>
     <dimen name="spacing_primary_half">8dp</dimen>
     <dimen name="spacing_6dp">6dp</dimen>
     <dimen name="spacing_small">4dp</dimen>
     <dimen name="primary_icon_size">50dp</dimen>
+
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_primary">16sp</dimen>
+    <dimen name="text_size_secondary">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_smallest">10sp</dimen>
 </resources>

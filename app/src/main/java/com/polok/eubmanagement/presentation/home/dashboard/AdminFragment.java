@@ -6,13 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import com.polok.eubmanagement.R;
+import com.polok.eubmanagement.base.BaseFragment;
+import com.polok.eubmanagement.base.BaseViewModel;
+import com.polok.eubmanagement.databinding.FragmentAdminBinding;
+import com.polok.eubmanagement.databinding.FragmentStudentBinding;
 
-public class AdminFragment extends Fragment {
+public class AdminFragment extends BaseFragment<FragmentAdminBinding> {
+    @Override
+    protected FragmentAdminBinding initViewBinding() {
+        return FragmentAdminBinding.inflate(getLayoutInflater());
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin, container, false);
+    protected BaseViewModel setViewModel() {
+        return null;
+    }
+
+    @Override
+    protected void initOnCreateView(Bundle savedInstanceState) {
+
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="32dp"
+    android:paddingHorizontal="@dimen/spacing_large"
     tools:context=".presentation.home.dashboard.StudentFragment">
 
     <ImageView
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_primary"
         android:layout_marginEnd="@dimen/spacing_6dp"
-        app:image="@drawable/avaterprof"
+        app:image="@drawable/ic_calendar"
         app:layout_constraintEnd_toStartOf="@id/notice_button"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,23 +66,61 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_6dp"
         android:layout_marginEnd="@dimen/spacing_6dp"
-        app:image="@drawable/avaterprof"
+        app:image="@drawable/ic_notice"
         app:layout_constraintBottom_toBottomOf="@id/class_schedule_button"
-        app:layout_constraintEnd_toStartOf="@id/task_or_assignment_button"
+        app:layout_constraintEnd_toStartOf="@id/assignment_button"
         app:layout_constraintStart_toEndOf="@id/class_schedule_button"
         app:layout_constraintTop_toTopOf="@id/class_schedule_button"
         app:text="Notice\n" />
 
     <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/task_or_assignment_button"
+        android:id="@+id/assignment_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_6dp"
-        app:image="@drawable/avaterprof"
-        app:layout_constraintBottom_toBottomOf="@id/class_schedule_button"
+        app:image="@drawable/ic_assignment"
+        app:layout_constraintBottom_toBottomOf="@id/notice_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/notice_button"
-        app:layout_constraintTop_toTopOf="@id/class_schedule_button"
+        app:layout_constraintTop_toTopOf="@id/notice_button"
         app:text="Assignment\n" />
+
+    <com.polok.eubmanagement.widget.DashboardButton
+        android:id="@+id/course_module_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_primary"
+        android:layout_marginEnd="@dimen/spacing_6dp"
+        app:image="@drawable/ic_course"
+        app:layout_constraintEnd_toStartOf="@id/Student_portal_button"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/class_schedule_button"
+        app:text="Course\nModule" />
+
+    <com.polok.eubmanagement.widget.DashboardButton
+        android:id="@+id/Student_portal_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_6dp"
+        android:layout_marginEnd="@dimen/spacing_6dp"
+        app:image="@drawable/ic_student"
+        app:layout_constraintBottom_toBottomOf="@id/course_module_button"
+        app:layout_constraintEnd_toStartOf="@id/faculty_button"
+        app:layout_constraintStart_toEndOf="@id/course_module_button"
+        app:layout_constraintTop_toTopOf="@id/course_module_button"
+        app:text="Student\nPortal" />
+
+    <com.polok.eubmanagement.widget.DashboardButton
+        android:id="@+id/faculty_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_6dp"
+        app:image="@drawable/ic_facalty"
+        app:layout_constraintBottom_toBottomOf="@id/Student_portal_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/Student_portal_button"
+        app:layout_constraintTop_toTopOf="@id/Student_portal_button"
+        app:text="Faculty\n" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

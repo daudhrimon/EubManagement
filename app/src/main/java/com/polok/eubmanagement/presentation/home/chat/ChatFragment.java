@@ -7,22 +7,21 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.polok.eubmanagement.base.BaseFragment;
+import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentChatBinding;
 
-public class ChatFragment extends Fragment {
-    private FragmentChatBinding binding;
-
+public class ChatFragment extends BaseFragment<FragmentChatBinding> {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        binding = FragmentChatBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-
+    protected FragmentChatBinding initViewBinding() {
+        return FragmentChatBinding.inflate(getLayoutInflater());
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    protected BaseViewModel setViewModel() {return null;}
+
+    @Override
+    protected void initOnCreateView(Bundle savedInstanceState) {
+
     }
 }
