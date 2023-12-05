@@ -38,10 +38,22 @@
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/user_name_and_batch" />
 
+    <TextView
+        android:id="@+id/view_all_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View All"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/recent_notice_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_name_and_batch"
+        app:layout_constraintTop_toTopOf="@id/recent_notice_label" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recent_notice_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_primary_half"
         android:background="@drawable/rounded_background_white"
         app:layout_constraintTop_toBottomOf="@id/recent_notice_label"
         tools:itemCount="3"
