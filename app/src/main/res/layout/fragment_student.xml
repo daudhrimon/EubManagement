@@ -47,7 +47,7 @@
         tools:itemCount="3"
         tools:listitem="@layout/item_student_notice" />
 
-    <com.polok.eubmanagement.widget.DashBoardButton
+    <com.polok.eubmanagement.widget.DashboardButton
         android:id="@+id/class_schedule_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@id/recent_notice_recycler"
         app:text="Class\nSchedule" />
 
-    <com.polok.eubmanagement.widget.DashBoardButton
+    <com.polok.eubmanagement.widget.DashboardButton
         android:id="@+id/notice_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="@id/class_schedule_button"
         app:text="Notice\n" />
 
-    <com.polok.eubmanagement.widget.DashBoardButton
+    <com.polok.eubmanagement.widget.DashboardButton
         android:id="@+id/task_or_assignment_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
