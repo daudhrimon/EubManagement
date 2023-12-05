@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Smart EUB</string>
+    <string name="not_registered_signup">Not Registered ? <u>Signup</u></string>
+    <string-array name="gender_spinner">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="batch_spinner">
+        <item>Select Batch</item>
+        <item>CSE Batch 15-EVE</item>
+        <item>CSE Batch 16-EVE</item>
+        <item>CSE Batch 17-EVE</item>
+        <item>CSE Batch 18-EVE</item>
+        <item>CSE Batch 19-EVE</item>
+        <item>CSE Batch 20-EVE</item>
+        <item>CSE Batch 21-EVE</item>
+        <item>CSE Batch 22-EVE</item>
+        <item>CSE Batch 23-EVE</item>
+        <item>CSE Batch 24-EVE</item>
+        <item>CSE Batch 25-EVE</item>
+        <item>CSE Batch 26-EVE</item>
+        <item>CSE Batch 27-EVE</item>
+        <item>CSE Batch 28-EVE</item>
+        <item>CSE Batch 29-EVE</item>
+        <item>CSE Batch 30-EVE</item>
+    </string-array>
+    <string-array name="section_spinner">
+        <item>Select Section</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+    <string-array name="blood_group_spinner">
+        <item>Select Blood Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>Golden</item>
+    </string-array>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

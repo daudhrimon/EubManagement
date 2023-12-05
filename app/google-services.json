@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "497042725541",
+    "project_id": "eub-management-31952",
+    "storage_bucket": "eub-management-31952.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497042725541:android:0a52b8c9fdc20925cdcb4c",
+        "android_client_info": {
+          "package_name": "com.polok.eubmanagement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUfDBR5YsZ31Ljuf9zlBzu3mNMUqwRImU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
