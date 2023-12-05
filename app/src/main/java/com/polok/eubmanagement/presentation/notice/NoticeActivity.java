@@ -16,7 +16,7 @@ public class NoticeActivity extends BaseActivity<ActivityNoticeBinding> {
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
-        binding.backButton.setOnClickListener(view -> {
+        binding.toolBar.backButton.setOnClickListener(view -> {
             onBackPressed();
         });
     }

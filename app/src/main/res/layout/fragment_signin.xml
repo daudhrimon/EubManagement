@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginui"
     android:padding="16dp"
-    tools:context=".presentation.signin.SignInActivity">
+    tools:context=".presentation.auth.signin.SignInFragment">
 
     <TextView
         android:id="@+id/header_title"

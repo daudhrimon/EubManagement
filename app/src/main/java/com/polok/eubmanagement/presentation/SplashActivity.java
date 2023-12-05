@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import com.polok.eubmanagement.R;
-import com.polok.eubmanagement.presentation.signin.SignInActivity;
+import com.polok.eubmanagement.presentation.auth.AuthActivity;
 import com.polok.eubmanagement.util.Extension;
 
 public class SplashActivity extends AppCompatActivity {
@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler(Looper.myLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, SignInActivity.class));
+                startActivity(new Intent(SplashActivity.this, AuthActivity.class));
                 finish();
             }
         },2000);

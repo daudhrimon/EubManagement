@@ -5,14 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginui"
-    tools:context=".presentation.signup.SignupActivity">
+    tools:context=".presentation.auth.signup.SignupFragment">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_primary_half"
+        android:layout_marginTop="@dimen/spacing_semi_large"
+        android:backgroundTint="@android:color/transparent"
+        android:paddingHorizontal="@dimen/spacing_tiny"
+        android:text="Back"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_primary"
+        app:cornerRadius="@dimen/spacing_12dp"
+        app:icon="@drawable/ic_back_arrow"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/spacing_small"
+        app:iconTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#1A000000" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/spacing_primary"
-        app:layout_constraintBottom_toTopOf="@id/signup_button"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+        app:layout_constraintBottom_toTopOf="@id/signup_button">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

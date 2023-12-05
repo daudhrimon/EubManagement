@@ -1,42 +1,39 @@
-package com.polok.eubmanagement.presentation.signup;
+package com.polok.eubmanagement.presentation.auth.signup;
 
 import static com.polok.eubmanagement.util.Extension.showErrorOnUi;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.polok.eubmanagement.base.BaseActivity;
 import com.polok.eubmanagement.base.BaseApp;
 import com.polok.eubmanagement.R;
+import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.data.model.UserProfileData;
-import com.polok.eubmanagement.databinding.ActivitySignupBinding;
+import com.polok.eubmanagement.databinding.FragmentSignupBinding;
 import com.polok.eubmanagement.util.Extension;
-
 import java.util.Objects;
 
-public class SignupActivity extends BaseActivity<ActivitySignupBinding> {
+public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
     @Override
-    protected ActivitySignupBinding initViewBinding() {
-        return ActivitySignupBinding.inflate(getLayoutInflater());
+    protected FragmentSignupBinding initViewBinding() {
+        return FragmentSignupBinding.inflate(getLayoutInflater());
     }
+    @Override
+    protected BaseViewModel setViewModel() {return null;}
     private String gender, batch, section, bloodGroup;
     private String genderZero, batchZero, sectionZero, bloodGroupZero;
 
     @Override
-    protected BaseViewModel setViewModel() {
-        return null;
-    }
-
-    @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
-        Extension.hideStatusBar(getWindow());
+        binding.backButton.setOnClickListener(view -> {
+            getActivity().onBackPressed();
+        });
+
         genderZero = getResources().getStringArray(R.array.gender_spinner)[0];
         batchZero = getResources().getStringArray(R.array.batch_spinner)[0];
         sectionZero = getResources().getStringArray(R.array.section_spinner)[0];
@@ -97,19 +94,19 @@ public class SignupActivity extends BaseActivity<ActivitySignupBinding> {
                 return;
             }
             if (gender == null || gender.isEmpty() || gender.equals(genderZero)) {
-                Extension.showToast(this, genderZero);
+                Extension.showToast(getContext(), genderZero);
                 return;
             }
             if (batch == null || batch.isEmpty() || batch.equals(batchZero)) {
-                Extension.showToast(this, batchZero);
+                Extension.showToast(getContext(), batchZero);
                 return;
             }
             if (section == null || section.isEmpty() || section.equals(sectionZero)) {
-                Extension.showToast(this, sectionZero);
+                Extension.showToast(getContext(), sectionZero);
                 return;
             }
             if (bloodGroup == null || bloodGroup.isEmpty() || bloodGroup.equals(bloodGroupZero)) {
-                Extension.showToast(this, bloodGroupZero);
+                Extension.showToast(getContext(), bloodGroupZero);
                 return;
             }
             attemptSignupWithFireBase();
@@ -126,7 +123,7 @@ public class SignupActivity extends BaseActivity<ActivitySignupBinding> {
                 if (task.isSuccessful()) {
                     attemptPostUserDataToFirebase();
                 } else {
-                    Extension.showToast(SignupActivity.this, Objects.requireNonNull(task.getException()).getMessage());
+                    Extension.showToast(getContext(), Objects.requireNonNull(task.getException()).getMessage());
                     binding.primaryLoader.setVisibility(View.GONE);
                 }
             }
@@ -146,10 +143,10 @@ public class SignupActivity extends BaseActivity<ActivitySignupBinding> {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()) {
                     binding.primaryLoader.setVisibility(View.GONE);
-                    Extension.showToast(SignupActivity.this,"Signup Successful");
-                    finish();
+                    Extension.showToast(getContext(),"Signup Successful");
+                    getActivity().onBackPressed();
                 } else {
-                    Extension.showToast(SignupActivity.this, Objects.requireNonNull(task.getException()).getMessage());
+                    Extension.showToast(getContext(), Objects.requireNonNull(task.getException()).getMessage());
                     binding.primaryLoader.setVisibility(View.GONE);
                 }
             }

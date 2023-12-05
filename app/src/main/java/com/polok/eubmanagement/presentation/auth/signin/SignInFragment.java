@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.signin;
+package com.polok.eubmanagement.presentation.auth.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -14,31 +15,26 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-import com.polok.eubmanagement.base.BaseActivity;
+import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseApp;
+import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.data.model.UserProfileData;
-import com.polok.eubmanagement.databinding.ActivitySigninBinding;
+import com.polok.eubmanagement.databinding.FragmentSigninBinding;
 import com.polok.eubmanagement.presentation.home.DashboardActivity;
-import com.polok.eubmanagement.presentation.signup.SignupActivity;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.util.Extension;
 
-public class SignInActivity extends BaseActivity<ActivitySigninBinding> {
+public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
     @Override
-    protected ActivitySigninBinding initViewBinding() {
-        return ActivitySigninBinding.inflate(getLayoutInflater());
+    protected FragmentSigninBinding initViewBinding() {
+        return FragmentSigninBinding.inflate(getLayoutInflater());
     }
-
     @Override
-    protected BaseViewModel setViewModel() {
-        return null;
-    }
+    protected BaseViewModel setViewModel() {return null;}
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
-        Extension.hideStatusBar(getWindow());
-
         binding.loginButton.setOnClickListener(view -> {
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailInput.getText().toString()).matches()) {
                 showError(binding.emailInput, "Enter A Valid Email Address");
@@ -54,7 +50,7 @@ public class SignInActivity extends BaseActivity<ActivitySigninBinding> {
 
         });
         binding.signupButton.setOnClickListener(view -> {
-            startActivity(new Intent(this, SignupActivity.class));
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_signInFragment_to_signupFragment);
         });
         binding.emailInput.setText("daud@abc.com");
         binding.passwordInput.setText("123456");
@@ -71,7 +67,7 @@ public class SignInActivity extends BaseActivity<ActivitySigninBinding> {
                 if (task.isSuccessful()) {
                     attemptFetchUserData();
                 } else {
-                    Extension.showToast(SignInActivity.this,task.getException().getMessage());
+                    Extension.showToast(getContext(),task.getException().getMessage());
                     binding.primaryLoader.setVisibility(View.GONE);
                 }
             }
@@ -86,23 +82,23 @@ public class SignInActivity extends BaseActivity<ActivitySigninBinding> {
                     UserProfileData userProfileData = snapshot.getValue(UserProfileData.class);
                     Log.wtf("DATA",new Gson().toJson(userProfileData));
                     if (userProfileData != null) {
-                        SharedPref.init(SignInActivity.this);
+                        SharedPref.init(getContext());
                         SharedPref.saveUserData(userProfileData);
                         binding.primaryLoader.setVisibility(View.GONE);
-                        Intent intent = new Intent(SignInActivity.this, DashboardActivity.class);
+                        Intent intent = new Intent(getContext(), DashboardActivity.class);
                         if (userProfileData.getAdmin() != null && userProfileData.getAdmin()) {
                             intent.putExtra("is_admin","true");
                         } else {
                             intent.putExtra("is_admin","false");
                         }
                         startActivity(intent);
-                        finish();
+                        getActivity().finish();
                     } else {
-                        Extension.showToast(SignInActivity.this,"Something went wrong");
+                        Extension.showToast(getContext(),"Something went wrong");
                         binding.primaryLoader.setVisibility(View.GONE);
                     }
                 } else {
-                    Extension.showToast(SignInActivity.this,"Something went wrong");
+                    Extension.showToast(getContext(),"Something went wrong");
                     binding.primaryLoader.setVisibility(View.GONE);
                 }
             }

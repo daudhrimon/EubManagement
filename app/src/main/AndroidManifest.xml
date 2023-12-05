@@ -14,29 +14,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EubMenagement"
         tools:targetApi="31">
+
         <activity
             android:name=".presentation.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".presentation.signin.SignInActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.signup.SignupActivity"
-            android:exported="false" />
+            android:name=".presentation.auth.AuthActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EubMenagement"/>
+
         <activity
             android:name=".presentation.home.DashboardActivity"
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />
+
         <activity
             android:name=".presentation.notice.NoticeActivity"
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />
+
     </application>
 
 </manifest>

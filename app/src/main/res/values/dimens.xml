@@ -8,6 +8,7 @@
     <dimen name="spacing_primary_half">8dp</dimen>
     <dimen name="spacing_6dp">6dp</dimen>
     <dimen name="spacing_small">4dp</dimen>
+    <dimen name="spacing_tiny">2dp</dimen>
     <dimen name="primary_icon_size">50dp</dimen>
 
     <dimen name="text_size_large">20sp</dimen>
