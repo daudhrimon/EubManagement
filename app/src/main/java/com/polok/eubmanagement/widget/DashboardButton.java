@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.polok.eubmanagement.R;
 
-public class DashBoardButton extends ConstraintLayout {
-    public DashBoardButton(Context context, AttributeSet attributeSet) {
+public class DashboardButton extends ConstraintLayout {
+    public DashboardButton(Context context, AttributeSet attributeSet) {
         super(context,attributeSet);
 
         LayoutInflater.from(context).inflate(R.layout.widget_dashboard_button, this);
