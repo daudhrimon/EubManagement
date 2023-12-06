@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/viewNoticeFragment"
-        android:name="com.polok.eubmanagement.presentation.notice.viewnotice.ViewNoticeFragment"
+        android:name="com.polok.eubmanagement.presentation.notice.noticelist.NoticeListFragment"
         android:label="fragment_view_notice"
-        tools:layout="@layout/fragment_view_notice">
+        tools:layout="@layout/fragment_notice_list">
         <action
             android:id="@+id/action_viewNoticeFragment_to_addNoticeFragment"
             app:destination="@id/addNoticeFragment"

@@ -10,7 +10,7 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentHomeBinding;
 import com.polok.eubmanagement.presentation.notice.NoticeActivity;
-import com.polok.eubmanagement.presentation.notice.viewnotice.NoticeAdapter;
+import com.polok.eubmanagement.presentation.notice.noticelist.NoticeListAdapter;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
@@ -52,7 +52,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {
             if (noticeList != null && !noticeList.isEmpty()) {
                 binding.recentNoticeLayer.setVisibility(View.VISIBLE);
-                binding.recentNoticeRecycler.setAdapter(new NoticeAdapter(noticeList,false));
+                binding.recentNoticeRecycler.setAdapter(new NoticeListAdapter(noticeList,false));
             }
         });
         binding.viewAllButton.setOnClickListener(view -> {

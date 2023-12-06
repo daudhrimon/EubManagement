@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.notice.viewnotice;
+package com.polok.eubmanagement.presentation.notice.noticelist;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -12,7 +12,7 @@ import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewNoticeViewModel extends BaseViewModel {
+public class NoticeListViewModel extends BaseViewModel {
     private final MutableLiveData<List<NoticeData>> noticeLiveData = new MutableLiveData<>();
     public LiveData<List<NoticeData>> getNoticeLiveData() {return noticeLiveData;}
 

@@ -1,31 +1,31 @@
-package com.polok.eubmanagement.presentation.notice.viewnotice;
+package com.polok.eubmanagement.presentation.notice.noticelist;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.polok.eubmanagement.databinding.ListItemNoticeBinding;
+import com.polok.eubmanagement.databinding.ItemNoticeListBinding;
 import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import java.util.List;
 
-public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder> {
+public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.NoticeViewHolder> {
     private final List<NoticeData> noticeList;
     private final Boolean isClickable;
-    public NoticeAdapter(List<NoticeData> noticeList, Boolean isClickable) {
+    public NoticeListAdapter(List<NoticeData> noticeList, Boolean isClickable) {
         this.noticeList = noticeList;
         this.isClickable = isClickable;
     }
 
     @NonNull
     @Override
-    public NoticeAdapter.NoticeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NoticeListAdapter.NoticeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new NoticeViewHolder(
-                ListItemNoticeBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false)
+                ItemNoticeListBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false)
         );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeAdapter.NoticeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoticeListAdapter.NoticeViewHolder holder, int position) {
         holder.bind(noticeList.get(position));
     }
 
@@ -35,8 +35,8 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
     }
 
     public class NoticeViewHolder extends RecyclerView.ViewHolder {
-        ListItemNoticeBinding binding;
-        public NoticeViewHolder(@NonNull ListItemNoticeBinding binding) {
+        ItemNoticeListBinding binding;
+        public NoticeViewHolder(@NonNull ItemNoticeListBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

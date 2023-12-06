@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.notice.viewnotice;
+package com.polok.eubmanagement.presentation.notice.noticelist;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,19 +8,19 @@ import androidx.navigation.Navigation;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.databinding.FragmentViewNoticeBinding;
+import com.polok.eubmanagement.databinding.FragmentNoticeListBinding;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
-public class ViewNoticeFragment extends BaseFragment<FragmentViewNoticeBinding> {
+public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> {
     @Override
-    protected FragmentViewNoticeBinding initViewBinding() {
-        return FragmentViewNoticeBinding.inflate(getLayoutInflater());
+    protected FragmentNoticeListBinding initViewBinding() {
+        return FragmentNoticeListBinding.inflate(getLayoutInflater());
     }
-    ViewNoticeViewModel viewModel;
+    NoticeListViewModel viewModel;
     @Override
     protected BaseViewModel initViewModel() {
-        return viewModel = new ViewModelProvider(this).get(ViewNoticeViewModel.class);
+        return viewModel = new ViewModelProvider(this).get(NoticeListViewModel.class);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ViewNoticeFragment extends BaseFragment<FragmentViewNoticeBinding> 
 
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {
             if (noticeList != null && !noticeList.isEmpty()) {
-                binding.noticeRecycler.setAdapter(new NoticeAdapter(noticeList,true));
+                binding.noticeRecycler.setAdapter(new NoticeListAdapter(noticeList,true));
             }
         });
         binding.addNoticeButton.setOnClickListener(view -> {

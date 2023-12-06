@@ -67,7 +67,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/recent_notice_label"
         tools:itemCount="3"
-        tools:listitem="@layout/list_item_notice" />
+        tools:listitem="@layout/item_notice_list" />
 
     <com.polok.eubmanagement.widget.DashboardButton
         android:id="@+id/class_schedule_button"
