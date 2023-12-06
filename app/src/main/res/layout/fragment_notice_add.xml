@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacing_semi_large"
+    android:paddingHorizontal="@dimen/spacing_primary"
+    android:paddingTop="@dimen/spacing_semi_large"
+    android:paddingBottom="@dimen/spacing_primary"
     tools:context=".presentation.notice.noticeadd.NoticeAddFragment">
 
     <EditText
