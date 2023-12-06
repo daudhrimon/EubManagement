@@ -98,14 +98,14 @@ public class SignupViewModel extends BaseViewModel {
         FirebaseDataRef.provideBatchRef().child(firebaseUid).setValue(batch).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isComplete()) {
-                    try {
-                        SharedPref.saveUserBatch(batch);
-                    } catch (Exception ignored) {} finally {
-                        attemptPostUserProfileDataToFirebase(firebaseUid,studentId,fullName,mobileInput,emailInput,passwordInput);
-                    }
-                }
-                else {
+                if (task.isComplete()) try {
+                    SharedPref.saveUserBatch(batch);
+                } catch (Exception ignored) {
+                    fireMessageEvent("Something went wrong");
+                    fireLoadingEvent(false);
+                } finally {
+                    attemptPostUserProfileDataToFirebase(firebaseUid,studentId,fullName,mobileInput,emailInput,passwordInput);
+                } else {
                     fireMessageEvent(task.getException().getLocalizedMessage());
                     fireLoadingEvent(false);
                 }

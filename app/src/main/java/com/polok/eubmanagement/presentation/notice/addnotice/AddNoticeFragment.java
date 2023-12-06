@@ -6,6 +6,7 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentAddNoticeBinding;
+import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class AddNoticeFragment extends BaseFragment<FragmentAddNoticeBinding> {
@@ -23,6 +24,7 @@ public class AddNoticeFragment extends BaseFragment<FragmentAddNoticeBinding> {
     protected void initOnCreateView(Bundle savedInstanceState) {
 
         binding.saveNoticeButton.setOnClickListener(view -> {
+            SharedPref.init(getContext());
             viewModel.validateNoticeInputAndUploadToFirebase(
                     binding.noticeTitle, binding.noticeDetails
             );

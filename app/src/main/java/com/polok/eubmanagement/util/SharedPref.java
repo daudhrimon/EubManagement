@@ -33,11 +33,11 @@ public class SharedPref {
         return read("user_batch","");
     }
 
-    public static void saveUserData(UserProfileData userProfileData) {
-        write("user_data",new Gson().toJson(userProfileData));
+    public static void saveUserProfile(UserProfileData userProfileData) {
+        write("user_profile",new Gson().toJson(userProfileData));
     }
 
-    public static UserProfileData getUserData() {
-        return new Gson().fromJson(read("user_data",""), UserProfileData.class);
+    public static UserProfileData getUserProfile() {
+        return new Gson().fromJson(read("user_profile",""), UserProfileData.class);
     }
 }

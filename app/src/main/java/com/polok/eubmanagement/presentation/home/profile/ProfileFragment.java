@@ -40,7 +40,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
                         String.format("%s\n%s",
                                 getText(userProfileData.getFullName()),
                                 String.format("%s, Section %s",
-                                        getText(userProfileData.getBatch()),
+                                        getText(SharedPref.getUserBatch()),
                                         getText(userProfileData.getSection())
                                 )
                         )

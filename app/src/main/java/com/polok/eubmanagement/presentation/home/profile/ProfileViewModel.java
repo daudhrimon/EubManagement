@@ -13,7 +13,7 @@ public class ProfileViewModel extends BaseViewModel {
 
     public void fetchUserProfileLiveData() {
         try {
-            userProfileDataLiveData.postValue(SharedPref.getUserData());
+            userProfileDataLiveData.postValue(SharedPref.getUserProfile());
         } catch (Exception e) {
             fireMessageEvent(e.getLocalizedMessage());
         }

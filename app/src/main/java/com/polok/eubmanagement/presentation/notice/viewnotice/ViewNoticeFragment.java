@@ -9,6 +9,7 @@ import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentViewNoticeBinding;
+import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class ViewNoticeFragment extends BaseFragment<FragmentViewNoticeBinding> {
@@ -24,7 +25,7 @@ public class ViewNoticeFragment extends BaseFragment<FragmentViewNoticeBinding> 
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
-
+        SharedPref.init(getContext());
         viewModel.fetchNoticeListFromFirebase();
 
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {

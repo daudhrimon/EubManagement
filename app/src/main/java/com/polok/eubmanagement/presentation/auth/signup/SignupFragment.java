@@ -1,15 +1,14 @@
 package com.polok.eubmanagement.presentation.auth.signup;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
+import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentSignupBinding;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
@@ -23,12 +22,6 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
     @Override
     protected BaseViewModel initViewModel() {
         return viewModel = new ViewModelProvider(this).get(SignupViewModel.class);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        SharedPref.init(context);
     }
 
     @Override
@@ -76,6 +69,7 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
         });
 
         binding.signupButton.setOnClickListener(view -> {
+            SharedPref.init(getContext());
             viewModel.validateInputItemsAndExecuteSignup(
                     binding.studentId, binding.fullName, binding.mobileInput, binding.emailInput, binding.passwordInput,
                     FirebaseAuth.getInstance()
@@ -85,4 +79,10 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
 
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
+
+    @Override
+    protected void onNavigateEvent(OnNavigate onNavigate) {
+        super.onNavigateEvent(onNavigate);
+        if (onNavigate.getId() == 1) getActivity().onBackPressed();
+    }
 }
