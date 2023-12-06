@@ -15,7 +15,6 @@ import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.data.model.UserProfileData;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
-import com.polok.eubmanagement.util.FirebaseChildTag;
 import com.polok.eubmanagement.util.SharedPref;
 
 public class SignInViewModel extends BaseViewModel {
@@ -77,7 +76,7 @@ public class SignInViewModel extends BaseViewModel {
     }
 
     private void attemptFetchUserProfileDataFrom(String firebaseUid) {
-        FirebaseDataRef.provideStudentRef().child(firebaseUid).child(FirebaseChildTag.PROFILE.name()).addValueEventListener(new ValueEventListener() {
+        FirebaseDataRef.provideStudentRef().child(firebaseUid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) try {

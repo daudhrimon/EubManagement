@@ -79,7 +79,7 @@ public class SignupViewModel extends BaseViewModel {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     attemptPostUserBatchToFirebase(
-                            firebaseAuth.getCurrentUser().getUid(), studentId,fullName,mobileInput,emailInput,passwordInput
+                            firebaseAuth.getCurrentUser().getUid(), studentId,fullName,mobileInput,emailInput
                     );
                 }
                 else {
@@ -92,9 +92,8 @@ public class SignupViewModel extends BaseViewModel {
 
     private void attemptPostUserBatchToFirebase(
             String firebaseUid,
-            String studentId, String fullName, String mobileInput, String emailInput, String passwordInput
+            String studentId, String fullName, String mobileInput, String emailInput
     ) {
-        //HashMap<String, String> userBatchMap = new HashMap<>();
         FirebaseDataRef.provideBatchRef().child(firebaseUid).setValue(batch).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -104,7 +103,7 @@ public class SignupViewModel extends BaseViewModel {
                     fireMessageEvent("Something went wrong");
                     fireLoadingEvent(false);
                 } finally {
-                    attemptPostUserProfileDataToFirebase(firebaseUid,studentId,fullName,mobileInput,emailInput,passwordInput);
+                    attemptPostUserProfileDataToFirebase(firebaseUid,studentId,fullName,mobileInput,emailInput);
                 } else {
                     fireMessageEvent(task.getException().getLocalizedMessage());
                     fireLoadingEvent(false);
@@ -115,10 +114,10 @@ public class SignupViewModel extends BaseViewModel {
 
     private void attemptPostUserProfileDataToFirebase(
             String firebaseUid,
-            String studentId, String fullName, String mobileInput, String emailInput, String passwordInput
+            String studentId, String fullName, String mobileInput, String emailInput
     ) {
             UserProfileData userProfileData = new UserProfileData(studentId, fullName, mobileInput, emailInput, gender, section, bloodGroup, false);
-            FirebaseDataRef.provideStudentRef().child(firebaseUid).child(FirebaseChildTag.PROFILE.name()).setValue(userProfileData).addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseDataRef.provideStudentRef().child(firebaseUid).setValue(userProfileData).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isComplete()) {
