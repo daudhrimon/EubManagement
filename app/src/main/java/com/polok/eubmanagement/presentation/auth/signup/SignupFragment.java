@@ -16,6 +16,8 @@ import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.data.model.UserProfileData;
 import com.polok.eubmanagement.databinding.FragmentSignupBinding;
 import com.polok.eubmanagement.util.Extension;
+import com.polok.eubmanagement.widget.PrimaryLoader;
+
 import java.util.Objects;
 
 public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
@@ -24,7 +26,7 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
         return FragmentSignupBinding.inflate(getLayoutInflater());
     }
     @Override
-    protected BaseViewModel setViewModel() {return null;}
+    protected BaseViewModel initViewModel() {return null;}
     private String gender, batch, section, bloodGroup;
     private String genderZero, batchZero, sectionZero, bloodGroupZero;
 
@@ -112,6 +114,9 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
             attemptSignupWithFireBase();
         });
     }
+
+    @Override
+    protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
 
     private void attemptSignupWithFireBase() {
         binding.primaryLoader.setVisibility(View.VISIBLE);

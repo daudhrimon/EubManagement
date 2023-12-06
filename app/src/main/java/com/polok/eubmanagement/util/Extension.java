@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;

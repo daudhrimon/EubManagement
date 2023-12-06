@@ -12,6 +12,7 @@ import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentAdminBinding;
 import com.polok.eubmanagement.databinding.FragmentStudentBinding;
 import com.polok.eubmanagement.presentation.notice.NoticeActivity;
+import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class AdminFragment extends BaseFragment<FragmentAdminBinding> {
     @Override
@@ -20,7 +21,7 @@ public class AdminFragment extends BaseFragment<FragmentAdminBinding> {
     }
 
     @Override
-    protected BaseViewModel setViewModel() {
+    protected BaseViewModel initViewModel() {
         return null;
     }
 
@@ -34,6 +35,9 @@ public class AdminFragment extends BaseFragment<FragmentAdminBinding> {
             openNoticeActivity();
         });
     }
+
+    @Override
+    protected PrimaryLoader initPrimaryLoader() {return null;}
 
     private void openNoticeActivity() {
         startActivity(new Intent(getContext(), NoticeActivity.class));

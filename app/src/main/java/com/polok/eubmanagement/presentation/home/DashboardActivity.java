@@ -6,9 +6,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseActivity;
-import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.ActivityDashboardBinding;
-
 import java.util.Objects;
 
 public class DashboardActivity extends BaseActivity<ActivityDashboardBinding> {
@@ -17,11 +15,6 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding> {
         return ActivityDashboardBinding.inflate(getLayoutInflater());
     }
     private NavController navController;
-
-    @Override
-    protected BaseViewModel setViewModel() {
-        return null;
-    }
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {

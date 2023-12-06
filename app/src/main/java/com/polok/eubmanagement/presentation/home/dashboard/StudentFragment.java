@@ -8,6 +8,7 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentStudentBinding;
 import com.polok.eubmanagement.presentation.notice.NoticeActivity;
+import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class StudentFragment extends BaseFragment<FragmentStudentBinding> {
     @Override
@@ -16,7 +17,7 @@ public class StudentFragment extends BaseFragment<FragmentStudentBinding> {
     }
 
     @Override
-    protected BaseViewModel setViewModel() {
+    protected BaseViewModel initViewModel() {
         return null;
     }
 
@@ -31,6 +32,9 @@ public class StudentFragment extends BaseFragment<FragmentStudentBinding> {
             Log.wtf("ajkahjka","");
         });
     }
+
+    @Override
+    protected PrimaryLoader initPrimaryLoader() {return null;}
 
     private void openNoticeActivity() {
         startActivity(new Intent(getContext(), NoticeActivity.class));

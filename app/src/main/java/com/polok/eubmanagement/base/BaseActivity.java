@@ -1,9 +1,14 @@
 package com.polok.eubmanagement.base;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewbinding.ViewBinding;
+
+import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public abstract class BaseActivity<VB extends ViewBinding> extends AppCompatActivity {
     protected VB binding;
@@ -16,15 +21,13 @@ public abstract class BaseActivity<VB extends ViewBinding> extends AppCompatActi
         initOnCreateView(savedInstanceState);
     }
 
+    protected abstract VB initViewBinding();
+
+    protected abstract void initOnCreateView(Bundle savedInstanceState);
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
     }
-
-    protected abstract VB initViewBinding();
-
-    protected abstract BaseViewModel setViewModel();
-
-    protected abstract void initOnCreateView(Bundle savedInstanceState);
 }

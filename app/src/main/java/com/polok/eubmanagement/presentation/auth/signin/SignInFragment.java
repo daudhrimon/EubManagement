@@ -24,6 +24,7 @@ import com.polok.eubmanagement.databinding.FragmentSigninBinding;
 import com.polok.eubmanagement.presentation.home.DashboardActivity;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.util.Extension;
+import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
     @Override
@@ -31,7 +32,7 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
         return FragmentSigninBinding.inflate(getLayoutInflater());
     }
     @Override
-    protected BaseViewModel setViewModel() {return null;}
+    protected BaseViewModel initViewModel() {return null;}
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
@@ -55,6 +56,9 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
         binding.emailInput.setText("daud@abc.com");
         binding.passwordInput.setText("123456");
     }
+
+    @Override
+    protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
 
     private void attemptLoginWithFirebase() {
         binding.primaryLoader.setVisibility(View.VISIBLE);

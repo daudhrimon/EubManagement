@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentChatBinding;
+import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class ChatFragment extends BaseFragment<FragmentChatBinding> {
     @Override
@@ -18,10 +19,13 @@ public class ChatFragment extends BaseFragment<FragmentChatBinding> {
     }
 
     @Override
-    protected BaseViewModel setViewModel() {return null;}
+    protected BaseViewModel initViewModel() {return null;}
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
     }
+
+    @Override
+    protected PrimaryLoader initPrimaryLoader() {return null;}
 }

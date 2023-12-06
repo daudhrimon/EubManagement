@@ -8,6 +8,7 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentProfileBinding;
 import com.polok.eubmanagement.util.SharedPref;
+import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     @Override
@@ -17,7 +18,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     ProfileViewModel viewModel;
 
     @Override
-    protected BaseViewModel setViewModel() {
+    protected BaseViewModel initViewModel() {
         return viewModel;
     }
 
@@ -52,6 +53,9 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
             }
         });
     }
+
+    @Override
+    protected PrimaryLoader initPrimaryLoader() {return null;}
 
     private String getText(String text) {
         if (text != null && !text.isEmpty()) return text;
