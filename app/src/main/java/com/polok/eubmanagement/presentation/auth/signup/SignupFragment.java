@@ -9,13 +9,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.polok.eubmanagement.base.BaseApp;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.data.model.UserProfileData;
 import com.polok.eubmanagement.databinding.FragmentSignupBinding;
+import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.util.Extension;
+import com.polok.eubmanagement.util.FirebaseChildTag;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 import java.util.Objects;
@@ -120,13 +121,14 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
 
     private void attemptSignupWithFireBase() {
         binding.primaryLoader.setVisibility(View.VISIBLE);
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.createUserWithEmailAndPassword(
                 binding.emailInput.getText().toString(), binding.passwordInput.getText().toString()
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    attemptPostUserDataToFirebase();
+                    attemptPostUserDataToFirebase(firebaseAuth.getCurrentUser().getUid());
                 } else {
                     Extension.showToast(getContext(), Objects.requireNonNull(task.getException()).getMessage());
                     binding.primaryLoader.setVisibility(View.GONE);
@@ -135,7 +137,7 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
         });
     }
 
-    private void attemptPostUserDataToFirebase() {
+    private void attemptPostUserDataToFirebase(String firebaseUid) {
         UserProfileData userProfileData = new UserProfileData(
                 binding.studentId.getText().toString(),
                 binding.fullName.getText().toString(),
@@ -143,7 +145,7 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
                 binding.emailInput.getText().toString(),
                 gender, batch, section, bloodGroup, false
         );
-        BaseApp.getFirebaseDataRefUID().child("Info").setValue(userProfileData).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDataRef.provideStudentRef().child(firebaseUid).child(FirebaseChildTag.PROFILE.name()).setValue(userProfileData).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()) {

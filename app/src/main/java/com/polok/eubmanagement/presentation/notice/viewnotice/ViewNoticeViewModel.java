@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.polok.eubmanagement.base.BaseApp;
 import com.polok.eubmanagement.base.BaseViewModel;
+import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.notice.model.NoticeData;
-import com.polok.eubmanagement.util.DataRefChild;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class ViewNoticeViewModel extends BaseViewModel {
 
     public void fetchNoticeListFromFirebase() {
         fireLoadingEvent(true);
-        BaseApp.getFirebaseDataRef().child(DataRefChild.Notice.name()).addValueEventListener(new ValueEventListener() {
+        FirebaseDataRef.provideNoticeRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

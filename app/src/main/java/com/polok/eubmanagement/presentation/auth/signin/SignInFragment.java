@@ -21,7 +21,9 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.data.model.UserProfileData;
 import com.polok.eubmanagement.databinding.FragmentSigninBinding;
+import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.home.DashboardActivity;
+import com.polok.eubmanagement.util.FirebaseChildTag;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.util.Extension;
 import com.polok.eubmanagement.widget.PrimaryLoader;
@@ -62,14 +64,15 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
 
     private void attemptLoginWithFirebase() {
         binding.primaryLoader.setVisibility(View.VISIBLE);
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signInWithEmailAndPassword(
                 binding.emailInput.getText().toString(),
                 binding.passwordInput.getText().toString()
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    attemptFetchUserData();
+                    attemptFetchUserData(firebaseAuth.getCurrentUser().getUid());
                 } else {
                     Extension.showToast(getContext(),task.getException().getMessage());
                     binding.primaryLoader.setVisibility(View.GONE);
@@ -78,36 +81,38 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
         });
     }
 
-    private void attemptFetchUserData() {
-        BaseApp.getFirebaseDataRefUID().child("Info").addValueEventListener(new ValueEventListener() {
+    private void attemptFetchUserData(String firebaseUid) {
+        FirebaseDataRef.provideStudentRef().child(firebaseUid).child(FirebaseChildTag.PROFILE.name()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     UserProfileData userProfileData = snapshot.getValue(UserProfileData.class);
-                    Log.wtf("DATA",new Gson().toJson(userProfileData));
+                    Log.wtf("DATA", new Gson().toJson(userProfileData));
                     if (userProfileData != null) {
                         SharedPref.init(getContext());
                         SharedPref.saveUserData(userProfileData);
                         binding.primaryLoader.setVisibility(View.GONE);
                         Intent intent = new Intent(getContext(), DashboardActivity.class);
                         if (userProfileData.getAdmin() != null && userProfileData.getAdmin()) {
-                            intent.putExtra("is_admin","true");
+                            intent.putExtra("is_admin", "true");
                         } else {
-                            intent.putExtra("is_admin","false");
+                            intent.putExtra("is_admin", "false");
                         }
                         startActivity(intent);
                         getActivity().finish();
                     } else {
-                        Extension.showToast(getContext(),"Something went wrong");
+                        Extension.showToast(getContext(), "Something went wrong");
                         binding.primaryLoader.setVisibility(View.GONE);
                     }
                 } else {
-                    Extension.showToast(getContext(),"Something went wrong");
+                    Extension.showToast(getContext(), "Something went wrong");
                     binding.primaryLoader.setVisibility(View.GONE);
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 

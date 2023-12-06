@@ -8,10 +8,9 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
-import com.polok.eubmanagement.base.BaseApp;
 import com.polok.eubmanagement.base.BaseViewModel;
+import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.notice.model.NoticeData;
-import com.polok.eubmanagement.util.DataRefChild;
 import com.polok.eubmanagement.util.Extension;
 
 public class AddNoticeViewModel extends BaseViewModel {
@@ -38,9 +37,9 @@ public class AddNoticeViewModel extends BaseViewModel {
 
     private void uploadNoticeTOFirebase(String title, String details, String date) {
         fireLoadingEvent(true);
-        DatabaseReference dataRef = BaseApp.getFirebaseDataRef().child(DataRefChild.Notice.name()).push();
-        dataRef.setValue(
-                new NoticeData(title,details,date,dataRef.getKey().toString())
+        DatabaseReference pushNoticeRef = FirebaseDataRef.provideNoticeRef().push();
+        pushNoticeRef.setValue(
+                new NoticeData(title,details,date,pushNoticeRef.getKey().toString())
         ).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
