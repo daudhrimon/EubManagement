@@ -28,7 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/spacing_primary"
-        android:layout_marginBottom="@dimen/spacing_primary"
         android:background="@drawable/rounded_background_white"
         android:focusable="false"
         android:gravity="start"
