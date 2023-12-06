@@ -55,7 +55,7 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
         binding.signupButton.setOnClickListener(view -> {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_signInFragment_to_signupFragment);
         });
-        binding.emailInput.setText("daud@abc.com");
+        binding.emailInput.setText("daud@daud.com");
         binding.passwordInput.setText("123456");
     }
 

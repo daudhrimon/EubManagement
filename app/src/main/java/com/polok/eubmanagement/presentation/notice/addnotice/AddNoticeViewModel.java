@@ -9,13 +9,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.polok.eubmanagement.base.BaseViewModel;
+import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import com.polok.eubmanagement.util.Extension;
 
 public class AddNoticeViewModel extends BaseViewModel {
-    private final MutableLiveData<Boolean> uploadNoticeResponse = new MutableLiveData<>();
-    public LiveData<Boolean> getUploadNoticeResponse() {return uploadNoticeResponse;}
 
     public void validateNoticeInputAndUploadToFirebase(
             EditText noticeTitleEt, EditText noticeDetailsEt
@@ -46,7 +45,7 @@ public class AddNoticeViewModel extends BaseViewModel {
                 if (task.isComplete()) fireMessageEvent("Notice Added Successfully");
                 else fireMessageEvent(task.getException().getLocalizedMessage());
                 fireLoadingEvent(false);
-                uploadNoticeResponse.postValue(true);
+                fireNavigateEvent(new OnNavigate(1));
             }
         });
     }

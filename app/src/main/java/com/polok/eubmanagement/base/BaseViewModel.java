@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.polok.eubmanagement.base.event.Event;
+import com.polok.eubmanagement.base.model.OnNavigate;
 
 public class BaseViewModel extends ViewModel {
     private final MutableLiveData<Event<String>> messageEvent = new MutableLiveData<>();
@@ -18,4 +19,9 @@ public class BaseViewModel extends ViewModel {
     public LiveData<Event<Boolean>> getLoadingEvent() {return loadingEvent; }
 
     public void fireLoadingEvent(Boolean isLoading) {loadingEvent.postValue(new Event<>(isLoading));}
+
+    private final MutableLiveData<Event<OnNavigate>> navigateEvent = new MutableLiveData<>();
+    public LiveData<Event<OnNavigate>> getNavigateEvent() {return navigateEvent; }
+
+    public void fireNavigateEvent(OnNavigate onNavigate) {navigateEvent.postValue(new Event<>(onNavigate));}
 }
