@@ -10,7 +10,7 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentSigninBinding;
-import com.polok.eubmanagement.presentation.home.DashboardActivity;
+import com.polok.eubmanagement.presentation.dashboard.DashboardActivity;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
@@ -50,10 +50,8 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
     @Override
     protected void onNavigateEvent(OnNavigate onNavigate) {
         super.onNavigateEvent(onNavigate);
-        if (onNavigate.getId() == 1 && onNavigate.getBundle() != null) {
-            Intent intent = new Intent(getContext(), DashboardActivity.class);
-            intent.putExtra("is_admin", onNavigate.getBundle().getString("is_admin"));
-            startActivity(intent);
+        if (onNavigate.getId() == 1) {
+            startActivity(new Intent(getContext(), DashboardActivity.class));
             getActivity().finish();
         }
     }

@@ -2,24 +2,24 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_student"
+    android:id="@+id/nav_graph_dashboard"
     app:startDestination="@id/home">
 
     <fragment
         android:id="@+id/home"
-        android:name="com.polok.eubmanagement.presentation.home.dashboard.StudentFragment"
-        android:label="fragment_student"
-        tools:layout="@layout/fragment_student" />
+        android:name="com.polok.eubmanagement.presentation.dashboard.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/chat"
-        android:name="com.polok.eubmanagement.presentation.home.chat.ChatFragment"
+        android:name="com.polok.eubmanagement.presentation.dashboard.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_chat"/>
 
     <fragment
         android:id="@+id/profile"
-        android:name="com.polok.eubmanagement.presentation.home.profile.ProfileFragment"
+        android:name="com.polok.eubmanagement.presentation.dashboard.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
 

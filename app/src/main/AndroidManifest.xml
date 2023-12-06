@@ -30,7 +30,7 @@
             android:theme="@style/Theme.EubMenagement"/>
 
         <activity
-            android:name=".presentation.home.DashboardActivity"
+            android:name=".presentation.dashboard.DashboardActivity"
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />
 

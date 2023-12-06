@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.home.profile;
+package com.polok.eubmanagement.presentation.dashboard;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,11 +15,11 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     protected FragmentProfileBinding initViewBinding() {
         return FragmentProfileBinding.inflate(getLayoutInflater());
     }
-    ProfileViewModel viewModel;
+    HomeViewModel viewModel;
 
     @Override
     protected BaseViewModel initViewModel() {
-        return viewModel;
+        return viewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
     }
 
     @Override
@@ -30,7 +30,6 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
         viewModel.fetchUserProfileLiveData();
 
@@ -38,27 +37,22 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
             if (userProfileData != null) {
                 binding.userNameAndBatch.setText(
                         String.format("%s\n%s",
-                                getText(userProfileData.getFullName()),
+                                userProfileData.getNotNullText(userProfileData.getFullName()),
                                 String.format("%s, Section %s",
-                                        getText(SharedPref.getUserBatch()),
-                                        getText(userProfileData.getSection())
+                                        userProfileData.getNotNullText(SharedPref.getUserBatch()),
+                                        userProfileData.getNotNullText(userProfileData.getSection())
                                 )
                         )
                 );
-                binding.studentId.setText(getText(userProfileData.getStudentId()));
-                binding.mobileNumber.setText(getText(userProfileData.getMobileNumber()));
-                binding.email.setText(getText(userProfileData.getEmail()));
-                binding.gender.setText(getText(userProfileData.getGender()));
-                binding.blood.setText(getText(userProfileData.getBloodGroup()));
+                binding.studentId.setText(userProfileData.getNotNullText(userProfileData.getStudentId()));
+                binding.mobileNumber.setText(userProfileData.getNotNullText(userProfileData.getMobileNumber()));
+                binding.email.setText(userProfileData.getNotNullText(userProfileData.getEmail()));
+                binding.gender.setText(userProfileData.getNotNullText(userProfileData.getGender()));
+                binding.blood.setText(userProfileData.getNotNullText(userProfileData.getBloodGroup()));
             }
         });
     }
 
     @Override
     protected PrimaryLoader initPrimaryLoader() {return null;}
-
-    private String getText(String text) {
-        if (text != null && !text.isEmpty()) return text;
-        else return "N/A";
-    }
 }

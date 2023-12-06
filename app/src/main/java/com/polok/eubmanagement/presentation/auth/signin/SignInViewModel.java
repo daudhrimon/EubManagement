@@ -1,7 +1,6 @@
 package com.polok.eubmanagement.presentation.auth.signin;
 
 import static com.polok.eubmanagement.util.Extension.showErrorOnUi;
-import android.os.Bundle;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,7 +17,6 @@ import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.util.SharedPref;
 
 public class SignInViewModel extends BaseViewModel {
-    private String isAdmin;
 
     void validateInputItemsAndExecuteSignup(
             EditText emailInputEt, EditText passwordInputEt, FirebaseAuth firebaseAuth
@@ -80,15 +78,11 @@ public class SignInViewModel extends BaseViewModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) try {
-                    UserProfileData userProfileData = snapshot.getValue(UserProfileData.class);
-                    SharedPref.saveUserProfile(userProfileData);
-                    isAdmin = userProfileData.getAdmin().toString();
+                    SharedPref.saveUserProfile(snapshot.getValue(UserProfileData.class));
                 } catch (Exception ignored) {
                     fireMessageEvent("Something went wrong");
                 } finally {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("is_admin", isAdmin);
-                    fireNavigateEvent(new OnNavigate(1, bundle));
+                    fireNavigateEvent(new OnNavigate(1));
                 } else {
                     fireMessageEvent("Something went wrong");
                 }

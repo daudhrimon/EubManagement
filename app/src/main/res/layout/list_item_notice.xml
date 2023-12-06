@@ -8,8 +8,8 @@
     android:background="@drawable/rounded_background_white_clickable"
     android:clickable="true"
     android:focusable="true"
-    android:paddingHorizontal="@dimen/spacing_primary"
-    android:paddingVertical="@dimen/spacing_primary_half">
+    android:paddingHorizontal="@dimen/spacing_12dp"
+    android:paddingVertical="@dimen/spacing_small">
 
     <TextView
         android:id="@+id/notice_title"
@@ -17,5 +17,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="This is a notice" />
+
+    <TextView
+        android:id="@+id/notice_Details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="@dimen/spacing_small"
+        app:layout_constraintTop_toBottomOf="@id/notice_title"
+        tools:text="This is Notice Details djdjjkdjkdjkdgjkdfjkdjkdgjkdgjkdgdjkgdjkgdjkd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

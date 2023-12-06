@@ -1,10 +1,10 @@
 package com.polok.eubmanagement.presentation.notice.viewnotice;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import com.google.gson.Gson;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
@@ -24,16 +24,21 @@ public class ViewNoticeFragment extends BaseFragment<FragmentViewNoticeBinding> 
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        SharedPref.init(context);
+    }
+
+    @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
-        SharedPref.init(getContext());
+
         viewModel.fetchNoticeListFromFirebase();
 
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {
             if (noticeList != null && !noticeList.isEmpty()) {
-                Log.wtf("NoticeList", new Gson().toJson(noticeList));
+                binding.noticeRecycler.setAdapter(new NoticeAdapter(noticeList,true));
             }
         });
-
         binding.addNoticeButton.setOnClickListener(view -> {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_viewNoticeFragment_to_addNoticeFragment);
         });

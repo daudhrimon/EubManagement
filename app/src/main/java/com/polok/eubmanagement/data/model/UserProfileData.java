@@ -95,4 +95,9 @@ public class UserProfileData {
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
     }
+
+    public String getNotNullText(String text) {
+        if (text != null && !text.isEmpty()) return text;
+        else return "N/A";
+    }
 }
