@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,8 +34,11 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
     protected FragmentSigninBinding initViewBinding() {
         return FragmentSigninBinding.inflate(getLayoutInflater());
     }
+    private SignInViewModel viewModel;
     @Override
-    protected BaseViewModel initViewModel() {return null;}
+    protected BaseViewModel initViewModel() {
+        return viewModel = new ViewModelProvider(this).get(SignInViewModel.class);
+    }
 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {

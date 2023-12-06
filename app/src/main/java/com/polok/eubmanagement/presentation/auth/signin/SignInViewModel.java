@@ -1,4 +1,7 @@
 package com.polok.eubmanagement.presentation.auth.signin;
 
-public class SignInViewModel {
+import com.polok.eubmanagement.base.BaseViewModel;
+
+public class SignInViewModel extends BaseViewModel {
+
 }

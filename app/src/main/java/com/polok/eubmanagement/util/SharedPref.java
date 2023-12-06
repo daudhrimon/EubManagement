@@ -25,6 +25,14 @@ public class SharedPref {
         prefsEditor.apply();
     }
 
+    public static void saveUserBatch(String batch) {
+        write("user_batch", batch);
+    }
+
+    public static String getUserBatch() {
+        return read("user_batch","");
+    }
+
     public static void saveUserData(UserProfileData userProfileData) {
         write("user_data",new Gson().toJson(userProfileData));
     }

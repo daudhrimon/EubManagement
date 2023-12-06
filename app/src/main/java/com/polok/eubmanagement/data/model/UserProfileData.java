@@ -6,7 +6,6 @@ public class UserProfileData {
     private String mobileNumber;
     private String email;
     private String gender;
-    private String batch;
     private String section;
     private String bloodGroup;
     private Boolean isAdmin;
@@ -17,7 +16,6 @@ public class UserProfileData {
             String mobileNumber,
             String email,
             String gender,
-            String batch,
             String section,
             String bloodGroup,
             Boolean isAdmin
@@ -27,7 +25,6 @@ public class UserProfileData {
         this.mobileNumber = mobileNumber;
         this.email = email;
         this.gender = gender;
-        this.batch = batch;
         this.section = section;
         this.bloodGroup = bloodGroup;
         this.isAdmin = isAdmin;
@@ -73,14 +70,6 @@ public class UserProfileData {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getBatch() {
-        return batch;
-    }
-
-    public void setBatch(String batch) {
-        this.batch = batch;
     }
 
     public String getSection() {
