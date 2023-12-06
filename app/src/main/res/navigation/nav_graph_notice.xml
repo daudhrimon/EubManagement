@@ -21,8 +21,8 @@
 
     <fragment
         android:id="@+id/addNoticeFragment"
-        android:name="com.polok.eubmanagement.presentation.notice.addnotice.AddNoticeFragment"
+        android:name="com.polok.eubmanagement.presentation.notice.noticeadd.NoticeAddFragment"
         android:label="fragment_add_notice"
-        tools:layout="@layout/fragment_add_notice" />
+        tools:layout="@layout/fragment_notice_add" />
 
 </navigation>

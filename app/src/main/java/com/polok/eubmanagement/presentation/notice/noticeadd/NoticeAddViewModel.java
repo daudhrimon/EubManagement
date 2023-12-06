@@ -1,10 +1,9 @@
-package com.polok.eubmanagement.presentation.notice.addnotice;
+package com.polok.eubmanagement.presentation.notice.noticeadd;
 
 import static com.polok.eubmanagement.util.Extension.showErrorOnUi;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -14,7 +13,7 @@ import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import com.polok.eubmanagement.util.Extension;
 
-public class AddNoticeViewModel extends BaseViewModel {
+public class NoticeAddViewModel extends BaseViewModel {
 
     public void validateNoticeInputAndUploadToFirebase(
             EditText noticeTitleEt, EditText noticeDetailsEt

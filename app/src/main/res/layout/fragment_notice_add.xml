@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/spacing_primary"
-    tools:context=".presentation.notice.addnotice.AddNoticeFragment">
+    tools:context=".presentation.notice.noticeadd.NoticeAddFragment">
 
     <EditText
         android:id="@+id/notice_title"
