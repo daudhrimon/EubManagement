@@ -17,6 +17,10 @@ public class BaseApp extends Application {
     }
 
     public static DatabaseReference getFirebaseDataRef() {
+        return databaseReference;
+    }
+
+    public static DatabaseReference getFirebaseDataRefUID() {
         return databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
     }
 }

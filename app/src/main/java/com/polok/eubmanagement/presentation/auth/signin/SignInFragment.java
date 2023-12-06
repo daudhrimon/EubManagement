@@ -79,7 +79,7 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
     }
 
     private void attemptFetchUserData() {
-        BaseApp.getFirebaseDataRef().child("Info").addValueEventListener(new ValueEventListener() {
+        BaseApp.getFirebaseDataRefUID().child("Info").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

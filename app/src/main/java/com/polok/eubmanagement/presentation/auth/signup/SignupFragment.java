@@ -143,7 +143,7 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
                 binding.emailInput.getText().toString(),
                 gender, batch, section, bloodGroup, false
         );
-        BaseApp.getFirebaseDataRef().child("Info").setValue(userProfileData).addOnCompleteListener(new OnCompleteListener<Void>() {
+        BaseApp.getFirebaseDataRefUID().child("Info").setValue(userProfileData).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()) {
