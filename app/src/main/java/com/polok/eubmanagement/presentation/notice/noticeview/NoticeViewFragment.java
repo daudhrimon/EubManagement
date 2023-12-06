@@ -28,11 +28,12 @@ public class NoticeViewFragment extends BaseFragment<FragmentNoticeViewBinding> 
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
-        viewModel.fetchNoticeFromBundle();
+        viewModel.fetchNoticeFromBundle(getArguments().getString("notice_data"));
 
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeData -> {
             if (noticeData != null) {
-
+                binding.noticeTitle.setText(noticeData.getNotNullText(noticeData.getTitle()));
+                binding.noticeDetails.setText(noticeData.getNotNullText(noticeData.getDetails()));
             }
         });
     }

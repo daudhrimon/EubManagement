@@ -1,12 +1,16 @@
 package com.polok.eubmanagement.presentation.notice.noticelist;
 
+import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseViewModel;
+import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import java.util.ArrayList;
@@ -36,5 +40,13 @@ public class NoticeListViewModel extends BaseViewModel {
                 fireLoadingEvent(false);
             }
         });
+    }
+
+    public void navigateToViewNoticeFragment(NoticeData noticeData) {
+        if (noticeData != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("notice_data", new Gson().toJson(noticeData));
+            fireNavigateEvent(new OnNavigate(R.id.action_viewNoticeFragment_to_noticeViewFragment, bundle));
+        } else fireMessageEvent("Something went wrong");
     }
 }

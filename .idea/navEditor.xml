@@ -200,8 +200,20 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="152" />
-                            <option name="y" value="-111" />
+                            <option name="x" value="165" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="noticeViewFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="169" />
+                            <option name="y" value="-305" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -219,6 +231,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_viewNoticeFragment_to_addNoticeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_viewNoticeFragment_to_noticeViewFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

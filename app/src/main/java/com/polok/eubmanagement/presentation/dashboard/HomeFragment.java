@@ -52,7 +52,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {
             if (noticeList != null && !noticeList.isEmpty()) {
                 binding.recentNoticeLayer.setVisibility(View.VISIBLE);
-                binding.recentNoticeRecycler.setAdapter(new NoticeListAdapter(noticeList,false));
+                binding.recentNoticeRecycler.setAdapter(new NoticeListAdapter(noticeList,null));
             }
         });
         binding.viewAllButton.setOnClickListener(view -> {

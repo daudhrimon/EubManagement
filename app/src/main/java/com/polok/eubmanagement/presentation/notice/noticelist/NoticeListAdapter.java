@@ -1,6 +1,7 @@
 package com.polok.eubmanagement.presentation.notice.noticelist;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,10 +11,11 @@ import java.util.List;
 
 public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.NoticeViewHolder> {
     private final List<NoticeData> noticeList;
-    private final Boolean isClickable;
-    public NoticeListAdapter(List<NoticeData> noticeList, Boolean isClickable) {
+    private final View.OnClickListener onClickListener;
+    private int adapterPosition;
+    public NoticeListAdapter(List<NoticeData> noticeList, View.OnClickListener onClickListener) {
         this.noticeList = noticeList;
-        this.isClickable = isClickable;
+        this.onClickListener = onClickListener;
     }
 
     @NonNull
@@ -41,12 +43,17 @@ public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.No
             this.binding = binding;
         }
         public void bind(NoticeData noticeData) {
+            adapterPosition = getAdapterPosition();
             binding.noticeTitle.setText(noticeData.getNotNullText(noticeData.getTitle()));
             binding.noticeDetails.setText(noticeData.getNotNullText(noticeData.getDetails()));
 
-            if (isClickable) {
-
+            if (onClickListener != null) {
+                itemView.setOnClickListener(v -> {
+                    onClickListener.onClick(itemView);
+                });
             } else binding.getRoot().setClickable(false);
         }
     }
+
+    public int getAdapterPosition() {return adapterPosition;}
 }
