@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.auth.login;
+package com.polok.eubmanagement.presentation.auth.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,9 +32,6 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
                     FirebaseAuth.getInstance()
             );
         });
-        /*binding.forgotPassword.setOnClickListener(view -> {
-
-        });*/
         binding.signUpButton.setOnClickListener(view -> {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_signInFragment_to_signupFragment);
         });

@@ -1,12 +1,14 @@
 package com.polok.eubmanagement.presentation.module.modulelist;
 
 import android.os.Bundle;
+import android.view.View;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentModuleListBinding;
+import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class ModuleListFragment extends BaseFragment<FragmentModuleListBinding> {
@@ -21,6 +23,7 @@ public class ModuleListFragment extends BaseFragment<FragmentModuleListBinding> 
     }
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
+        if (SharedPref.getUserProfile().getAdmin()) binding.addModuleButton.setVisibility(View.VISIBLE);
 
         viewModel.fetchModuleListFromFirebase();
 

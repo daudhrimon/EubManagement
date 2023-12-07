@@ -1,12 +1,14 @@
 package com.polok.eubmanagement.presentation.schedule.schedulelist;
 
 import android.os.Bundle;
+import android.view.View;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentScheduleListBinding;
+import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class ScheduleListFragment extends BaseFragment<FragmentScheduleListBinding> {
@@ -21,6 +23,7 @@ public class ScheduleListFragment extends BaseFragment<FragmentScheduleListBindi
     }
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
+        if (SharedPref.getUserProfile().getAdmin()) binding.addScheduleButton.setVisibility(View.VISIBLE);
 
         viewModel.fetchScheduleListFromFirebase();
 

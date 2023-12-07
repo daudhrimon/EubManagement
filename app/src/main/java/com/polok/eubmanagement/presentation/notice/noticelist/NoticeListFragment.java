@@ -8,6 +8,7 @@ import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentNoticeListBinding;
+import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> {
@@ -23,6 +24,7 @@ public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> 
     private NoticeListAdapter noticeListAdapter;
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
+        if (SharedPref.getUserProfile().getAdmin()) binding.addNoticeButton.setVisibility(View.VISIBLE);
 
         viewModel.fetchNoticeListFromFirebase();
 

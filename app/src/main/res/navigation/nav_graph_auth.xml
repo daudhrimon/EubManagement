@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.polok.eubmanagement.presentation.auth.login.SignInFragment"
+        android:name="com.polok.eubmanagement.presentation.auth.signin.SignInFragment"
         android:label="Sign in"
         tools:layout="@layout/fragment_signin" >
         <action

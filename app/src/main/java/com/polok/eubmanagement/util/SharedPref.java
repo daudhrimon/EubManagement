@@ -2,7 +2,6 @@ package com.polok.eubmanagement.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.google.gson.Gson;
 import com.polok.eubmanagement.model.UserProfileData;
 

@@ -8,6 +8,7 @@ import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentAssignmentListBinding;
+import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class AssignmentListFragment extends BaseFragment<FragmentAssignmentListBinding> {
@@ -23,6 +24,7 @@ public class AssignmentListFragment extends BaseFragment<FragmentAssignmentListB
     private AssignmentListAdapter assignmentListAdapter;
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
+        if (SharedPref.getUserProfile().getAdmin()) binding.addAssignmentButton.setVisibility(View.VISIBLE);
 
         viewModel.fetchAssignmentListFromFirebase();
 

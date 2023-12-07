@@ -42,9 +42,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
                                 )
                         )
                 );
-                if (userProfileData.getAdmin() != null && userProfileData.getAdmin()) {
-                    //
-                }
             }
         });
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {
