@@ -30,7 +30,7 @@ public class ModuleListFragment extends BaseFragment<FragmentModuleListBinding> 
             }
         });
         binding.addModuleButton.setOnClickListener(view -> {
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_scheduleListFragment_to_scheduleAddFragment);
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_moduleListFragment_to_moduleAddFragment);
         });
     }
     @Override
