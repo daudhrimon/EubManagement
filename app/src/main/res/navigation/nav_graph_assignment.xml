@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/assignmentListFragment"
         android:name="com.polok.eubmanagement.presentation.assignment.assignmentlist.AssignmentListFragment"
-        android:label="fragment_view_assignment"
+        android:label="Assignments"
         tools:layout="@layout/fragment_assignment_list">
         <action
             android:id="@+id/action_viewAssignmentFragment_to_addAssignmentFragment"
@@ -29,12 +29,13 @@
     <fragment
         android:id="@+id/addAssignmentFragment"
         android:name="com.polok.eubmanagement.presentation.assignment.assignmentadd.AssignmentAddFragment"
-        android:label="fragment_add_assignment"
+        android:label="Add Assignment"
         tools:layout="@layout/fragment_assignment_add" />
+
     <fragment
         android:id="@+id/assignmentViewFragment"
         android:name="com.polok.eubmanagement.presentation.assignment.assignmentview.AssignmentViewFragment"
-        android:label="AssignmentViewFragment"
+        android:label="Assignment"
         tools:layout="@layout/fragment_assignment_view"/>
 
 </navigation>

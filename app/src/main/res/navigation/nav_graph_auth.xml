@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_auth"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.polok.eubmanagement.presentation.auth.signin.SignInFragment"
-        android:label="fragment_signin"
+        android:id="@+id/loginFragment"
+        android:name="com.polok.eubmanagement.presentation.auth.login.SignInFragment"
+        android:label="Sign in"
         tools:layout="@layout/fragment_signin" >
         <action
             android:id="@+id/action_signInFragment_to_signupFragment"
@@ -21,8 +21,8 @@
 
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.polok.eubmanagement.presentation.auth.signup.SignupFragment"
-        android:label="fragment_signup"
+        android:name="com.polok.eubmanagement.presentation.auth.signup.SignUpFragment"
+        android:label="Sign up"
         tools:layout="@layout/fragment_signup" />
 
 </navigation>

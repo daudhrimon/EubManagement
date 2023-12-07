@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/scheduleListFragment"
         android:name="com.polok.eubmanagement.presentation.schedule.schedulelist.ScheduleListFragment"
-        android:label="fragment_schedule_list"
+        android:label="Class Schedules"
         tools:layout="@layout/fragment_schedule_list" >
         <action
             android:id="@+id/action_scheduleListFragment_to_scheduleAddFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/scheduleAddFragment"
         android:name="com.polok.eubmanagement.presentation.schedule.scheduleadd.ScheduleAddFragment"
-        android:label="fragment_schedule_add"
+        android:label="Add Class Schedule"
         tools:layout="@layout/fragment_schedule_add" />
 
 </navigation>

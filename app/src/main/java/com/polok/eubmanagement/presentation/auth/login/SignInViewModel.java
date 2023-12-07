@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.auth.signin;
+package com.polok.eubmanagement.presentation.auth.login;
 
 import static com.polok.eubmanagement.util.Extension.showErrorOnUi;
 import android.widget.EditText;

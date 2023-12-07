@@ -12,15 +12,15 @@ import com.polok.eubmanagement.databinding.FragmentSignupBinding;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
-public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
+public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
     @Override
     protected FragmentSignupBinding initViewBinding() {
         return FragmentSignupBinding.inflate(getLayoutInflater());
     }
-    private SignupViewModel viewModel;
+    private SignUpViewModel viewModel;
     @Override
     protected BaseViewModel initViewModel() {
-        return viewModel = new ViewModelProvider(this).get(SignupViewModel.class);
+        return viewModel = new ViewModelProvider(this).get(SignUpViewModel.class);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
-        binding.signupButton.setOnClickListener(view -> {
+        binding.signUpButton.setOnClickListener(view -> {
             SharedPref.init(getContext());
             viewModel.validateInputItemsAndExecuteSignup(
                     binding.studentId, binding.fullName, binding.mobileInput, binding.emailInput, binding.passwordInput,

@@ -8,19 +8,19 @@
     <fragment
         android:id="@+id/home"
         android:name="com.polok.eubmanagement.presentation.dashboard.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/chat"
         android:name="com.polok.eubmanagement.presentation.dashboard.ChatFragment"
-        android:label="ChatFragment"
+        android:label="Chat"
         tools:layout="@layout/fragment_chat"/>
 
     <fragment
         android:id="@+id/profile"
         android:name="com.polok.eubmanagement.presentation.dashboard.ProfileFragment"
-        android:label="ProfileFragment"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile"/>
 
 </navigation>

@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/loginui"
     android:padding="16dp"
-    tools:context=".presentation.auth.signin.SignInFragment">
+    tools:context=".presentation.auth.login.SignInFragment">
 
     <TextView
         android:id="@+id/header_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Login"
+        android:text="Sign in"
         android:textColor="@color/white"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -51,11 +51,11 @@
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/login_button"
+        app:layout_constraintBottom_toTopOf="@id/signIn_button"
         app:layout_constraintTop_toBottomOf="@id/email_input" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_button"
+        android:id="@+id/signIn_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -63,7 +63,7 @@
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:paddingVertical="@dimen/spacing_12dp"
-        android:text="Login"
+        android:text="Sign in"
         android:textColor="@color/color_primary"
         android:textSize="16sp"
         app:cornerRadius="12dp"
@@ -78,11 +78,11 @@
         android:gravity="center"
         android:text="Forgot Password ?"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/signup_button"
-        app:layout_constraintTop_toBottomOf="@id/login_button" />
+        app:layout_constraintBottom_toTopOf="@id/signUp_button"
+        app:layout_constraintTop_toBottomOf="@id/signIn_button" />
 
     <TextView
-        android:id="@+id/signup_button"
+        android:id="@+id/signUp_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

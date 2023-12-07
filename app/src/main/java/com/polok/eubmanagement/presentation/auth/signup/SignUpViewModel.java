@@ -12,7 +12,7 @@ import com.polok.eubmanagement.model.UserProfileData;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.util.SharedPref;
 
-public class SignupViewModel extends BaseViewModel {
+public class SignUpViewModel extends BaseViewModel {
     String gender, batch, section, bloodGroup;
     String genderZero, batchZero, sectionZero, bloodGroupZero;
 
@@ -119,7 +119,7 @@ public class SignupViewModel extends BaseViewModel {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isComplete()) {
-                        fireMessageEvent("Signup Successfully");
+                        fireMessageEvent("Sign up Successfully");
                         fireNavigateEvent(0, null);
                     } else fireMessageEvent(task.getException().getLocalizedMessage());
                     fireLoadingEvent(false);

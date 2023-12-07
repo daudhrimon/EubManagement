@@ -42,16 +42,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Recent Notice"
-        android:textSize="16sp"
+        android:paddingStart="@dimen/spacing_6dp"
+        android:text="Recent Notices"
+        android:textSize="@dimen/text_size_secondary"
         app:layout_constraintTop_toBottomOf="@id/user_name_and_batch" />
 
     <TextView
         android:id="@+id/view_all_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/spacing_6dp"
         android:text="View All"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_secondary"
         app:layout_constraintBottom_toBottomOf="@id/recent_notice_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_name_and_batch"

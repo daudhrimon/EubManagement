@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/noticeListFragment"
         android:name="com.polok.eubmanagement.presentation.notice.noticelist.NoticeListFragment"
-        android:label="fragment_view_notice"
+        android:label="Notices"
         tools:layout="@layout/fragment_notice_list">
         <action
             android:id="@+id/action_viewNoticeFragment_to_noticeViewFragment"
@@ -29,13 +29,13 @@
     <fragment
         android:id="@+id/addNoticeFragment"
         android:name="com.polok.eubmanagement.presentation.notice.noticeadd.NoticeAddFragment"
-        android:label="fragment_add_notice"
+        android:label="Add Notice"
         tools:layout="@layout/fragment_notice_add" />
 
     <fragment
         android:id="@+id/noticeViewFragment"
         android:name="com.polok.eubmanagement.presentation.notice.noticeview.NoticeViewFragment"
-        android:label="NoticeViewFragment"
+        android:label="Notice"
         tools:layout="@layout/fragment_notice_view"/>
 
 </navigation>
