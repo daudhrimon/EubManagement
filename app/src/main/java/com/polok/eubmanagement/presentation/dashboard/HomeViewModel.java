@@ -3,7 +3,6 @@ package com.polok.eubmanagement.presentation.dashboard;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -12,8 +11,8 @@ import com.polok.eubmanagement.data.model.UserProfileData;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import com.polok.eubmanagement.util.SharedPref;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HomeViewModel extends BaseViewModel {
@@ -37,15 +36,23 @@ public class HomeViewModel extends BaseViewModel {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     List<NoticeData> noticeList = new ArrayList<>();
-                    int itemCount = 0;
                     for (DataSnapshot noticeSnapshot : snapshot.getChildren()) {
-                        if (itemCount < 4) {
-                            if (noticeSnapshot.exists()) noticeList.add(noticeSnapshot.getValue(NoticeData.class));
-                            itemCount ++;
-                        } else break;
+                        if (noticeSnapshot.exists()) noticeList.add(noticeSnapshot.getValue(NoticeData.class));
                     }
-                    noticeLiveData.postValue(noticeList);
-                    fireLoadingEvent(false);
+                    try {
+                        Collections.reverse(noticeList);
+                    } catch (Exception ignored) {} finally {
+                        List<NoticeData> newList = new ArrayList<>();
+                        int itemCount = 0;
+                        for (NoticeData noticeData : noticeList) {
+                            if (itemCount <= 3) {
+                                newList.add(noticeData);
+                                itemCount++;
+                            } else break;
+                        }
+                        noticeLiveData.postValue(noticeList);
+                        fireLoadingEvent(false);
+                    }
                 } else fireLoadingEvent(false);
             }
             @Override
