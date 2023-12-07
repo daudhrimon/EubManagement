@@ -38,7 +38,7 @@ public class ModuleListAdapter extends RecyclerView.Adapter<ModuleListAdapter.Mo
         }
         public void bind(ModuleData moduleData) {
             binding.moduleTitle.setText(moduleData.getNotNullText(moduleData.getTitle()));
-            binding.createdAt.setText(moduleData.getNotNullText(moduleData.getCreatedAt()));
+            binding.createdAt.setText(String.format("Created At: %s", moduleData.getNotNullText(moduleData.getCreatedAt())));
 
             binding.downloadButton.setOnClickListener(view -> {
 

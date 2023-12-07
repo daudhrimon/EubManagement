@@ -39,7 +39,7 @@ public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> 
             }
         });
         binding.addNoticeButton.setOnClickListener(view -> {
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_viewNoticeFragment_to_addNoticeFragment);
+            viewModel.fireNavigateEvent(new OnNavigate(R.id.action_viewNoticeFragment_to_addNoticeFragment));
         });
     }
     @Override
@@ -47,7 +47,7 @@ public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> 
     @Override
     protected void onNavigateEvent(OnNavigate onNavigate) {
         super.onNavigateEvent(onNavigate);
-        if (onNavigate != null && onNavigate.getBundle() != null) {
+        if (onNavigate != null) {
             Navigation.findNavController(binding.getRoot()).navigate(onNavigate.getId(),onNavigate.getBundle());
         }
     }

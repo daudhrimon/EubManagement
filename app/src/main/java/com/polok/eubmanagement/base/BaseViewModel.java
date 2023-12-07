@@ -3,7 +3,6 @@ package com.polok.eubmanagement.base;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.polok.eubmanagement.base.event.Event;
 import com.polok.eubmanagement.base.model.OnNavigate;
 

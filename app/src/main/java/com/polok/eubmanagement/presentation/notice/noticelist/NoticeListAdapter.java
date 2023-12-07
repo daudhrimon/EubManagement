@@ -43,13 +43,13 @@ public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.No
             this.binding = binding;
         }
         public void bind(NoticeData noticeData) {
-            adapterPosition = getAdapterPosition();
             binding.noticeTitle.setText(noticeData.getNotNullText(noticeData.getTitle()));
             binding.noticeDetails.setText(noticeData.getNotNullText(noticeData.getDetails()));
             binding.createdAt.setText(String.format("Created At: %s", noticeData.getNotNullText(noticeData.getCreatedAt())));
 
             if (onClickListener != null) {
                 itemView.setOnClickListener(v -> {
+                    adapterPosition = getAdapterPosition();
                     onClickListener.onClick(itemView);
                 });
             } else binding.getRoot().setClickable(false);

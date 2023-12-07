@@ -39,7 +39,7 @@ public class AssignmentListFragment extends BaseFragment<FragmentAssignmentListB
             }
         });
         binding.addAssignmentButton.setOnClickListener(view -> {
-            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_viewAssignmentFragment_to_addAssignmentFragment);
+            viewModel.fireNavigateEvent(new OnNavigate(R.id.action_viewAssignmentFragment_to_addAssignmentFragment));
         });
     }
     @Override
@@ -47,7 +47,7 @@ public class AssignmentListFragment extends BaseFragment<FragmentAssignmentListB
     @Override
     protected void onNavigateEvent(OnNavigate onNavigate) {
         super.onNavigateEvent(onNavigate);
-        if (onNavigate != null && onNavigate.getBundle() != null) {
+        if (onNavigate != null) {
             Navigation.findNavController(binding.getRoot()).navigate(onNavigate.getId(),onNavigate.getBundle());
         }
     }
