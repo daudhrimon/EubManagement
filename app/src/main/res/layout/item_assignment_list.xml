@@ -28,4 +28,13 @@
         app:layout_constraintTop_toBottomOf="@id/assignment_title"
         tools:text="This is Assignment Details djdjjkdjkdjkdgjkdfjkdjkdgjkdgjkdgdjkgdjkgdjkd" />
 
+    <TextView
+        android:id="@+id/created_at"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:textSize="@dimen/text_size_smallest"
+        app:layout_constraintTop_toBottomOf="@id/assignment_Details"
+        tools:text="Created At: 01 January, 2024" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

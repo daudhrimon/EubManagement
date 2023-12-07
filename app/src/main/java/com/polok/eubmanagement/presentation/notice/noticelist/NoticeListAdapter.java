@@ -46,7 +46,7 @@ public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.No
             adapterPosition = getAdapterPosition();
             binding.noticeTitle.setText(noticeData.getNotNullText(noticeData.getTitle()));
             binding.noticeDetails.setText(noticeData.getNotNullText(noticeData.getDetails()));
-            binding.createdAt.setText(noticeData.getNotNullText(noticeData.getCreatedAt()));
+            binding.createdAt.setText(String.format("Created At: %s", noticeData.getNotNullText(noticeData.getCreatedAt())));
 
             if (onClickListener != null) {
                 itemView.setOnClickListener(v -> {

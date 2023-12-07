@@ -46,6 +46,7 @@ public class AssignmentListAdapter extends RecyclerView.Adapter<AssignmentListAd
             adapterPosition = getAdapterPosition();
             binding.assignmentTitle.setText(assignmentData.getNotNullText(assignmentData.getTitle()));
             binding.assignmentDetails.setText(assignmentData.getNotNullText(assignmentData.getDetails()));
+            binding.createdAt.setText(String.format("Created At: %s", assignmentData.getNotNullText(assignmentData.getCreatedAt())));
 
             if (onClickListener != null) {
                 itemView.setOnClickListener(v -> {
