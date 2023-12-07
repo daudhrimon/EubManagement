@@ -6,7 +6,6 @@ import androidx.navigation.Navigation;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentModuleListBinding;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
@@ -36,12 +35,9 @@ public class ModuleListFragment extends BaseFragment<FragmentModuleListBinding> 
     }
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
-
     @Override
-    protected void onNavigateEvent(OnNavigate onNavigate) {
-        super.onNavigateEvent(onNavigate);
-        if (onNavigate != null) {
-            Navigation.findNavController(binding.getRoot()).navigate(onNavigate.getId(), onNavigate.getBundle());
-        }
+    protected void onNavigateEvent(int id, Bundle bundle) {
+        super.onNavigateEvent(id, bundle);
+        Navigation.findNavController(binding.getRoot()).navigate(id, bundle);
     }
 }

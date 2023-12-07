@@ -4,7 +4,6 @@ import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentNoticeAddBinding;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
@@ -30,10 +29,10 @@ public class NoticeAddFragment extends BaseFragment<FragmentNoticeAddBinding> {
         });
     }
     @Override
-    protected void onNavigateEvent(OnNavigate onNavigate) {
-        super.onNavigateEvent(onNavigate);
-        if (onNavigate.getId() == 1) getActivity().onBackPressed();
-    }
-    @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
+    @Override
+    protected void onNavigateEvent(int id, Bundle bundle) {
+        super.onNavigateEvent(id, bundle);
+        if (id == 1) getActivity().onBackPressed();
+    }
 }

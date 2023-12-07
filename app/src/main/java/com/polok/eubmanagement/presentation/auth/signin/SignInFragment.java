@@ -8,7 +8,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentSigninBinding;
 import com.polok.eubmanagement.presentation.dashboard.DashboardActivity;
 import com.polok.eubmanagement.util.SharedPref;
@@ -24,7 +23,6 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
     protected BaseViewModel initViewModel() {
         return viewModel = new ViewModelProvider(this).get(SignInViewModel.class);
     }
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
         binding.loginButton.setOnClickListener(view -> {
@@ -43,14 +41,12 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
         binding.emailInput.setText("daud@daud.com");
         binding.passwordInput.setText("123456");
     }
-
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
-
     @Override
-    protected void onNavigateEvent(OnNavigate onNavigate) {
-        super.onNavigateEvent(onNavigate);
-        if (onNavigate.getId() == 1) {
+    protected void onNavigateEvent(int id, Bundle bundle) {
+        super.onNavigateEvent(id, bundle);
+        if (id == 1) {
             startActivity(new Intent(getContext(), DashboardActivity.class));
             getActivity().finish();
         }

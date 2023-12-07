@@ -3,13 +3,10 @@ package com.polok.eubmanagement.presentation.schedule.scheduleadd;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-
 import androidx.lifecycle.ViewModelProvider;
-
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentScheduleAddBinding;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
@@ -44,9 +41,9 @@ public class ScheduleAddFragment extends BaseFragment<FragmentScheduleAddBinding
         });
     }
     @Override
-    protected void onNavigateEvent(OnNavigate onNavigate) {
-        super.onNavigateEvent(onNavigate);
-        if (onNavigate.getId() == 1) getActivity().onBackPressed();
+    protected void onNavigateEvent(int id, Bundle bundle) {
+        super.onNavigateEvent(id, bundle);
+        if (id == 1) getActivity().onBackPressed();
     }
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
