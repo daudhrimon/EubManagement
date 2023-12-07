@@ -12,11 +12,9 @@ import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
-import com.polok.eubmanagement.util.Extension;
+import com.polok.eubmanagement.model.NoticeData;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 

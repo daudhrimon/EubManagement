@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.polok.eubmanagement.data.model.UserProfileData;
+import com.polok.eubmanagement.model.UserProfileData;
 
 public class SharedPref {
     private static SharedPreferences mSharedPref;

@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.data.model;
+package com.polok.eubmanagement.model;
 
 public class UserProfileData {
     private String studentId;

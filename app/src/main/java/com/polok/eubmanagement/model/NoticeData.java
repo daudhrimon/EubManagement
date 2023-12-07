@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.notice.model;
+package com.polok.eubmanagement.model;
 
 public class NoticeData {
     String title;

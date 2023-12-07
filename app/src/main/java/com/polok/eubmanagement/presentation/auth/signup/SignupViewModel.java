@@ -9,9 +9,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
-import com.polok.eubmanagement.data.model.UserProfileData;
+import com.polok.eubmanagement.model.UserProfileData;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
-import com.polok.eubmanagement.util.FirebaseChildTag;
 import com.polok.eubmanagement.util.SharedPref;
 
 public class SignupViewModel extends BaseViewModel {

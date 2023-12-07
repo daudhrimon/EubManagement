@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.polok.eubmanagement.databinding.ItemNoticeListBinding;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
+import com.polok.eubmanagement.model.NoticeData;
 import java.util.List;
 
 public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.NoticeViewHolder> {

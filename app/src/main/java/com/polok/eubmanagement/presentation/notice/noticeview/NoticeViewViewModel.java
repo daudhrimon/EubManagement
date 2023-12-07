@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.google.gson.Gson;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
+import com.polok.eubmanagement.model.NoticeData;
 
 public class NoticeViewViewModel extends BaseViewModel {
     private final MutableLiveData<NoticeData> noticeLiveData = new MutableLiveData<>();
