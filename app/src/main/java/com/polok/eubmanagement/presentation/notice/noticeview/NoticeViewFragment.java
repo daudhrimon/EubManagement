@@ -24,7 +24,7 @@ public class NoticeViewFragment extends BaseFragment<FragmentNoticeViewBinding> 
 
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeData -> {
             if (noticeData != null) {
-                binding.createdAt.setText(noticeData.getNotNullText(noticeData.getCreatedAt()));
+                binding.createdAt.setText(String.format("Created At: %s", noticeData.getNotNullText(noticeData.getCreatedAt())));
                 binding.noticeTitle.setText(noticeData.getNotNullText(noticeData.getTitle()));
                 binding.noticeDetails.setText(noticeData.getNotNullText(noticeData.getDetails()));
             }
