@@ -5,11 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.polok.eubmanagement.databinding.ItemAssignmentListBinding;
-import com.polok.eubmanagement.databinding.ItemNoticeListBinding;
 import com.polok.eubmanagement.presentation.assignment.modal.AssignmentData;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import java.util.List;
 
 public class AssignmentListAdapter extends RecyclerView.Adapter<AssignmentListAdapter.AssignmentViewHolder> {

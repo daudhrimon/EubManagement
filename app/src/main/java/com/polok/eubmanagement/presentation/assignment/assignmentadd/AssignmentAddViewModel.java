@@ -1,11 +1,8 @@
 package com.polok.eubmanagement.presentation.assignment.assignmentadd;
 
 import static com.polok.eubmanagement.util.Extension.showErrorOnUi;
-
 import android.widget.EditText;
-
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -13,7 +10,6 @@ import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.assignment.modal.AssignmentData;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import com.polok.eubmanagement.util.Extension;
 
 public class AssignmentAddViewModel extends BaseViewModel {

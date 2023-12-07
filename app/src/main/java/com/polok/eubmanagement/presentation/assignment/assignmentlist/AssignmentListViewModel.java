@@ -13,7 +13,6 @@ import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.assignment.modal.AssignmentData;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 import java.util.ArrayList;
 import java.util.List;
 

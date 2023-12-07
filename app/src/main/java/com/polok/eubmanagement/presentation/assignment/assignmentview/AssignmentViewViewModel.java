@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.gson.Gson;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.presentation.assignment.modal.AssignmentData;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
 
 public class AssignmentViewViewModel extends BaseViewModel {
     private final MutableLiveData<AssignmentData> assignmentLiveData = new MutableLiveData<>();
