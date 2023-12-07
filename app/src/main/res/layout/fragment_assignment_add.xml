@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/spacing_primary"
+    android:paddingTop="@dimen/spacing_semi_large"
+    android:paddingBottom="@dimen/spacing_primary"
+    tools:context=".presentation.assignment.assignmentadd.AssignmentAddFragment">
+
+    <EditText
+        android:id="@+id/assignment_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background_white"
+        android:hint="Assignment Subject"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="20dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:textAppearance="@style/TextAppearancePrimary"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/assignment_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_primary"
+        android:layout_marginBottom="@dimen/spacing_primary"
+        android:background="@drawable/rounded_background_white"
+        android:gravity="start"
+        android:hint="Assignment Details"
+        android:inputType="textMultiLine"
+        android:padding="20dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:textAppearance="@style/TextAppearancePrimary"
+        app:layout_constraintBottom_toTopOf="@id/save_assignment_button"
+        app:layout_constraintTop_toBottomOf="@id/assignment_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_assignment_button"
+        style="@style/AppPrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assign Assignment"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.polok.eubmanagement.widget.PrimaryLoader
+        android:id="@+id/primary_loader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

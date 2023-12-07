@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacing_primary"
+    tools:context=".presentation.assignment.assignmentlist.AssignmentListFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assignment_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/spacing_primary"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/add_assignment_button"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_notice_list" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_assignment_button"
+        style="@style/AppPrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Assignment"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.polok.eubmanagement.widget.PrimaryLoader
+        android:id="@+id/primary_loader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

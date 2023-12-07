@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_assignment"
+    app:startDestination="@id/assignmentListFragment">
+
+    <fragment
+        android:id="@+id/assignmentListFragment"
+        android:name="com.polok.eubmanagement.presentation.assignment.assignmentlist.AssignmentListFragment"
+        android:label="fragment_view_assignment"
+        tools:layout="@layout/fragment_assignment_list">
+        <action
+            android:id="@+id/action_viewAssignmentFragment_to_addAssignmentFragment"
+            app:destination="@id/addAssignmentFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_viewAssignmentFragment_to_assignmentViewFragment"
+            app:destination="@id/assignmentViewFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/addAssignmentFragment"
+        android:name="com.polok.eubmanagement.presentation.assignment.assignmentadd.AssignmentAddFragment"
+        android:label="fragment_add_assignment"
+        tools:layout="@layout/fragment_assignment_add" />
+    <fragment
+        android:id="@+id/assignmentViewFragment"
+        android:name="com.polok.eubmanagement.presentation.assignment.assignmentview.AssignmentViewFragment"
+        android:label="AssignmentViewFragment"
+        tools:layout="@layout/fragment_assignment_view"/>
+
+</navigation>
