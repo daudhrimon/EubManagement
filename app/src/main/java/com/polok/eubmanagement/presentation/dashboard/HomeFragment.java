@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentHomeBinding;
+import com.polok.eubmanagement.presentation.assignment.AssignmentActivity;
 import com.polok.eubmanagement.presentation.schedule.ScheduleActivity;
 import com.polok.eubmanagement.presentation.notice.NoticeActivity;
 import com.polok.eubmanagement.presentation.notice.noticelist.NoticeListAdapter;
@@ -59,6 +60,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         });
         binding.noticeButton.setOnClickListener(view -> {
             openNoticeActivity();
+        });
+        binding.assignmentButton.setOnClickListener(view -> {
+            startActivity(new Intent(getContext(), AssignmentActivity.class));
         });
     }
     @Override

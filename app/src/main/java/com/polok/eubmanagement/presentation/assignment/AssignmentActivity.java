@@ -1,15 +1,14 @@
 package com.polok.eubmanagement.presentation.assignment;
 
 import android.os.Bundle;
-
 import com.polok.eubmanagement.base.BaseActivity;
+import com.polok.eubmanagement.databinding.ActivityAssignmentBinding;
 
-public class AssignmentActivity extends BaseActivity<com.polok.eubmanagement.databinding.ActivityAssignmentBinding> {
+public class AssignmentActivity extends BaseActivity<ActivityAssignmentBinding> {
     @Override
-    protected com.polok.eubmanagement.databinding.ActivityAssignmentBinding initViewBinding() {
-        return com.polok.eubmanagement.databinding.ActivityAssignmentBinding.inflate(getLayoutInflater());
+    protected ActivityAssignmentBinding initViewBinding() {
+        return ActivityAssignmentBinding.inflate(getLayoutInflater());
     }
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
         binding.toolBar.backButton.setOnClickListener(view -> {
