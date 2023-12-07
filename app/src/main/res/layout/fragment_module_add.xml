@@ -32,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_primary"
+        android:layout_marginBottom="@dimen/spacing_large"
         android:background="@drawable/rounded_background_white"
         android:gravity="start"
         android:hint="Course Module Link"
