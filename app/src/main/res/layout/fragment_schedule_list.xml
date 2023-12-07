@@ -13,16 +13,16 @@
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/spacing_primary"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/add_notice_button"
+        app:layout_constraintBottom_toTopOf="@id/add_schedule_button"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_notice_list" />
+        tools:listitem="@layout/item_schedule_list" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_notice_button"
+        android:id="@+id/add_schedule_button"
         style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Notice"
+        android:text="Add Schedule"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.polok.eubmanagement.widget.PrimaryLoader

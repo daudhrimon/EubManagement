@@ -1,63 +1,47 @@
 package com.polok.eubmanagement.presentation.schedule.schedulelist;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.polok.eubmanagement.databinding.ItemNoticeListBinding;
-import com.polok.eubmanagement.model.NoticeData;
-
+import com.polok.eubmanagement.databinding.ItemScheduleListBinding;
+import com.polok.eubmanagement.model.ScheduleData;
 import java.util.List;
 
-public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapter.NoticeViewHolder> {
-    private final List<NoticeData> noticeList;
-    private final View.OnClickListener onClickListener;
-    private int adapterPosition;
-    public ScheduleListAdapter(List<NoticeData> noticeList, View.OnClickListener onClickListener) {
-        this.noticeList = noticeList;
-        this.onClickListener = onClickListener;
-    }
+public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapter.ScheduleViewHolder> {
+    private final List<ScheduleData> scheduleList;
+    public ScheduleListAdapter(List<ScheduleData> scheduleList) {this.scheduleList = scheduleList;}
 
     @NonNull
     @Override
-    public NoticeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NoticeViewHolder(
-                ItemNoticeListBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false)
+    public ScheduleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ScheduleViewHolder(
+                ItemScheduleListBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false)
         );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeViewHolder holder, int position) {
-        holder.bind(noticeList.get(position));
+    public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position) {
+        holder.bind(scheduleList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return noticeList.size();
+        return scheduleList.size();
     }
 
-    public class NoticeViewHolder extends RecyclerView.ViewHolder {
-        ItemNoticeListBinding binding;
-        public NoticeViewHolder(@NonNull ItemNoticeListBinding binding) {
+    public class ScheduleViewHolder extends RecyclerView.ViewHolder {
+        ItemScheduleListBinding binding;
+        public ScheduleViewHolder(@NonNull ItemScheduleListBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
-        public void bind(NoticeData noticeData) {
-            adapterPosition = getAdapterPosition();
-            binding.noticeTitle.setText(noticeData.getNotNullText(noticeData.getTitle()));
-            binding.noticeDetails.setText(noticeData.getNotNullText(noticeData.getDetails()));
-            binding.createdAt.setText(noticeData.getNotNullText(noticeData.getCreatedAt()));
-
-            if (onClickListener != null) {
-                itemView.setOnClickListener(v -> {
-                    onClickListener.onClick(itemView);
-                });
-            } else binding.getRoot().setClickable(false);
+        public void bind(ScheduleData scheduleData) {
+            binding.day.setText(String.format("Day\n%s", scheduleData.getNotNullText(scheduleData.getDay())));
+            binding.courseCode.setText(String.format("Course Code\n%s", scheduleData.getNotNullText(scheduleData.getCourseCode())));
+            binding.lecturerName.setText(String.format("Lecturer Name\n%s", scheduleData.getNotNullText(scheduleData.getLecturerName())));
+            binding.startEndTime.setText(String.format("Start-End Time\n%s", scheduleData.getNotNullText(scheduleData.getStartEndTime())));
+            binding.roomNo.setText(String.format("Room No\n%s", scheduleData.getNotNullText(scheduleData.getRoomNo())));
         }
     }
-
-    public int getAdapterPosition() {return adapterPosition;}
 }

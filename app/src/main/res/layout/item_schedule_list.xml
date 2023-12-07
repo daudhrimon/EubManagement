@@ -5,36 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/spacing_6dp"
-    android:background="@drawable/rounded_background_white_clickable"
-    android:clickable="true"
-    android:focusable="true"
+    android:background="@drawable/rounded_background_white"
     android:paddingHorizontal="@dimen/spacing_12dp"
     android:paddingVertical="@dimen/spacing_small">
 
     <TextView
-        android:id="@+id/notice_title"
-        android:layout_width="match_parent"
+        android:id="@+id/day"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="This is a notice" />
-
-    <TextView
-        android:id="@+id/notice_Details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:ellipsize="end"
-        android:maxLines="1"
-        app:layout_constraintTop_toBottomOf="@id/notice_title"
-        tools:text="This is Notice Details djdjjkdjkdjkdgjkdfjkdjkdgjkdgjkdgdjkgdjkgdjkd" />
-
-    <TextView
-        android:id="@+id/created_at"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_tiny"
+        android:gravity="center"
         android:textSize="@dimen/text_size_smallest"
-        app:layout_constraintTop_toBottomOf="@id/notice_Details"
-        tools:text="Created At: 01 January, 2024" />
+        app:layout_constraintEnd_toStartOf="@id/course_Code"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Thusday" />
+
+    <TextView
+        android:id="@+id/course_Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_smallest"
+        app:layout_constraintEnd_toStartOf="@id/lecturer_name"
+        app:layout_constraintStart_toEndOf="@id/day"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="CSE-212" />
+
+    <TextView
+        android:id="@+id/lecturer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_smallest"
+        app:layout_constraintEnd_toStartOf="@id/start_end_time"
+        app:layout_constraintStart_toEndOf="@id/course_Code"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Zubayer" />
+
+    <TextView
+        android:id="@+id/start_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_smallest"
+        app:layout_constraintEnd_toStartOf="@id/room_no"
+        app:layout_constraintStart_toEndOf="@id/lecturer_name"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="9PM-10:40PM" />
+
+    <TextView
+        android:id="@+id/room_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_smallest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/start_end_time"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="103" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

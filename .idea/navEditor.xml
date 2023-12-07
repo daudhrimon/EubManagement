@@ -255,13 +255,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="addAssignmentFragment">
+                  <entry key="addNoticeFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="204" />
+                            <option name="y" value="102" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -298,8 +298,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="169" />
-                            <option name="y" value="-305" />
+                            <option name="x" value="198" />
+                            <option name="y" value="-232" />
                           </Point>
                         </option>
                       </LayoutPositions>

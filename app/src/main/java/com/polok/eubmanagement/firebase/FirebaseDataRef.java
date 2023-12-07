@@ -26,7 +26,11 @@ public class FirebaseDataRef {
         return BaseApp.getFirebaseDataRef().child("ASSIGNMENT").child(SharedPref.getUserBatch());
     }
 
-    public static DatabaseReference provideFacultyModuleRef() {
+    public static DatabaseReference provideModuleRef() {
+        return BaseApp.getFirebaseDataRef().child("MODULE");
+    }
+
+    public static DatabaseReference provideFacultyRef() {
         return BaseApp.getFirebaseDataRef().child("FACULTY");
     }
 }

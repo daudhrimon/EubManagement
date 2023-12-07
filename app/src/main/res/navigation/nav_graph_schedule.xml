@@ -11,13 +11,6 @@
         android:label="fragment_schedule_list"
         tools:layout="@layout/fragment_schedule_list" >
         <action
-            android:id="@+id/action_scheduleListFragment_to_noticeAddFragment"
-            app:destination="@id/noticeAddFragment"
-            app:enterAnim="@anim/enter_anim"
-            app:exitAnim="@anim/exit_anim"
-            app:popEnterAnim="@anim/pop_enter_anim"
-            app:popExitAnim="@anim/pop_exit_anim"/>
-        <action
             android:id="@+id/action_scheduleListFragment_to_scheduleAddFragment"
             app:destination="@id/scheduleAddFragment"
             app:enterAnim="@anim/enter_anim"
@@ -25,12 +18,6 @@
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_exit_anim"/>
     </fragment>
-
-    <fragment
-        android:id="@+id/noticeAddFragment"
-        android:name="com.polok.eubmanagement.presentation.notice.noticeadd.NoticeAddFragment"
-        android:label="fragment_schedule_view"
-        tools:layout="@layout/fragment_schedule_view" />
 
     <fragment
         android:id="@+id/scheduleAddFragment"

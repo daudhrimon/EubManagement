@@ -15,29 +15,30 @@ import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.model.NoticeData;
+import com.polok.eubmanagement.model.ScheduleData;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ScheduleListViewModel extends BaseViewModel {
-    private final MutableLiveData<List<NoticeData>> noticeLiveData = new MutableLiveData<>();
-    public LiveData<List<NoticeData>> getNoticeLiveData() {return noticeLiveData;}
+    private final MutableLiveData<List<ScheduleData>> scheduleLiveData = new MutableLiveData<>();
+    public LiveData<List<ScheduleData>> getScheduleLiveData() {return scheduleLiveData;}
 
-    public void fetchNoticeListFromFirebase() {
+    public void fetchScheduleListFromFirebase() {
         fireLoadingEvent(true);
-        FirebaseDataRef.provideNoticeRef().addValueEventListener(new ValueEventListener() {
+        FirebaseDataRef.provideScheduleRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    List<NoticeData> noticeList = new ArrayList<>();
+                    List<ScheduleData> noticeList = new ArrayList<>();
                     for (DataSnapshot noticeSnapshot : snapshot.getChildren()) {
-                        if (noticeSnapshot.exists()) noticeList.add(noticeSnapshot.getValue(NoticeData.class));
+                        if (noticeSnapshot.exists()) noticeList.add(noticeSnapshot.getValue(ScheduleData.class));
                     }
                     try {
                         Collections.reverse(noticeList);
                     } catch (Exception ignored) {} finally {
-                        noticeLiveData.postValue(noticeList);
+                        scheduleLiveData.postValue(noticeList);
                     }
                     fireLoadingEvent(false);
                 } else fireLoadingEvent(false);
@@ -50,10 +51,10 @@ public class ScheduleListViewModel extends BaseViewModel {
         });
     }
 
-    public void navigateToViewNoticeFragment(NoticeData noticeData) {
-        if (noticeData != null) {
+    public void navigateToViewScheduleFragment(ScheduleData scheduleData) {
+        if (scheduleData != null) {
             Bundle bundle = new Bundle();
-            bundle.putString("notice_data", new Gson().toJson(noticeData));
+            bundle.putString("schedule_data", new Gson().toJson(scheduleData));
             fireNavigateEvent(new OnNavigate(R.id.action_viewNoticeFragment_to_noticeViewFragment, bundle));
         } else fireMessageEvent("Something went wrong");
     }
