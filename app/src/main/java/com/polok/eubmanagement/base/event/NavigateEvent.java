@@ -1,17 +1,17 @@
-package com.polok.eubmanagement.base.model;
+package com.polok.eubmanagement.base.event;
 
 import android.os.Bundle;
 
-public class OnNavigate {
+public class NavigateEvent {
     private int id;
     private Bundle bundle;
 
-    public OnNavigate(int id, Bundle bundle) {
+    public NavigateEvent(int id, Bundle bundle) {
         this.id = id;
         this.bundle = bundle;
     }
 
-    public OnNavigate(int id) {
+    public NavigateEvent(int id) {
         this.id = id;
     }
 
