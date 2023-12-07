@@ -1,33 +1,28 @@
-package com.polok.eubmanagement.presentation.dashboard;
+package com.polok.eubmanagement.presentation.schedule.schedulelist;
+
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.model.UserProfileData;
+import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.model.NoticeData;
-import com.polok.eubmanagement.util.SharedPref;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class HomeViewModel extends BaseViewModel {
-    private final MutableLiveData<UserProfileData> userProfileDataLiveData = new MutableLiveData<>();
-    public LiveData<UserProfileData> getUserProfileDataLiveData() {return userProfileDataLiveData;}
+public class ScheduleListViewModel extends BaseViewModel {
     private final MutableLiveData<List<NoticeData>> noticeLiveData = new MutableLiveData<>();
     public LiveData<List<NoticeData>> getNoticeLiveData() {return noticeLiveData;}
-
-    public void fetchUserProfileLiveData() {
-        try {
-            userProfileDataLiveData.postValue(SharedPref.getUserProfile());
-        } catch (Exception e) {
-            fireMessageEvent(e.getLocalizedMessage());
-        }
-    }
 
     public void fetchNoticeListFromFirebase() {
         fireLoadingEvent(true);
@@ -42,17 +37,9 @@ public class HomeViewModel extends BaseViewModel {
                     try {
                         Collections.reverse(noticeList);
                     } catch (Exception ignored) {} finally {
-                        List<NoticeData> newList = new ArrayList<>();
-                        int itemCount = 0;
-                        for (NoticeData noticeData : noticeList) {
-                            if (itemCount <= 3) {
-                                newList.add(noticeData);
-                                itemCount++;
-                            } else break;
-                        }
                         noticeLiveData.postValue(noticeList);
-                        fireLoadingEvent(false);
                     }
+                    fireLoadingEvent(false);
                 } else fireLoadingEvent(false);
             }
             @Override
@@ -61,5 +48,13 @@ public class HomeViewModel extends BaseViewModel {
                 fireLoadingEvent(false);
             }
         });
+    }
+
+    public void navigateToViewNoticeFragment(NoticeData noticeData) {
+        if (noticeData != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("notice_data", new Gson().toJson(noticeData));
+            fireNavigateEvent(new OnNavigate(R.id.action_viewNoticeFragment_to_noticeViewFragment, bundle));
+        } else fireMessageEvent("Something went wrong");
     }
 }

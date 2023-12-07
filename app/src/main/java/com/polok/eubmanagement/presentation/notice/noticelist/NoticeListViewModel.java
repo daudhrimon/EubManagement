@@ -12,8 +12,10 @@ import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
+import com.polok.eubmanagement.model.NoticeData;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NoticeListViewModel extends BaseViewModel {
@@ -30,7 +32,11 @@ public class NoticeListViewModel extends BaseViewModel {
                     for (DataSnapshot noticeSnapshot : snapshot.getChildren()) {
                         if (noticeSnapshot.exists()) noticeList.add(noticeSnapshot.getValue(NoticeData.class));
                     }
-                    noticeLiveData.postValue(noticeList);
+                    try {
+                        Collections.reverse(noticeList);
+                    } catch (Exception ignored) {} finally {
+                        noticeLiveData.postValue(noticeList);
+                    }
                     fireLoadingEvent(false);
                 } else fireLoadingEvent(false);
             }

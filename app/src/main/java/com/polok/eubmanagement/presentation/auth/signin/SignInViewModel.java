@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
-import com.polok.eubmanagement.data.model.UserProfileData;
+import com.polok.eubmanagement.model.UserProfileData;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.util.SharedPref;
 

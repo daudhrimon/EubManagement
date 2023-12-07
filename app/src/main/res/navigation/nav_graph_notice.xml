@@ -3,20 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_notice"
-    app:startDestination="@id/viewNoticeFragment">
+    app:startDestination="@id/noticeListFragment">
 
     <fragment
-        android:id="@+id/viewNoticeFragment"
+        android:id="@+id/noticeListFragment"
         android:name="com.polok.eubmanagement.presentation.notice.noticelist.NoticeListFragment"
         android:label="fragment_view_notice"
         tools:layout="@layout/fragment_notice_list">
-        <action
-            android:id="@+id/action_viewNoticeFragment_to_addNoticeFragment"
-            app:destination="@id/addNoticeFragment"
-            app:enterAnim="@anim/enter_anim"
-            app:exitAnim="@anim/exit_anim"
-            app:popEnterAnim="@anim/pop_enter_anim"
-            app:popExitAnim="@anim/pop_exit_anim" />
         <action
             android:id="@+id/action_viewNoticeFragment_to_noticeViewFragment"
             app:destination="@id/noticeViewFragment"
@@ -24,6 +17,13 @@
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_exit_anim"/>
+        <action
+            android:id="@+id/action_viewNoticeFragment_to_addNoticeFragment"
+            app:destination="@id/addNoticeFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -31,6 +31,7 @@
         android:name="com.polok.eubmanagement.presentation.notice.noticeadd.NoticeAddFragment"
         android:label="fragment_add_notice"
         tools:layout="@layout/fragment_notice_add" />
+
     <fragment
         android:id="@+id/noticeViewFragment"
         android:name="com.polok.eubmanagement.presentation.notice.noticeview.NoticeViewFragment"

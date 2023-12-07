@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentHomeBinding;
+import com.polok.eubmanagement.presentation.schedule.ScheduleActivity;
 import com.polok.eubmanagement.presentation.notice.NoticeActivity;
 import com.polok.eubmanagement.presentation.notice.noticelist.NoticeListAdapter;
 import com.polok.eubmanagement.util.SharedPref;
@@ -39,6 +40,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
                                 )
                         )
                 );
+                if (userProfileData.getAdmin() != null && userProfileData.getAdmin()) {
+                    //
+                }
             }
         });
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {
@@ -49,6 +53,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         });
         binding.viewAllButton.setOnClickListener(view -> {
             openNoticeActivity();
+        });
+        binding.classScheduleButton.setOnClickListener(view -> {
+            startActivity(new Intent(getContext(), ScheduleActivity.class));
         });
         binding.noticeButton.setOnClickListener(view -> {
             openNoticeActivity();

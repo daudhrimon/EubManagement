@@ -13,7 +13,6 @@ public class NoticeActivity extends BaseActivity<ActivityNoticeBinding> {
     protected ActivityNoticeBinding initViewBinding() {
         return ActivityNoticeBinding.inflate(getLayoutInflater());
     }
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
         binding.toolBar.backButton.setOnClickListener(view -> {

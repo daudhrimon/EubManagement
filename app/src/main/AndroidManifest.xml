@@ -35,6 +35,11 @@
             android:theme="@style/Theme.EubMenagement" />
 
         <activity
+            android:name=".presentation.schedule.ScheduleActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EubMenagement" />
+
+        <activity
             android:name=".presentation.notice.NoticeActivity"
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />

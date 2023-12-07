@@ -10,7 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
-import com.polok.eubmanagement.presentation.notice.model.NoticeData;
+import com.polok.eubmanagement.model.NoticeData;
 import com.polok.eubmanagement.util.Extension;
 
 public class NoticeAddViewModel extends BaseViewModel {

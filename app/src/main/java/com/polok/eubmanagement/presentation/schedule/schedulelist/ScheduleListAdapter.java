@@ -1,33 +1,36 @@
-package com.polok.eubmanagement.presentation.notice.noticelist;
+package com.polok.eubmanagement.presentation.schedule.schedulelist;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.polok.eubmanagement.databinding.ItemNoticeListBinding;
 import com.polok.eubmanagement.model.NoticeData;
+
 import java.util.List;
 
-public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.NoticeViewHolder> {
+public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapter.NoticeViewHolder> {
     private final List<NoticeData> noticeList;
     private final View.OnClickListener onClickListener;
     private int adapterPosition;
-    public NoticeListAdapter(List<NoticeData> noticeList, View.OnClickListener onClickListener) {
+    public ScheduleListAdapter(List<NoticeData> noticeList, View.OnClickListener onClickListener) {
         this.noticeList = noticeList;
         this.onClickListener = onClickListener;
     }
 
     @NonNull
     @Override
-    public NoticeListAdapter.NoticeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NoticeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new NoticeViewHolder(
                 ItemNoticeListBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false)
         );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeListAdapter.NoticeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoticeViewHolder holder, int position) {
         holder.bind(noticeList.get(position));
     }
 

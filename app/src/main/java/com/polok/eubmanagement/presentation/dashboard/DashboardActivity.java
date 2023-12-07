@@ -12,7 +12,6 @@ public class DashboardActivity extends BaseActivity<ActivityDashboardBinding> {
     protected ActivityDashboardBinding initViewBinding() {
         return ActivityDashboardBinding.inflate(getLayoutInflater());
     }
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
         NavigationUI.setupWithNavController(
