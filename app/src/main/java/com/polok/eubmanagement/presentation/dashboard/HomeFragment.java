@@ -8,6 +8,7 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentHomeBinding;
 import com.polok.eubmanagement.presentation.assignment.AssignmentActivity;
+import com.polok.eubmanagement.presentation.module.ModuleActivity;
 import com.polok.eubmanagement.presentation.schedule.ScheduleActivity;
 import com.polok.eubmanagement.presentation.notice.NoticeActivity;
 import com.polok.eubmanagement.presentation.notice.noticelist.NoticeListAdapter;
@@ -63,6 +64,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         });
         binding.assignmentButton.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), AssignmentActivity.class));
+        });
+        binding.courseModuleButton.setOnClickListener(view -> {
+            startActivity(new Intent(getContext(), ModuleActivity.class));
         });
     }
     @Override

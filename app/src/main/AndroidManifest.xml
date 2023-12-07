@@ -49,6 +49,11 @@
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />
 
+        <activity
+            android:name=".presentation.module.ModuleActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EubMenagement" />
+
     </application>
 
 </manifest>

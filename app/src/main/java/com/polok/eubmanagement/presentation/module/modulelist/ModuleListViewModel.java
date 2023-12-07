@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.schedule.schedulelist;
+package com.polok.eubmanagement.presentation.module.modulelist;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -8,29 +8,29 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
-import com.polok.eubmanagement.model.ScheduleData;
+import com.polok.eubmanagement.model.ModuleData;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ScheduleListViewModel extends BaseViewModel {
-    private final MutableLiveData<List<ScheduleData>> scheduleLiveData = new MutableLiveData<>();
-    public LiveData<List<ScheduleData>> getScheduleLiveData() {return scheduleLiveData;}
+public class ModuleListViewModel extends BaseViewModel {
+    private final MutableLiveData<List<ModuleData>> moduleLiveData = new MutableLiveData<>();
+    public LiveData<List<ModuleData>> getModuleLiveData() {return moduleLiveData;}
 
-    public void fetchScheduleListFromFirebase() {
+    public void fetchModuleListFromFirebase() {
         fireLoadingEvent(true);
-        FirebaseDataRef.provideScheduleRef().addValueEventListener(new ValueEventListener() {
+        FirebaseDataRef.provideModuleRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    List<ScheduleData> noticeList = new ArrayList<>();
-                    for (DataSnapshot noticeSnapshot : snapshot.getChildren()) {
-                        if (noticeSnapshot.exists()) noticeList.add(noticeSnapshot.getValue(ScheduleData.class));
+                    List<ModuleData> moduleList = new ArrayList<>();
+                    for (DataSnapshot moduleSnapshot : snapshot.getChildren()) {
+                        if (moduleSnapshot.exists()) moduleList.add(moduleSnapshot.getValue(ModuleData.class));
                     }
                     try {
-                        Collections.reverse(noticeList);
+                        Collections.reverse(moduleList);
                     } catch (Exception ignored) {} finally {
-                        scheduleLiveData.postValue(noticeList);
+                        moduleLiveData.postValue(moduleList);
                     }
                     fireLoadingEvent(false);
                 } else fireLoadingEvent(false);

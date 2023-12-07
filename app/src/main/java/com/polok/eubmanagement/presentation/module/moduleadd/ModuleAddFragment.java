@@ -1,31 +1,32 @@
-package com.polok.eubmanagement.presentation.assignment.assignmentadd;
+package com.polok.eubmanagement.presentation.module.moduleadd;
 
 import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
-import com.polok.eubmanagement.databinding.FragmentAssignmentAddBinding;
+import com.polok.eubmanagement.databinding.FragmentModuleAddBinding;
+import com.polok.eubmanagement.util.Extension;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
-public class AssignmentAddFragment extends BaseFragment<FragmentAssignmentAddBinding> {
+public class ModuleAddFragment extends BaseFragment<FragmentModuleAddBinding> {
     @Override
-    protected FragmentAssignmentAddBinding initViewBinding() {
-        return FragmentAssignmentAddBinding.inflate(getLayoutInflater());
+    protected FragmentModuleAddBinding initViewBinding() {
+        return FragmentModuleAddBinding.inflate(getLayoutInflater());
     }
-    AssignmentAddViewModel viewModel;
+    ModuleAddViewModel viewModel;
     @Override
     protected BaseViewModel initViewModel() {
-        return viewModel = new ViewModelProvider(this).get(AssignmentAddViewModel.class);
+        return viewModel = new ViewModelProvider(this).get(ModuleAddViewModel.class);
     }
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
-        binding.saveAssignmentButton.setOnClickListener(view -> {
+        binding.addModuleButton.setOnClickListener(view -> {
             SharedPref.init(getContext());
-            viewModel.validateAssignmentInputAndUploadToFirebase(
-                    binding.assignmentTitle, binding.assignmentDetails
+            viewModel.validateModuleInputsAndUploadToFirebase(
+                    binding.moduleTitle, binding.moduleLink, Extension.getCurrentDate()
             );
         });
     }

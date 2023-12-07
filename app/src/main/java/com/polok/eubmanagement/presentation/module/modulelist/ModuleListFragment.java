@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.schedule.schedulelist;
+package com.polok.eubmanagement.presentation.module.modulelist;
 
 import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
@@ -6,30 +6,30 @@ import androidx.navigation.Navigation;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.databinding.FragmentScheduleListBinding;
+import com.polok.eubmanagement.databinding.FragmentModuleListBinding;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
-public class ScheduleListFragment extends BaseFragment<FragmentScheduleListBinding> {
+public class ModuleListFragment extends BaseFragment<FragmentModuleListBinding> {
     @Override
-    protected FragmentScheduleListBinding initViewBinding() {
-        return FragmentScheduleListBinding.inflate(getLayoutInflater());
+    protected FragmentModuleListBinding initViewBinding() {
+        return FragmentModuleListBinding.inflate(getLayoutInflater());
     }
-    private ScheduleListViewModel viewModel;
+    private ModuleListViewModel viewModel;
     @Override
     protected BaseViewModel initViewModel() {
-        return viewModel = new ViewModelProvider(this).get(ScheduleListViewModel.class);
+        return viewModel = new ViewModelProvider(this).get(ModuleListViewModel.class);
     }
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
-        viewModel.fetchScheduleListFromFirebase();
+        viewModel.fetchModuleListFromFirebase();
 
-        viewModel.getScheduleLiveData().observe(getViewLifecycleOwner(), scheduleList-> {
+        viewModel.getModuleLiveData().observe(getViewLifecycleOwner(), scheduleList-> {
             if (scheduleList != null && !scheduleList.isEmpty()) {
-                binding.scheduleRecycler.setAdapter(new ScheduleListAdapter(scheduleList));
+                binding.moduleRecycler.setAdapter(new ModuleListAdapter(scheduleList));
             }
         });
-        binding.addScheduleButton.setOnClickListener(view -> {
+        binding.addModuleButton.setOnClickListener(view -> {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_scheduleListFragment_to_scheduleAddFragment);
         });
     }
