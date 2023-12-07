@@ -31,7 +31,7 @@ public class ScheduleListFragment extends BaseFragment<FragmentScheduleListBindi
             }
         });
         binding.addScheduleButton.setOnClickListener(view -> {
-            viewModel.fireNavigateEvent(new OnNavigate(R.id.action_scheduleListFragment_to_scheduleAddFragment));
+            viewModel.fireNavigateEvent(R.id.action_scheduleListFragment_to_scheduleAddFragment, null);
         });
     }
     @Override

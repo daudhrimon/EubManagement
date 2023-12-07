@@ -8,7 +8,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.model.UserProfileData;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.util.SharedPref;
@@ -121,7 +120,7 @@ public class SignupViewModel extends BaseViewModel {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isComplete()) {
                         fireMessageEvent("Signup Successfully");
-                        fireNavigateEvent(new OnNavigate(1));
+                        fireNavigateEvent(1, null);
                     } else fireMessageEvent(task.getException().getLocalizedMessage());
                     fireLoadingEvent(false);
                 }

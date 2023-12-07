@@ -10,10 +10,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.model.NoticeData;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -52,7 +50,7 @@ public class NoticeListViewModel extends BaseViewModel {
         if (noticeData != null) {
             Bundle bundle = new Bundle();
             bundle.putString("notice_data", new Gson().toJson(noticeData));
-            fireNavigateEvent(new OnNavigate(R.id.action_viewNoticeFragment_to_noticeViewFragment, bundle));
+            fireNavigateEvent(R.id.action_viewNoticeFragment_to_noticeViewFragment, bundle);
         } else fireMessageEvent("Something went wrong");
     }
 }

@@ -31,7 +31,7 @@ public class ModuleListFragment extends BaseFragment<FragmentModuleListBinding> 
             }
         });
         binding.addModuleButton.setOnClickListener(view -> {
-            viewModel.fireNavigateEvent(new OnNavigate(R.id.action_moduleListFragment_to_moduleAddFragment));
+            viewModel.fireNavigateEvent(R.id.action_moduleListFragment_to_moduleAddFragment,null);
         });
     }
     @Override

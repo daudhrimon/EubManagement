@@ -7,7 +7,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.model.ScheduleData;
 
@@ -62,7 +61,7 @@ public class ScheduleAddViewModel extends BaseViewModel {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()) {
                     fireMessageEvent("Class Schedule Added Successfully");
-                    fireNavigateEvent(new OnNavigate(1));
+                    fireNavigateEvent(1,null);
                 } else fireMessageEvent(task.getException().getLocalizedMessage());
                 fireLoadingEvent(false);
             }

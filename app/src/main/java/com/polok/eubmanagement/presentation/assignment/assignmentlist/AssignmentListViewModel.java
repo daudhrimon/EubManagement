@@ -10,7 +10,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.polok.eubmanagement.R;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.presentation.assignment.modal.AssignmentData;
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class AssignmentListViewModel extends BaseViewModel {
         if (assignmentData != null) {
             Bundle bundle = new Bundle();
             bundle.putString("assignment_data", new Gson().toJson(assignmentData));
-            fireNavigateEvent(new OnNavigate(R.id.action_viewAssignmentFragment_to_assignmentViewFragment, bundle));
+            fireNavigateEvent(R.id.action_viewAssignmentFragment_to_assignmentViewFragment, bundle);
         } else fireMessageEvent("Something went wrong");
     }
 }

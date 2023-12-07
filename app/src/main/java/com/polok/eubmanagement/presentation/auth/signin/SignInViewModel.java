@@ -11,7 +11,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.polok.eubmanagement.base.BaseViewModel;
-import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.model.UserProfileData;
 import com.polok.eubmanagement.firebase.FirebaseDataRef;
 import com.polok.eubmanagement.util.SharedPref;
@@ -82,7 +81,7 @@ public class SignInViewModel extends BaseViewModel {
                 } catch (Exception ignored) {
                     fireMessageEvent("Something went wrong");
                 } finally {
-                    fireNavigateEvent(new OnNavigate(1));
+                    fireNavigateEvent(1, null);
                 } else {
                     fireMessageEvent("Something went wrong");
                 }

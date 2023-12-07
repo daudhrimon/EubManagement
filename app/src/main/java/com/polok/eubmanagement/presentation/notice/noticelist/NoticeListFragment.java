@@ -39,7 +39,7 @@ public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> 
             }
         });
         binding.addNoticeButton.setOnClickListener(view -> {
-            viewModel.fireNavigateEvent(new OnNavigate(R.id.action_viewNoticeFragment_to_addNoticeFragment));
+            viewModel.fireNavigateEvent(R.id.action_viewNoticeFragment_to_addNoticeFragment,null);
         });
     }
     @Override
