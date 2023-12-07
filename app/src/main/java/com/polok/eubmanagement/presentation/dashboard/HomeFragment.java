@@ -1,10 +1,8 @@
 package com.polok.eubmanagement.presentation.dashboard;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
@@ -24,12 +22,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
     protected BaseViewModel initViewModel() {
         return viewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
     }
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        SharedPref.init(context);
-    }
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
@@ -62,7 +54,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
             openNoticeActivity();
         });
     }
-
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
 

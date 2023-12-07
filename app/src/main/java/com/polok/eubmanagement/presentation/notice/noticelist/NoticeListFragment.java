@@ -1,9 +1,7 @@
 package com.polok.eubmanagement.presentation.notice.noticelist;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.polok.eubmanagement.R;
@@ -11,7 +9,6 @@ import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.base.model.OnNavigate;
 import com.polok.eubmanagement.databinding.FragmentNoticeListBinding;
-import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
 public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> {
@@ -25,11 +22,6 @@ public class NoticeListFragment extends BaseFragment<FragmentNoticeListBinding> 
         return viewModel = new ViewModelProvider(this).get(NoticeListViewModel.class);
     }
     private NoticeListAdapter noticeListAdapter;
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        SharedPref.init(context);
-    }
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 

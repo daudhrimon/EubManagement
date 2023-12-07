@@ -1,8 +1,6 @@
 package com.polok.eubmanagement.presentation.dashboard;
 
-import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
@@ -16,18 +14,10 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
         return FragmentProfileBinding.inflate(getLayoutInflater());
     }
     HomeViewModel viewModel;
-
     @Override
     protected BaseViewModel initViewModel() {
         return viewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
     }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        SharedPref.init(context);
-    }
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
@@ -52,7 +42,6 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
             }
         });
     }
-
     @Override
     protected PrimaryLoader initPrimaryLoader() {return null;}
 }

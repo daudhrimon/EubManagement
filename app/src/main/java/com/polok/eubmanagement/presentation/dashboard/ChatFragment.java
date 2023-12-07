@@ -12,15 +12,12 @@ public class ChatFragment extends BaseFragment<FragmentChatBinding> {
     protected FragmentChatBinding initViewBinding() {
         return FragmentChatBinding.inflate(getLayoutInflater());
     }
-
     @Override
     protected BaseViewModel initViewModel() {return null;}
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
     }
-
     @Override
     protected PrimaryLoader initPrimaryLoader() {return null;}
 }

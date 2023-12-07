@@ -3,13 +3,13 @@ package com.polok.eubmanagement.presentation.notice.model;
 public class NoticeData {
     String title;
     String details;
-    String date;
+    String created_at;
     String key;
 
-    public NoticeData(String title, String details, String date, String key) {
+    public NoticeData(String title, String details, String created_at, String key) {
         this.title = title;
         this.details = details;
-        this.date = date;
+        this.created_at = created_at;
         this.key = key;
     }
 
@@ -31,12 +31,12 @@ public class NoticeData {
         this.details = details;
     }
 
-    public String getDate() {
-        return date;
+    public String getCreatedAt() {
+        return created_at;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setCreatedAt(String date) {
+        this.created_at = date;
     }
 
     public String getKey() {

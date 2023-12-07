@@ -19,7 +19,6 @@ public class NoticeAddFragment extends BaseFragment<FragmentNoticeAddBinding> {
     protected BaseViewModel initViewModel() {
         return viewModel = new ViewModelProvider(this).get(NoticeAddViewModel.class);
     }
-
     @Override
     protected void initOnCreateView(Bundle savedInstanceState) {
 
@@ -30,13 +29,11 @@ public class NoticeAddFragment extends BaseFragment<FragmentNoticeAddBinding> {
             );
         });
     }
-
     @Override
     protected void onNavigateEvent(OnNavigate onNavigate) {
         super.onNavigateEvent(onNavigate);
         if (onNavigate.getId() == 1) getActivity().onBackPressed();
     }
-
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
 }
