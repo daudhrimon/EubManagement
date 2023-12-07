@@ -81,6 +81,6 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
     @Override
     protected void onNavigateEvent(int id, Bundle bundle) {
         super.onNavigateEvent(id, bundle);
-        if (id == 1) getActivity().onBackPressed();
+        if (id == 0) getActivity().onBackPressed();
     }
 }

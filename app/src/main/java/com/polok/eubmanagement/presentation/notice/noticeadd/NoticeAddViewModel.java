@@ -41,7 +41,7 @@ public class NoticeAddViewModel extends BaseViewModel {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()) {
                     fireMessageEvent("Notice Added Successfully");
-                    fireNavigateEvent(1, null);
+                    fireNavigateEvent(0, null);
                 } else fireMessageEvent(task.getException().getLocalizedMessage());
                 fireLoadingEvent(false);
             }

@@ -81,7 +81,7 @@ public class SignInViewModel extends BaseViewModel {
                 } catch (Exception ignored) {
                     fireMessageEvent("Something went wrong");
                 } finally {
-                    fireNavigateEvent(1, null);
+                    fireNavigateEvent(0, null);
                 } else {
                     fireMessageEvent("Something went wrong");
                 }

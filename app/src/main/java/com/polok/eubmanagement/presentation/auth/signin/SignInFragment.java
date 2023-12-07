@@ -46,7 +46,7 @@ public class SignInFragment extends BaseFragment<FragmentSigninBinding> {
     @Override
     protected void onNavigateEvent(int id, Bundle bundle) {
         super.onNavigateEvent(id, bundle);
-        if (id == 1) {
+        if (id == 0) {
             startActivity(new Intent(getContext(), DashboardActivity.class));
             getActivity().finish();
         }

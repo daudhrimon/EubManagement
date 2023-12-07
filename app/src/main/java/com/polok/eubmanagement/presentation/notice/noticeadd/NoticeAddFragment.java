@@ -33,6 +33,6 @@ public class NoticeAddFragment extends BaseFragment<FragmentNoticeAddBinding> {
     @Override
     protected void onNavigateEvent(int id, Bundle bundle) {
         super.onNavigateEvent(id, bundle);
-        if (id == 1) getActivity().onBackPressed();
+        if (id == 0) getActivity().onBackPressed();
     }
 }

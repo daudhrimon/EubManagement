@@ -35,7 +35,7 @@ public class ModuleAddViewModel extends BaseViewModel {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()) {
                     fireMessageEvent("Course Module Added Successfully");
-                    fireNavigateEvent(1, null);
+                    fireNavigateEvent(0, null);
                 } else fireMessageEvent(task.getException().getLocalizedMessage());
                 fireLoadingEvent(false);
             }

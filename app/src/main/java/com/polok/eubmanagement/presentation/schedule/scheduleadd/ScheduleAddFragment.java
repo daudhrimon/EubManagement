@@ -43,7 +43,7 @@ public class ScheduleAddFragment extends BaseFragment<FragmentScheduleAddBinding
     @Override
     protected void onNavigateEvent(int id, Bundle bundle) {
         super.onNavigateEvent(id, bundle);
-        if (id == 1) getActivity().onBackPressed();
+        if (id == 0) getActivity().onBackPressed();
     }
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
