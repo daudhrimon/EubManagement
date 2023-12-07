@@ -22,10 +22,19 @@
         android:id="@+id/notice_Details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:ellipsize="end"
         android:layout_marginTop="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:maxLines="1"
         app:layout_constraintTop_toBottomOf="@id/notice_title"
         tools:text="This is Notice Details djdjjkdjkdjkdgjkdfjkdjkdgjkdgjkdgdjkgdjkgdjkd" />
+
+    <TextView
+        android:id="@+id/created_at"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:textSize="@dimen/text_size_smallest"
+        app:layout_constraintTop_toBottomOf="@id/notice_Details"
+        tools:text="Created At: 01 January, 2024" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
