@@ -1,10 +1,8 @@
 package com.polok.eubmanagement.base;
 
 import android.app.Application;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.polok.eubmanagement.util.FirebaseChildTag;
 import com.polok.eubmanagement.util.SharedPref;
 
 public class BaseApp extends Application {

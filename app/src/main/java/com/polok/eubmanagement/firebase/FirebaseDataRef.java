@@ -2,7 +2,6 @@ package com.polok.eubmanagement.firebase;
 
 import com.google.firebase.database.DatabaseReference;
 import com.polok.eubmanagement.base.BaseApp;
-import com.polok.eubmanagement.util.FirebaseChildTag;
 import com.polok.eubmanagement.util.SharedPref;
 
 public class FirebaseDataRef {
