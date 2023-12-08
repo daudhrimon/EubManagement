@@ -1,10 +1,13 @@
 package com.polok.eubmanagement.presentation.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
+import com.google.firebase.auth.FirebaseAuth;
 import com.polok.eubmanagement.base.BaseFragment;
 import com.polok.eubmanagement.base.BaseViewModel;
 import com.polok.eubmanagement.databinding.FragmentProfileBinding;
+import com.polok.eubmanagement.presentation.auth.AuthActivity;
 import com.polok.eubmanagement.util.SharedPref;
 import com.polok.eubmanagement.widget.PrimaryLoader;
 
@@ -41,7 +44,18 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
                 binding.blood.setText(userProfileData.getNotNullText(userProfileData.getBloodGroup()));
             }
         });
+        binding.signOutButton.setOnClickListener(view -> {
+            viewModel.attemptSignOutUser(FirebaseAuth.getInstance());
+        });
     }
     @Override
     protected PrimaryLoader initPrimaryLoader() {return null;}
+    @Override
+    protected void onNavigateEvent(int id, Bundle bundle) {
+        super.onNavigateEvent(id, bundle);
+        if (id == 0) {
+            startActivity(new Intent(getContext(), AuthActivity.class));
+            getActivity().finish();
+        }
+    }
 }
