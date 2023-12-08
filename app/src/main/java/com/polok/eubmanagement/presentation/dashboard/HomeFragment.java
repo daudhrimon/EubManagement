@@ -47,29 +47,30 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         viewModel.getNoticeLiveData().observe(getViewLifecycleOwner(), noticeList-> {
             if (noticeList != null && !noticeList.isEmpty()) {
                 binding.recentNoticeLayer.setVisibility(View.VISIBLE);
-                binding.recentNoticeRecycler.setAdapter(new NoticeListAdapter(noticeList,null));
+                binding.recentNoticeRecycler.setAdapter(new NoticeListAdapter(noticeList, null));
+
+                binding.viewAllButton.setOnClickListener(view -> {
+                    openAnotherActivity(NoticeActivity.class);
+                });
             }
         });
-        binding.viewAllButton.setOnClickListener(view -> {
-            openNoticeActivity();
-        });
         binding.classScheduleButton.setOnClickListener(view -> {
-            startActivity(new Intent(getContext(), ScheduleActivity.class));
+            openAnotherActivity(ScheduleActivity.class);
         });
         binding.noticeButton.setOnClickListener(view -> {
-            openNoticeActivity();
+            openAnotherActivity(NoticeActivity.class);
         });
         binding.assignmentButton.setOnClickListener(view -> {
-            startActivity(new Intent(getContext(), AssignmentActivity.class));
+            openAnotherActivity(AssignmentActivity.class);
         });
         binding.courseModuleButton.setOnClickListener(view -> {
-            startActivity(new Intent(getContext(), ModuleActivity.class));
+            openAnotherActivity(ModuleActivity.class);
         });
     }
     @Override
     protected PrimaryLoader initPrimaryLoader() {return binding.primaryLoader;}
 
-    private void openNoticeActivity() {
-        startActivity(new Intent(getContext(), NoticeActivity.class));
+    private void openAnotherActivity(Class<?> destinationClass) {
+        startActivity(new Intent(getContext(), destinationClass));
     }
 }

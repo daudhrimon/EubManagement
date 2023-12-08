@@ -17,7 +17,6 @@ public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.No
         this.noticeList = noticeList;
         this.onClickListener = onClickListener;
     }
-
     @NonNull
     @Override
     public NoticeListAdapter.NoticeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
