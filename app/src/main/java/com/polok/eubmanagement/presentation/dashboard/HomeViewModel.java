@@ -46,12 +46,12 @@ public class HomeViewModel extends BaseViewModel {
                         List<NoticeData> newList = new ArrayList<>();
                         int itemCount = 0;
                         for (NoticeData noticeData : noticeList) {
-                            if (itemCount <= 3) {
+                            if (itemCount < 3) {
                                 newList.add(noticeData);
                                 itemCount++;
                             } else break;
                         }
-                        noticeLiveData.postValue(noticeList);
+                        noticeLiveData.postValue(newList);
                         fireLoadingEvent(false);
                     }
                 } else fireLoadingEvent(false);
