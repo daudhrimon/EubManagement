@@ -17,6 +17,20 @@ public class SplashActivity extends AppCompatActivity {
         Extension.hideStatusBar(getWindow());
         setContentView(R.layout.activity_splash);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         new Handler(Looper.myLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
