@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.polok.eubmanagement.base.event.Event;
 import com.polok.eubmanagement.base.event.NavigateEvent;
 
-public class BaseViewModel extends ViewModel {
+public abstract class BaseViewModel extends ViewModel {
     private final MutableLiveData<Event<String>> messageEvent = new MutableLiveData<>();
     public LiveData<Event<String>> getMessageEvent() {return messageEvent;}
 

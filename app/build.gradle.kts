@@ -44,11 +44,12 @@ dependencies {
     api(libs.bundles.androidx.common.dependencies)
 
     // firebase
-    implementation(platform("com.google.firebase:firebase-bom:30.1.0"))
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-database")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
+
     // gson
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.gson)
 
     // tests dependencies
     testImplementation(libs.junit)

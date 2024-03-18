@@ -21,10 +21,7 @@ material-ver = "1.11.0"
 lifecycle-ver = "2.7.0"
 navigation-ver = "2.7.7"
 
-datastore-ver = "1.0.0"
-### squareup retrofit and it's lib
-retrofit2-ver = "2.9.0"
-okhttp3-ver = "4.10.0"
+gson-ver = "2.8.9"
 
 ### Coil
 coil-ver = "2.4.0"
@@ -50,11 +47,16 @@ androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragme
 androidx-navigation-runtime = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigation-ver" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation-ver" }
 
-androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore-ver" }
-androidx-splashScreen = "androidx.core:core-splashscreen:1.0.1"
-androidx-biometric = "androidx.biometric:biometric:1.1.0"
 androidx-work-runtime = "androidx.work:work-runtime-ktx:2.9.0"
 androidx-legacySupport = "androidx.legacy:legacy-support-v4:1.0.0"
+
+### google gson converter
+gson = { module = "com.google.code.gson:gson", version.ref = "gson-ver"}
+
+### firebase
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom-ver" }
+firebase-auth = { module = "com.google.firebase:firebase-auth" }
+firebase-database = { module = "com.google.firebase:firebase-database" }
 
 ### third party
 #coil
