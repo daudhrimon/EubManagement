@@ -85,4 +85,9 @@ class SignUpFragment : BaseFragment<FragmentSignupBinding>(
     }
 
     override fun initPrimaryLoader(): PrimaryLoader = binding.primaryLoader
+
+    override fun onNavigateEvent(id: Int, bundle: Bundle?) {
+        super.onNavigateEvent(id, bundle)
+        if (id == 0) activity?.onBackPressedDispatcher?.onBackPressed()
+    }
 }

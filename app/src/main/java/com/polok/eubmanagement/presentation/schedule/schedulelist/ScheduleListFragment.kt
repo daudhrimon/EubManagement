@@ -22,7 +22,7 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().admin) binding.addScheduleButton.makeVisible()
+        if (SharedPref.getUserProfile().isAdmin == true) binding.addScheduleButton.makeVisible()
 
         viewModel.fetchScheduleListFromFirebase()
 

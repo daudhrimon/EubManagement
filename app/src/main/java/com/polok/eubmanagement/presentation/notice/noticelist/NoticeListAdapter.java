@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.polok.eubmanagement.databinding.ItemNoticeListBinding;
 import com.polok.eubmanagement.model.NoticeData;
+
 import java.util.List;
 
 public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.NoticeViewHolder> {
@@ -42,9 +43,9 @@ public class NoticeListAdapter extends RecyclerView.Adapter<NoticeListAdapter.No
             this.binding = binding;
         }
         public void bind(NoticeData noticeData) {
-            binding.noticeTitle.setText(noticeData.getNotNullText(noticeData.getTitle()));
-            binding.noticeDetails.setText(noticeData.getNotNullText(noticeData.getDetails()));
-            binding.createdAt.setText(String.format("Created At: %s", noticeData.getNotNullText(noticeData.getCreatedAt())));
+            binding.noticeTitle.setText(noticeData.getTitle());
+            binding.noticeDetails.setText(noticeData.getDetails());
+            binding.createdAt.setText(String.format("Created At: %s", noticeData.getCreatedAt()));
 
             if (onClickListener != null) {
                 itemView.setOnClickListener(v -> {

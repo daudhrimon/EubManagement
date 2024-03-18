@@ -25,19 +25,16 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.userNameAndBatch.text = String.format(
-                    "%s\n%s",
-                    it.getNotNullText(it.fullName),
+                    "%s\n%s", it.fullName ?: "",
                     String.format(
-                        "%s, Section %s",
-                        it.getNotNullText(SharedPref.getUserBatch()),
-                        it.getNotNullText(it.section)
+                        "%s, Section %s", SharedPref.getUserBatch(), it.section ?: ""
                     )
                 )
-                binding.studentId.text = it.getNotNullText(it.studentId)
-                binding.mobileNumber.text = it.getNotNullText(it.mobileNumber)
-                binding.email.text = it.getNotNullText(it.email)
-                binding.gender.text = it.getNotNullText(it.gender)
-                binding.blood.text = it.getNotNullText(it.bloodGroup)
+                binding.studentId.text = it.studentId ?: ""
+                binding.mobileNumber.text = it.mobileNumber ?: ""
+                binding.email.text = it.email ?: ""
+                binding.gender.text = it.gender ?: ""
+                binding.blood.text = it.bloodGroup ?: ""
             }
         }
         binding.signOutButton.setOnClickListener {

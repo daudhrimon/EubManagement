@@ -24,7 +24,7 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().admin) binding.addNoticeButton.makeVisible()
+        if (SharedPref.getUserProfile().isAdmin == true) binding.addNoticeButton.makeVisible()
 
         viewModel.fetchNoticeListFromFirebase()
 

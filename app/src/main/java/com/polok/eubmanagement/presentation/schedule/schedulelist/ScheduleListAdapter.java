@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.polok.eubmanagement.databinding.ItemScheduleListBinding;
 import com.polok.eubmanagement.model.ScheduleData;
+
 import java.util.List;
 
 public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapter.ScheduleViewHolder> {
@@ -37,11 +38,11 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
             this.binding = binding;
         }
         public void bind(ScheduleData scheduleData) {
-            binding.day.setText(String.format("Day\n%s", scheduleData.getNotNullText(scheduleData.getDay())));
-            binding.courseCode.setText(String.format("Course Code\n%s", scheduleData.getNotNullText(scheduleData.getCourseCode())));
-            binding.lecturerName.setText(String.format("Lecturer Name\n%s", scheduleData.getNotNullText(scheduleData.getLecturerName())));
-            binding.startEndTime.setText(String.format("Start-End Time\n%s", scheduleData.getNotNullText(scheduleData.getStartEndTime())));
-            binding.roomNo.setText(String.format("Room No\n%s", scheduleData.getNotNullText(scheduleData.getRoomNo())));
+            binding.day.setText(String.format("Day\n%s", scheduleData.getDay()));
+            binding.courseCode.setText(String.format("Course Code\n%s", scheduleData.getCourseCode()));
+            binding.lecturerName.setText(String.format("Lecturer Name\n%s", scheduleData.getLecturerName()));
+            binding.startEndTime.setText(String.format("Start-End Time\n%s", scheduleData.getStartEndTime()));
+            binding.roomNo.setText(String.format("Room No\n%s", scheduleData.getRoomNo()));
         }
     }
 }

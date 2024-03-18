@@ -26,7 +26,7 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().admin) binding.addModuleButton.makeVisible()
+        if (SharedPref.getUserProfile().isAdmin == true) binding.addModuleButton.makeVisible()
 
         viewModel.fetchModuleListFromFirebase()
 

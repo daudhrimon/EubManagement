@@ -25,10 +25,10 @@ class NoticeViewFragment : BaseFragment<FragmentNoticeViewBinding>(
         viewModel.noticeLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.createdAt.text = String.format(
-                    "Created At: %s", it.getNotNullText(it.createdAt)
+                    "Created At: %s", it.createdAt ?: ""
                 )
-                binding.noticeTitle.setText(it.getNotNullText(it.title))
-                binding.noticeDetails.setText(it.getNotNullText(it.details))
+                binding.noticeTitle.setText(it.title ?: "")
+                binding.noticeDetails.setText(it.details ?: "")
             }
         }
     }

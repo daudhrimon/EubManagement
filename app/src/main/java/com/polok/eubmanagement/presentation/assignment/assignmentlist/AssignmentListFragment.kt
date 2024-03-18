@@ -24,7 +24,7 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().admin) binding.addAssignmentButton.makeVisible()
+        if (SharedPref.getUserProfile().isAdmin == true) binding.addAssignmentButton.makeVisible()
 
         viewModel.fetchAssignmentListFromFirebase()
 

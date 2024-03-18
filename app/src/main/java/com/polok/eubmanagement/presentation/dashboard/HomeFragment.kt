@@ -32,11 +32,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.userNameAndBatch.text = String.format(
-                    "%s\n%s", it.getNotNullText(it.fullName),
+                    "%s\n%s", it.fullName ?: "",
                     String.format(
                         "%s, Section %s",
-                        it.getNotNullText(SharedPref.getUserBatch()),
-                        it.getNotNullText(it.section)
+                        SharedPref.getUserBatch(),
+                        it.section ?: ""
                     )
                 )
             }

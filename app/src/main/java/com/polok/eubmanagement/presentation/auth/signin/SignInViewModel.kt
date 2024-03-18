@@ -1,11 +1,13 @@
 package com.polok.eubmanagement.presentation.auth.signin
 
+import android.util.Log
 import android.util.Patterns
 import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.gson.Gson
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
 import com.polok.eubmanagement.model.UserProfileData
@@ -21,7 +23,9 @@ class SignInViewModel : BaseViewModel() {
             emailInputEt.showErrorOnUi("Enter A Valid Email Address")
             return
         }
-        if (passwordInputEt.getText().toString().isEmpty() || passwordInputEt.getText().length < 6) {
+        if (passwordInputEt.getText().toString()
+                .isEmpty() || passwordInputEt.getText().length < 6
+        ) {
             passwordInputEt.showErrorOnUi("Enter at Least 6 Digit Password")
             return
         }
@@ -40,13 +44,13 @@ class SignInViewModel : BaseViewModel() {
         firebaseAuth.signInWithEmailAndPassword(
             emailInput, passwordInput
         ).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    firebaseAuth.currentUser?.uid?.let { attemptFetchUserBatchFromFirebase(it) }
-                } else {
-                    fireMessageEvent(task.exception!!.localizedMessage)
-                    fireLoadingEvent(false)
-                }
+            if (task.isSuccessful) {
+                firebaseAuth.currentUser?.uid?.let { attemptFetchUserBatchFromFirebase(it) }
+            } else {
+                fireMessageEvent(task.exception!!.localizedMessage)
+                fireLoadingEvent(false)
             }
+        }
     }
 
     private fun attemptFetchUserBatchFromFirebase(firebaseUid: String) {
@@ -83,7 +87,7 @@ class SignInViewModel : BaseViewModel() {
                     if (snapshot.exists()) {
                         try {
                             saveUserProfile(snapshot.getValue(UserProfileData::class.java))
-                        } catch (ignored: Exception) {
+                        } catch (e: Exception) {
                             fireMessageEvent("Something went wrong")
                         } finally {
                             fireNavigateEvent(0, null)

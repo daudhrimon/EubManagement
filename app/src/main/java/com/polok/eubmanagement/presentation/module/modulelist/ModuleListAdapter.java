@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.polok.eubmanagement.databinding.ItemModuleListBinding;
 import com.polok.eubmanagement.model.ModuleData;
+
 import java.util.List;
 
 public class ModuleListAdapter extends RecyclerView.Adapter<ModuleListAdapter.ModuleViewHolder> {
@@ -39,8 +40,8 @@ public class ModuleListAdapter extends RecyclerView.Adapter<ModuleListAdapter.Mo
             this.binding = binding;
         }
         public void bind(ModuleData moduleData) {
-            binding.moduleTitle.setText(moduleData.getNotNullText(moduleData.getTitle()));
-            binding.createdAt.setText(String.format("Created At: %s", moduleData.getNotNullText(moduleData.getCreatedAt())));
+            binding.moduleTitle.setText(moduleData.getTitle());
+            binding.createdAt.setText(String.format("Created At: %s", moduleData.getCreatedAt()));
 
             binding.downloadButton.setOnClickListener(view -> {
                 moduleLink = moduleData.getLink();
