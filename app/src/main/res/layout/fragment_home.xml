@@ -44,7 +44,7 @@
         android:layout_marginTop="32dp"
         android:paddingStart="@dimen/spacing_6dp"
         android:text="Recent Notices"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintTop_toBottomOf="@id/user_name_and_batch" />
 
     <TextView
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:paddingEnd="@dimen/spacing_6dp"
         android:text="View All"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintBottom_toBottomOf="@id/recent_notice_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_name_and_batch"

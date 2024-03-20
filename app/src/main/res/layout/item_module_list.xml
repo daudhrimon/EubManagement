@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_tiny"
-        android:textSize="@dimen/text_size_smallest"
+        android:textSize="@dimen/font_tiny"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/download_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
         android:layout_marginVertical="@dimen/spacing_small"
         android:padding="@dimen/spacing_tiny"
         android:text="Download"
-        android:textSize="@dimen/text_size_smallest"
+        android:textSize="@dimen/font_tiny"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

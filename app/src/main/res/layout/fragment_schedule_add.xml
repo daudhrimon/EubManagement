@@ -20,7 +20,7 @@
         android:entries="@array/day_spinner"
         android:padding="20dp"
         android:paddingVertical="12dp"
-        android:textColor="@color/white"
+        android:textColor="@color/color_white"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -34,7 +34,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintTop_toBottomOf="@id/day_spinner" />
 
     <EditText
@@ -47,7 +47,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintTop_toBottomOf="@id/course_title" />
 
     <EditText
@@ -60,7 +60,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintTop_toBottomOf="@id/course_Code" />
 
     <EditText
@@ -73,7 +73,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintTop_toBottomOf="@id/lecturer_name" />
 
     <EditText
@@ -86,7 +86,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintTop_toBottomOf="@id/start_end_time" />
 
     <com.google.android.material.button.MaterialButton

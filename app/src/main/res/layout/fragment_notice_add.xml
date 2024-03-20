@@ -19,7 +19,7 @@
         android:maxLines="1"
         android:padding="20dp"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -34,7 +34,7 @@
         android:inputType="textMultiLine"
         android:padding="20dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintBottom_toTopOf="@id/save_notice_button"
         app:layout_constraintTop_toBottomOf="@id/notice_title" />
 

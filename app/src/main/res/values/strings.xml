@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Smart EUB</string>
-    <string name="not_registered_signup">Not Registered ? <u>Sign up</u></string>
+    <string name="dont_have_an_account_signup">Dont have an account? <u><b><font color="#389583">Sign up</font></b></u></string>
     <string-array name="gender_spinner">
         <item>Select Gender</item>
         <item>Male</item>
@@ -51,7 +51,14 @@
         <item>Friday</item>
         <item>Saturday</item>
     </string-array>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="powered_by">Powered by</string>
+    <string name="byte_fusion">Byte Fusion</string>
+    <string name="sign_in">Sign in</string>
+    <string name="phone_number_or_email_address">Phone number or Email address</string>
+    <string name="password">Password</string>
+    <string name="forgotten_password">Forgotten Password?</string>
 </resources>

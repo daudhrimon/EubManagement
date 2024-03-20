@@ -4,7 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.SplashActivity"
-    android:background="@drawable/splash">
+    android:background="@color/color_primary"
+    tools:context=".presentation.SplashActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_splash" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:text="@string/powered_by"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/font_secondary"
+        app:layout_constraintBottom_toTopOf="@id/company_name"
+        android:layout_marginBottom="@dimen/spacing_tiny"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:text="@string/byte_fusion"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/font_primary"
+        android:layout_marginBottom="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

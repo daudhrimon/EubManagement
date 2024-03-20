@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_small"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Data: 01 January, 2024" />
@@ -30,7 +30,7 @@
         android:hint="Notice Title"
         android:inputType="textMultiLine"
         android:padding="20dp"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintTop_toBottomOf="@id/created_at"
         tools:text="hjddjkgjkzhjcfgBDGhjfgzhzGDHgDHGVgDzfghjghjzfghjgfgfzfzgjkfghjfzghjgfhzgfhjfghjz" />
 
@@ -46,7 +46,7 @@
         android:inputType="textMultiLine"
         android:padding="20dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:textAppearance="@style/TextAppearancePrimary"
+        android:textAppearance="@style/EditTextPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/notice_title" />
 

@@ -44,7 +44,7 @@
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_large_plus"
         android:text="Student ID"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/user_avatar" />
 
     <TextView
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintTop_toBottomOf="@id/student_id_label"
         tools:text="123456" />
 
@@ -71,7 +71,7 @@
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_large_plus"
         android:text="Mobile Number"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/student_id" />
 
     <TextView
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintTop_toBottomOf="@id/mobile_number_label"
         tools:text="01777777777777" />
 
@@ -98,7 +98,7 @@
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_large_plus"
         android:text="Email Address"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/mobile_number" />
 
     <TextView
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintTop_toBottomOf="@id/email_label"
         tools:text="abc@cd.com" />
 
@@ -125,7 +125,7 @@
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_large_plus"
         android:text="Gender"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/email" />
 
     <TextView
@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintTop_toBottomOf="@id/gender_label"
         tools:text="Male" />
 
@@ -152,7 +152,7 @@
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_large_plus"
         android:text="Blood Group"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/gender" />
 
     <TextView
@@ -161,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_primary"
         android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/text_size_secondary"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintTop_toBottomOf="@id/blood_label"
         tools:text="A+" />
 
