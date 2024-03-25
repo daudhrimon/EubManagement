@@ -8,7 +8,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="carib.pay.com" />
+                  <option name="appId" value="com.deshi.merchant" />
                 </ConnectionSetting>
               </option>
               <option name="failureTypes">

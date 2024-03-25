@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "EubManagement"
+rootProject.name = "Byte-Fusion"
 include(":app")
