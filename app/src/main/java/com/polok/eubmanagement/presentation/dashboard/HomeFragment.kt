@@ -10,6 +10,7 @@ import com.polok.eubmanagement.presentation.assignment.AssignmentActivity
 import com.polok.eubmanagement.presentation.module.ModuleActivity
 import com.polok.eubmanagement.presentation.notice.NoticeActivity
 import com.polok.eubmanagement.presentation.notice.noticelist.NoticeListAdapter
+import com.polok.eubmanagement.presentation.portal.PortalActivity
 import com.polok.eubmanagement.presentation.schedule.ScheduleActivity
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.makeVisible
@@ -63,6 +64,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         }
         binding.courseModuleButton.setOnClickListener {
             openAnotherActivity(ModuleActivity::class.java)
+        }
+        binding.StudentPortalButton.setOnClickListener {
+            openAnotherActivity(PortalActivity::class.java)
         }
     }
 
