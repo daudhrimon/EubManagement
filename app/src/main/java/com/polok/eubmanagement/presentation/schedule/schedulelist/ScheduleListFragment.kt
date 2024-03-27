@@ -17,9 +17,6 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
     private val viewModel: ScheduleListViewModel by lazy {
         ViewModelProvider(this)[ScheduleListViewModel::class.java]
     }
-    private val adapter: ScheduleListAdapter by lazy {
-        ScheduleListAdapter()
-    }
 
     override fun initViewModel(): BaseViewModel = viewModel
 
@@ -29,10 +26,12 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
 
         viewModel.fetchScheduleListFromFirebase()
 
-        binding.scheduleRecycler.adapter = adapter
-
         viewModel.scheduleLiveData.observe(viewLifecycleOwner) {
-            if (it?.isNotEmpty() == true) adapter.submitList(it)
+            if (it?.isNotEmpty() == true) {
+                binding.scheduleRecycler.adapter = ScheduleListAdapter().apply {
+                    submitList(it)
+                }
+            }
         }
 
         binding.addScheduleButton.setOnClickListener {

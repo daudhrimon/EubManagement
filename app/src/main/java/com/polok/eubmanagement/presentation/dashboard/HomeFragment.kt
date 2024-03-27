@@ -31,9 +31,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
-                binding.userNameAndBatch.text = String.format(
-                    "%s\n%s", it.fullName ?: "",
-                    String.format(
+                binding.userNameAndBatch.text = String.format("%s\n%s", it.fullName ?: "", String.format(
                         "%s, Section %s",
                         SharedPref.getUserBatch(),
                         it.section ?: ""
@@ -41,10 +39,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 )
             }
         }
+
         viewModel.noticeLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
                 binding.recentNoticeLayer.makeVisible()
-                binding.recentNoticeRecycler.setAdapter(NoticeListAdapter(it, null))
+                binding.recentNoticeRecycler.adapter = NoticeListAdapter(null).apply {
+                    submitList(it)
+                }
 
                 binding.viewAllButton.setOnClickListener {
                     openAnotherActivity(NoticeActivity::class.java)

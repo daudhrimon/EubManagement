@@ -21,11 +21,9 @@ class AssignmentViewFragment : BaseFragment<FragmentAssignmentViewBinding>(
         viewModel.fetchAssignmentFromBundle(arguments?.getString("assignment_data"))
 
         viewModel.assignmentLiveData.observe(viewLifecycleOwner) {
-            if (it != null) {
-                binding.createdAt.text = String.format("Created At: %s", it.getNotNullText(it.createdAt))
-                binding.assignmentTitle.setText(it.getNotNullText(it.title))
-                binding.assignmentDetails.setText(it.getNotNullText(it.details))
-            }
+            binding.createdAt.text = String.format("Created At: %s", it?.createdAt ?: "")
+            binding.assignmentTitle.setText(it?.title ?: "")
+            binding.assignmentDetails.setText(it?.details ?: "")
         }
     }
 

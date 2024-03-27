@@ -7,6 +7,7 @@ import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentAssignmentListBinding
+import com.polok.eubmanagement.model.AssignmentData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.makeVisible
 import com.polok.eubmanagement.widget.PrimaryLoader
@@ -34,7 +35,13 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
         binding.assignmentRecycler.adapter = adapter
 
         viewModel.assignmentLiveData.observe(viewLifecycleOwner) {
-            if (it?.isNotEmpty() == true) adapter.submitList(it)
+            if (it?.isNotEmpty() == true) {
+                binding.assignmentRecycler.adapter = AssignmentListAdapter { assignmentData ->
+                    viewModel.navigateToViewAssignmentFragment(assignmentData)
+                }.apply {
+                    submitList(it)
+                }
+            }
         }
 
         binding.addAssignmentButton.setOnClickListener {
