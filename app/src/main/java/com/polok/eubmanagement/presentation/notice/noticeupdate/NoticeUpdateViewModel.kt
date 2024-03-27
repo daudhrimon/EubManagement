@@ -3,17 +3,16 @@ package com.polok.eubmanagement.presentation.notice.noticeupdate
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideNoticeRef
 import com.polok.eubmanagement.model.NoticeData
 import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi
 
-class NoticeAddViewModel : BaseViewModel() {
+class NoticeUpdateViewModel : BaseViewModel() {
 
     fun validateNoticeInputAndUploadToFirebase(
-        noticeTitleEt: EditText, noticeDetailsEt: EditText
+        key: String?, noticeTitleEt: EditText, noticeDetailsEt: EditText
     ) {
         if (noticeTitleEt.getText().toString().isEmpty()) {
             noticeTitleEt.showErrorOnUi("Enter Notice Title")
@@ -24,20 +23,21 @@ class NoticeAddViewModel : BaseViewModel() {
             return
         }
         uploadNoticeTOFirebase(
-            noticeTitleEt.getText().toString(),
-            noticeDetailsEt.getText().toString(),
-            getCurrentDate()
+            noticeData = NoticeData(
+                title = noticeTitleEt.text.toString(),
+                details = noticeDetailsEt.text.toString(),
+                createdAt = getCurrentDate(), key = key
+            )
         )
     }
 
-    private fun uploadNoticeTOFirebase(title: String, details: String, date: String) {
+    private fun uploadNoticeTOFirebase(noticeData: NoticeData) {
         fireLoadingEvent(true)
-        val pushNoticeRef: DatabaseReference? = FirebaseDataRef.provideNoticeRef()?.push()
-        pushNoticeRef?.setValue(
-            NoticeData(title, details, date, pushNoticeRef.getKey().toString())
+        provideNoticeRef()?.child(noticeData.key ?: "")?.setValue(
+            noticeData
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Notice Added Successfully")
+                fireMessageEvent("Notice Updated Successfully")
                 fireNavigateEvent(0, null)
             } else fireMessageEvent(task.exception!!.localizedMessage)
             fireLoadingEvent(false)
@@ -47,7 +47,7 @@ class NoticeAddViewModel : BaseViewModel() {
     class Factory : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return NoticeAddViewModel() as T
+            return NoticeUpdateViewModel() as T
         }
     }
 }

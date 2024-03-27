@@ -6,40 +6,43 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideModuleRef
 import com.polok.eubmanagement.model.ModuleData
+import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi
 
-class ModuleAddViewModel : BaseViewModel() {
+class ModuleUpdateViewModel : BaseViewModel() {
 
     fun validateModuleInputsAndUploadToFirebase(
-        moduleTitleEt: EditText,
-        moduleLinkEt: EditText,
-        createdAt: String
+        key: String?, moduleTitleEt: EditText, moduleLinkEt: EditText
     ) {
-        if (moduleTitleEt.getText().toString().isEmpty()) {
+        if (moduleTitleEt.text.toString().isEmpty()) {
             moduleTitleEt.showErrorOnUi("Enter Course Module Title")
             return
         }
-        if (moduleLinkEt.getText().toString().isEmpty()) {
+        if (moduleLinkEt.text.toString().isEmpty()) {
             moduleLinkEt.showErrorOnUi("Enter Course Module Link")
             return
         }
         uploadModuleTOFirebase(
-            moduleTitleEt.getText().toString(), moduleLinkEt.getText().toString(), createdAt
+            moduleData = ModuleData(
+                title = moduleTitleEt.text.toString(),
+                link = moduleLinkEt.text.toString(),
+                createdAt = getCurrentDate(), key = key
+            )
         )
     }
 
-    private fun uploadModuleTOFirebase(moduleTitle: String, moduleLink: String, createdAt: String) {
+    private fun uploadModuleTOFirebase(moduleData: ModuleData) {
         fireLoadingEvent(true)
-        val pushNoticeRef: DatabaseReference? = FirebaseDataRef.provideModuleRef()?.push()
-        pushNoticeRef?.setValue(
-            ModuleData(moduleTitle, moduleLink, createdAt, pushNoticeRef.getKey())
+        provideModuleRef()?.child(moduleData.key ?: "")?.setValue(
+            moduleData
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Course Module Added Successfully")
+                fireMessageEvent("Course Module Updated Successfully")
                 fireNavigateEvent(0, null)
             } else {
-                fireMessageEvent(task.exception!!.localizedMessage)
+                fireMessageEvent(task.exception?.localizedMessage)
             }
             fireLoadingEvent(false)
         }
@@ -48,7 +51,7 @@ class ModuleAddViewModel : BaseViewModel() {
     class Factory : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return ModuleAddViewModel() as T
+            return ModuleUpdateViewModel() as T
         }
     }
 }

@@ -9,34 +9,35 @@ import com.polok.eubmanagement.model.AssignmentData
 import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi
 
-class AssignmentAddViewModel : BaseViewModel() {
+class AssignmentUpdateViewModel : BaseViewModel() {
 
     fun validateAssignmentInputAndUploadToFirebase(
-        assignmentTitleEt: EditText, assignmentDetailsEt: EditText
+        key: String?, assignmentTitleEt: EditText, assignmentDetailsEt: EditText
     ) {
-        if (assignmentTitleEt.getText().toString().isEmpty()) {
+        if (assignmentTitleEt.text.toString().isEmpty()) {
             assignmentTitleEt.showErrorOnUi("Enter Assignment Title")
             return
         }
-        if (assignmentDetailsEt.getText().toString().isEmpty()) {
+        if (assignmentDetailsEt.text.toString().isEmpty()) {
             assignmentDetailsEt.showErrorOnUi("Enter Assignment Details")
             return
         }
         uploadAssignmentTOFirebase(
-            assignmentTitleEt.getText().toString(),
-            assignmentDetailsEt.getText().toString(),
-            getCurrentDate()
+            assignmentData = AssignmentData(
+                title = assignmentTitleEt.text.toString(),
+                details = assignmentDetailsEt.text.toString(),
+                createdAt = getCurrentDate(), key = key
+            )
         )
     }
 
-    private fun uploadAssignmentTOFirebase(title: String, details: String, date: String) {
+    private fun uploadAssignmentTOFirebase(assignmentData: AssignmentData) {
         fireLoadingEvent(true)
-        val pushAssignmentRef = provideAssignmentRef()!!.push()
-        pushAssignmentRef.setValue(
-            AssignmentData(title, details, date, pushAssignmentRef.getKey())
-        ).addOnCompleteListener { task ->
+        provideAssignmentRef()?.child(assignmentData.key ?: "")?.setValue(
+            assignmentData
+        )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Assignment Added Successfully")
+                fireMessageEvent("Assignment Updated Successfully")
                 fireNavigateEvent(0, null)
             } else {
                 fireMessageEvent(task.exception?.localizedMessage)
@@ -48,7 +49,7 @@ class AssignmentAddViewModel : BaseViewModel() {
     class Factory : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return AssignmentAddViewModel() as T
+            return AssignmentUpdateViewModel() as T
         }
     }
 }

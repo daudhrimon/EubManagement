@@ -3,17 +3,17 @@ package com.polok.eubmanagement.presentation.schedule.scheduleupdate
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideScheduleRef
 import com.polok.eubmanagement.model.ScheduleData
 import com.polok.eubmanagement.util.showErrorOnUi
 
-class ScheduleAddViewModel : BaseViewModel() {
+class ScheduleUpdateViewModel : BaseViewModel() {
     var day: String? = null
     var dayZero: String? = null
 
     fun validateScheduleInputAndUploadToFirebase(
+        key: String?,
         courseTitleEt: EditText,
         courseCodeEt: EditText,
         lecturerNameEt: EditText,
@@ -45,31 +45,28 @@ class ScheduleAddViewModel : BaseViewModel() {
             return
         }
         uploadScheduleTOFirebase(
-            day!!, courseTitleEt.getText().toString(),
-            courseCodeEt.getText().toString(),
-            lecturerNameEt.getText().toString(),
-            startEndTimeEt.getText().toString(),
-            roomNoEt.getText().toString()
+            scheduleData = ScheduleData(
+                courseTitle = courseTitleEt.text.toString(),
+                courseCode = courseCodeEt.text.toString(),
+                lecturerName = lecturerNameEt.text.toString(),
+                startEndTime = startEndTimeEt.text.toString(),
+                roomNo = roomNoEt.text.toString(),
+                day = day, key = key
+            )
         )
     }
 
     private fun uploadScheduleTOFirebase(
-        day: String,
-        courseTitle: String,
-        courseCode: String,
-        lecturerName: String,
-        startEndTime: String,
-        roomNo: String
+        scheduleData: ScheduleData
     ) {
         fireLoadingEvent(true)
-        val pushNoticeRef: DatabaseReference? = FirebaseDataRef.provideScheduleRef()?.push()
-        pushNoticeRef?.setValue(
-            ScheduleData(day, courseTitle, courseCode, lecturerName, startEndTime, roomNo)
+        provideScheduleRef()?.child(scheduleData.key ?: "")?.setValue(
+            scheduleData
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Class Schedule Added Successfully")
+                fireMessageEvent("Class Schedule Updated Successfully")
                 fireNavigateEvent(0, null)
-            } else fireMessageEvent(task.exception!!.localizedMessage)
+            } else fireMessageEvent(task.exception?.localizedMessage)
             fireLoadingEvent(false)
         }
     }
@@ -77,7 +74,7 @@ class ScheduleAddViewModel : BaseViewModel() {
     class Factory : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return ScheduleAddViewModel() as T
+            return ScheduleUpdateViewModel() as T
         }
     }
 }

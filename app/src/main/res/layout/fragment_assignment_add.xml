@@ -43,7 +43,7 @@
         style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Assign Assignment"
+        android:text="Save Assignment"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.polok.eubmanagement.widget.PrimaryLoader
