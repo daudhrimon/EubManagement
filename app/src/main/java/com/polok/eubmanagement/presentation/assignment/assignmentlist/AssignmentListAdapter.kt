@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.polok.eubmanagement.databinding.ItemAssignmentListBinding
 import com.polok.eubmanagement.presentation.assignment.assignmentlist.AssignmentListAdapter.AssignmentViewHolder
 import com.polok.eubmanagement.model.AssignmentData
+import com.polok.eubmanagement.util.makeVisible
 
 class AssignmentListAdapter(
     private val onClickListener: (AssignmentData?) -> Unit
 ) : RecyclerView.Adapter<AssignmentViewHolder>() {
+    var isAdmin: Boolean? = null
     private var assignmentList: List<AssignmentData?>? = null
 
     fun submitList(assignmentList: List<AssignmentData?>?) {
@@ -41,6 +43,10 @@ class AssignmentListAdapter(
 
             itemView.setOnClickListener {
                 onClickListener(assignmentData)
+            }
+
+            if (isAdmin == true) {
+                binding.updateDelete.root.makeVisible()
             }
         }
     }

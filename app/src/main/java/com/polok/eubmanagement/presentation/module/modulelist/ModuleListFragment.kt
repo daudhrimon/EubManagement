@@ -19,26 +19,30 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
     private val viewModel: ModuleListViewModel by viewModels {
         ModuleListViewModel.Factory()
     }
+    private val adapter: ModuleListAdapter by lazy {
+        ModuleListAdapter { moduleData ->
+            try {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(moduleData?.link))
+                )
+            } catch (e: Exception) {
+                context.showToast(e.localizedMessage)
+            }
+        }
+    }
 
     override fun initViewModel(): BaseViewModel = viewModel
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().isAdmin == true) binding.addModuleButton.makeVisible()
-
         viewModel.fetchModuleListFromFirebase()
+
+        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        if (adapter.isAdmin == true) binding.addModuleButton.makeVisible()
 
         viewModel.moduleLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
-                binding.moduleRecycler.adapter = ModuleListAdapter { moduleData ->
-                    try {
-                        startActivity(
-                            Intent(Intent.ACTION_VIEW, Uri.parse(moduleData?.link))
-                        )
-                    } catch (e: Exception) {
-                        context.showToast(e.localizedMessage)
-                    }
-                }.apply {
+                binding.moduleRecycler.adapter = adapter.apply {
                     submitList(it)
                 }
             }

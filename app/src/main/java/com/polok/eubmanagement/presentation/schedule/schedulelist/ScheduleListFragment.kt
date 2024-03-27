@@ -17,18 +17,22 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
     private val viewModel: ScheduleListViewModel by viewModels {
         ScheduleListViewModel.Factory()
     }
+    private val adapter: ScheduleListAdapter by lazy {
+        ScheduleListAdapter()
+    }
 
     override fun initViewModel(): BaseViewModel = viewModel
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().isAdmin == true) binding.addScheduleButton.makeVisible()
-
         viewModel.fetchScheduleListFromFirebase()
+
+        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        if (adapter.isAdmin == true) binding.addScheduleButton.makeVisible()
 
         viewModel.scheduleLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
-                binding.scheduleRecycler.adapter = ScheduleListAdapter().apply {
+                binding.scheduleRecycler.adapter = adapter.apply {
                     submitList(it)
                 }
             }

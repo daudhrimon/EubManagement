@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.polok.eubmanagement.databinding.ItemScheduleListBinding
 import com.polok.eubmanagement.model.ScheduleData
 import com.polok.eubmanagement.presentation.schedule.schedulelist.ScheduleListAdapter.ScheduleViewHolder
+import com.polok.eubmanagement.util.makeVisible
 
 class ScheduleListAdapter : RecyclerView.Adapter<ScheduleViewHolder>() {
+    var isAdmin: Boolean? = null
     private var scheduleList: List<ScheduleData?>? = null
 
     fun submitList(scheduleList: List<ScheduleData?>?) {
@@ -29,7 +31,7 @@ class ScheduleListAdapter : RecyclerView.Adapter<ScheduleViewHolder>() {
     override fun getItemCount(): Int = scheduleList?.size ?: 0
 
     inner class ScheduleViewHolder(
-        var binding: ItemScheduleListBinding
+        private val binding: ItemScheduleListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(scheduleData: ScheduleData?) {
@@ -38,6 +40,10 @@ class ScheduleListAdapter : RecyclerView.Adapter<ScheduleViewHolder>() {
             binding.lecturerName.text = String.format("Lecturer Name\n%s", scheduleData?.lecturerName ?: "")
             binding.startEndTime.text = String.format("Start-End Time\n%s", scheduleData?.startEndTime ?: "")
             binding.roomNo.text = String.format("Room No\n%s", scheduleData?.roomNo ?: "")
+
+            if (isAdmin == true) {
+                binding.updateDelete.root.makeVisible()
+            }
         }
     }
 }

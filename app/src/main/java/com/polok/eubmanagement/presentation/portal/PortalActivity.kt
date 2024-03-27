@@ -14,5 +14,9 @@ class PortalActivity : BaseActivity<ActivityPortalBinding>(
         binding.webView.webViewClient = WebViewClient()
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.loadUrl("https://iems.eub.edu.bd/")
+
+        binding.toolBar.backButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }

@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.polok.eubmanagement.databinding.ItemModuleListBinding
 import com.polok.eubmanagement.model.ModuleData
 import com.polok.eubmanagement.presentation.module.modulelist.ModuleListAdapter.ModuleViewHolder
+import com.polok.eubmanagement.util.makeVisible
 
 class ModuleListAdapter(
     private val onClickListener: (ModuleData?) -> Unit
 ) : RecyclerView.Adapter<ModuleViewHolder>() {
+    var isAdmin: Boolean? = null
     private var moduleList: List<ModuleData?>? = null
 
     fun submitList(moduleList: List<ModuleData?>?) {
@@ -41,6 +43,10 @@ class ModuleListAdapter(
 
             binding.downloadButton.setOnClickListener {
                 onClickListener(moduleData)
+            }
+
+            if (isAdmin == true) {
+                binding.updateDelete.root.makeVisible()
             }
         }
     }

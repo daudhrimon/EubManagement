@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/update_or_delete_bg">
+    android:paddingTop="@dimen/spacing_primary_half"
+    android:paddingBottom="@dimen/spacing_tiny">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/update_button"
         style="@style/AppSmallButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_12dp"
+        android:layout_height="24dp"
         android:backgroundTint="@color/color_primary"
         android:text="@string/update"
         app:icon="@drawable/ic_update"
@@ -22,18 +21,13 @@
         android:id="@+id/delete_button"
         style="@style/AppSmallButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/spacing_12dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="@dimen/spacing_primary_half"
         android:backgroundTint="@color/color_rose_red"
         android:text="@string/delete"
         app:icon="@drawable/ic_auto_delete"
         app:layout_constraintBottom_toBottomOf="@id/update_button"
         app:layout_constraintEnd_toStartOf="@id/update_button"
         app:layout_constraintTop_toTopOf="@id/update_button" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_primary_half"
-        app:layout_constraintTop_toBottomOf="@id/update_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

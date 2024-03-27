@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/spacing_6dp"
+    android:layout_marginVertical="@dimen/spacing_small"
     android:background="@drawable/rounded_background_white"
     android:paddingHorizontal="@dimen/spacing_12dp"
     android:paddingVertical="@dimen/spacing_small">
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_tiny"
         android:textSize="@dimen/font_tiny"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/download_button"
         app:layout_constraintEnd_toStartOf="@id/download_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/module_title"
@@ -36,15 +36,24 @@
         style="@style/AppSmallButton"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:backgroundTint="@color/color_primary"
         android:layout_marginVertical="@dimen/spacing_small"
+        android:backgroundTint="@color/color_primary"
         android:text="@string/download"
         android:textSize="@dimen/font_small"
         app:icon="@drawable/ic_download"
         app:iconPadding="@dimen/spacing_small"
         app:iconSize="@dimen/spacing_secondary"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/created_at"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/module_title" />
+
+    <include
+        android:id="@+id/update_delete"
+        layout="@layout/item_update_or_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/created_at"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

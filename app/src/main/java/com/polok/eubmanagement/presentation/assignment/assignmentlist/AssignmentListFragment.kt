@@ -27,17 +27,14 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().isAdmin == true) binding.addAssignmentButton.makeVisible()
-
         viewModel.fetchAssignmentListFromFirebase()
 
-        binding.assignmentRecycler.adapter = adapter
+        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        if (adapter.isAdmin == true) binding.addAssignmentButton.makeVisible()
 
         viewModel.assignmentLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
-                binding.assignmentRecycler.adapter = AssignmentListAdapter { assignmentData ->
-                    viewModel.navigateToViewAssignmentFragment(assignmentData)
-                }.apply {
+                binding.assignmentRecycler.adapter = adapter.apply {
                     submitList(it)
                 }
             }

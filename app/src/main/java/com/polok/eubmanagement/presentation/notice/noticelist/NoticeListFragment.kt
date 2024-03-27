@@ -17,20 +17,24 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
     private val viewModel: NoticeListViewModel by viewModels {
         NoticeListViewModel.Factory()
     }
+    private val adapter: NoticeListAdapter by lazy {
+        NoticeListAdapter { noticeData ->
+            viewModel.navigateToViewNoticeFragment(noticeData)
+        }
+    }
 
     override fun initViewModel(): BaseViewModel = viewModel
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        if (SharedPref.getUserProfile().isAdmin == true) binding.addNoticeButton.makeVisible()
-
         viewModel.fetchNoticeListFromFirebase()
+
+        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        if (adapter.isAdmin == true) binding.addNoticeButton.makeVisible()
 
         viewModel.noticeLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
-                binding.noticeRecycler.adapter = NoticeListAdapter { noticeData ->
-                    viewModel.navigateToViewNoticeFragment(noticeData)
-                }.apply {
+                binding.noticeRecycler.adapter = adapter.apply {
                     submitList(it)
                 }
             }
