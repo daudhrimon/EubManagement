@@ -20,15 +20,20 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
         ModuleListViewModel.Factory()
     }
     private val adapter: ModuleListAdapter by lazy {
-        ModuleListAdapter { moduleData ->
-            try {
-                startActivity(
-                    Intent(Intent.ACTION_VIEW, Uri.parse(moduleData?.link))
-                )
-            } catch (e: Exception) {
-                context.showToast(e.localizedMessage)
+        ModuleListAdapter(
+            onClickListener = {
+                try {
+                    startActivity(
+                        Intent(Intent.ACTION_VIEW, Uri.parse(it?.link))
+                    )
+                } catch (e: Exception) {
+                    context.showToast(e.localizedMessage)
+                }
+            },
+            onUpdateClickListener = {
+
             }
-        }
+        )
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

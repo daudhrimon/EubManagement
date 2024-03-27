@@ -18,9 +18,14 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
         AssignmentListViewModel.Factory()
     }
     private val adapter: AssignmentListAdapter by lazy {
-        AssignmentListAdapter {
-            viewModel.navigateToViewAssignmentFragment(it)
-        }
+        AssignmentListAdapter(
+            onClickListener = {
+                viewModel.navigateToViewAssignmentFragment(it)
+            },
+            onUpdateClickListener = {
+
+            }
+        )
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

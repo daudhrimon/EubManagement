@@ -9,7 +9,8 @@ import com.polok.eubmanagement.model.AssignmentData
 import com.polok.eubmanagement.util.makeVisible
 
 class AssignmentListAdapter(
-    private val onClickListener: (AssignmentData?) -> Unit
+    private val onClickListener: (AssignmentData?) -> Unit,
+    private val onUpdateClickListener: (AssignmentData?) -> Unit
 ) : RecyclerView.Adapter<AssignmentViewHolder>() {
     var isAdmin: Boolean? = null
     private var assignmentList: List<AssignmentData?>? = null
@@ -47,6 +48,9 @@ class AssignmentListAdapter(
 
             if (isAdmin == true) {
                 binding.updateDelete.root.makeVisible()
+                binding.updateDelete.updateButton.setOnClickListener {
+                    onUpdateClickListener(assignmentData)
+                }
             }
         }
     }

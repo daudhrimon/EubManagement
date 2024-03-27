@@ -18,7 +18,11 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
         ScheduleListViewModel.Factory()
     }
     private val adapter: ScheduleListAdapter by lazy {
-        ScheduleListAdapter()
+        ScheduleListAdapter(
+            onUpdateClickListener = {
+
+            }
+        )
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

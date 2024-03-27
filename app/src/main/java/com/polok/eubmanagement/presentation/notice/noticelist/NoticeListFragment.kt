@@ -18,9 +18,14 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
         NoticeListViewModel.Factory()
     }
     private val adapter: NoticeListAdapter by lazy {
-        NoticeListAdapter { noticeData ->
-            viewModel.navigateToViewNoticeFragment(noticeData)
-        }
+        NoticeListAdapter(
+            onClickListener = {
+                viewModel.navigateToViewNoticeFragment(it)
+            },
+            onUpdateClickListener = {
+
+            }
+        )
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

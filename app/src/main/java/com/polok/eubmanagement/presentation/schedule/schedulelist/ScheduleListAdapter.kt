@@ -8,7 +8,9 @@ import com.polok.eubmanagement.model.ScheduleData
 import com.polok.eubmanagement.presentation.schedule.schedulelist.ScheduleListAdapter.ScheduleViewHolder
 import com.polok.eubmanagement.util.makeVisible
 
-class ScheduleListAdapter : RecyclerView.Adapter<ScheduleViewHolder>() {
+class ScheduleListAdapter(
+    private val onUpdateClickListener: ((ScheduleData?) -> Unit),
+) : RecyclerView.Adapter<ScheduleViewHolder>() {
     var isAdmin: Boolean? = null
     private var scheduleList: List<ScheduleData?>? = null
 
@@ -43,6 +45,9 @@ class ScheduleListAdapter : RecyclerView.Adapter<ScheduleViewHolder>() {
 
             if (isAdmin == true) {
                 binding.updateDelete.root.makeVisible()
+                binding.updateDelete.updateButton.setOnClickListener {
+                    onUpdateClickListener(scheduleData)
+                }
             }
         }
     }

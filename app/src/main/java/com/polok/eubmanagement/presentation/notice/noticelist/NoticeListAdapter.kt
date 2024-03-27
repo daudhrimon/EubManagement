@@ -11,7 +11,8 @@ import com.polok.eubmanagement.presentation.notice.noticelist.NoticeListAdapter.
 import com.polok.eubmanagement.util.makeVisible
 
 class NoticeListAdapter(
-    private val onClickListener: ((NoticeData?) -> Unit)?
+    private val onClickListener: ((NoticeData?) -> Unit)?,
+    private val onUpdateClickListener: ((NoticeData?) -> Unit)?,
 ) : RecyclerView.Adapter<NoticeViewHolder>() {
     var isAdmin: Boolean? = null
     private var noticeList: List<NoticeData?>? = null
@@ -54,6 +55,9 @@ class NoticeListAdapter(
 
             if (isAdmin == true) {
                 binding.updateDelete.root.makeVisible()
+                binding.updateDelete.updateButton.setOnClickListener {
+                    onUpdateClickListener?.invoke(noticeData)
+                }
             }
         }
     }

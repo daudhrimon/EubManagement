@@ -10,7 +10,8 @@ import com.polok.eubmanagement.presentation.module.modulelist.ModuleListAdapter.
 import com.polok.eubmanagement.util.makeVisible
 
 class ModuleListAdapter(
-    private val onClickListener: (ModuleData?) -> Unit
+    private val onClickListener: (ModuleData?) -> Unit,
+    private val onUpdateClickListener: (ModuleData?) -> Unit
 ) : RecyclerView.Adapter<ModuleViewHolder>() {
     var isAdmin: Boolean? = null
     private var moduleList: List<ModuleData?>? = null
@@ -47,6 +48,9 @@ class ModuleListAdapter(
 
             if (isAdmin == true) {
                 binding.updateDelete.root.makeVisible()
+                binding.updateDelete.updateButton.setOnClickListener {
+                    onUpdateClickListener(moduleData)
+                }
             }
         }
     }
