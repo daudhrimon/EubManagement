@@ -2,6 +2,8 @@ package com.polok.eubmanagement.presentation.auth.signup
 
 import android.util.Patterns
 import android.widget.EditText
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
@@ -151,5 +153,12 @@ class SignUpViewModel : BaseViewModel() {
                 }
                 fireLoadingEvent(false)
             }
+    }
+
+    class Factory : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return SignUpViewModel() as T
+        }
     }
 }

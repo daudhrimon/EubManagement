@@ -3,6 +3,8 @@ package com.polok.eubmanagement.presentation.assignment.assignmentlist
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -51,5 +53,12 @@ class AssignmentListViewModel : BaseViewModel() {
                 Bundle().apply { putString("assignment_data", Gson().toJson(assignmentData)) }
             )
         } else fireMessageEvent("Something went wrong")
+    }
+
+    class Factory : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return AssignmentListViewModel() as T
+        }
     }
 }

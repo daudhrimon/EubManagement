@@ -3,6 +3,7 @@ package com.polok.eubmanagement.presentation.auth.signup
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.R
@@ -15,8 +16,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class SignUpFragment : BaseFragment<FragmentSignupBinding>(
     viewBindingFactory = FragmentSignupBinding::inflate
 ){
-    private val viewModel: SignUpViewModel by lazy {
-        ViewModelProvider(this)[SignUpViewModel::class.java]
+    private val viewModel: SignUpViewModel by viewModels {
+        SignUpViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

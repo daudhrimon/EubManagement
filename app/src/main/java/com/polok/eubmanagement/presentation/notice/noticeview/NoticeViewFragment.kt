@@ -1,7 +1,7 @@
 package com.polok.eubmanagement.presentation.notice.noticeview
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentNoticeViewBinding
@@ -10,8 +10,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class NoticeViewFragment : BaseFragment<FragmentNoticeViewBinding>(
     viewBindingFactory = FragmentNoticeViewBinding::inflate
 ) {
-    private val viewModel: NoticeViewViewModel by lazy {
-        ViewModelProvider(this)[NoticeViewViewModel::class.java]
+    private val viewModel: NoticeViewViewModel by viewModels {
+        NoticeViewViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel
@@ -23,13 +23,9 @@ class NoticeViewFragment : BaseFragment<FragmentNoticeViewBinding>(
         )
 
         viewModel.noticeLiveData.observe(viewLifecycleOwner) {
-            if (it != null) {
-                binding.createdAt.text = String.format(
-                    "Created At: %s", it.createdAt ?: ""
-                )
-                binding.noticeTitle.setText(it.title ?: "")
-                binding.noticeDetails.setText(it.details ?: "")
-            }
+            binding.createdAt.text = String.format("Created At: %s", it?.createdAt ?: "")
+            binding.noticeTitle.setText(it?.title ?: "")
+            binding.noticeDetails.setText(it?.details ?: "")
         }
     }
 

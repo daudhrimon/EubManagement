@@ -3,7 +3,7 @@ package com.polok.eubmanagement.presentation.module.modulelist
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
@@ -16,8 +16,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
     viewBindingFactory = FragmentModuleListBinding::inflate
 ) {
-    private val viewModel: ModuleListViewModel by lazy {
-        ViewModelProvider(this)[ModuleListViewModel::class.java]
+    private val viewModel: ModuleListViewModel by viewModels {
+        ModuleListViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

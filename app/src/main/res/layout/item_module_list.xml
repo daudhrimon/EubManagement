@@ -33,13 +33,16 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/download_button"
-        style="@style/AppPrimaryButton"
+        style="@style/AppSmallButton"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/spacing_large"
+        android:layout_height="32dp"
+        android:backgroundTint="@color/color_primary"
         android:layout_marginVertical="@dimen/spacing_small"
-        android:padding="@dimen/spacing_tiny"
-        android:text="Download"
-        android:textSize="@dimen/font_tiny"
+        android:text="@string/download"
+        android:textSize="@dimen/font_small"
+        app:icon="@drawable/ic_download"
+        app:iconPadding="@dimen/spacing_small"
+        app:iconSize="@dimen/spacing_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

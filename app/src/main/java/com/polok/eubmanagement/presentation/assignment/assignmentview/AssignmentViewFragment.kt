@@ -1,7 +1,7 @@
 package com.polok.eubmanagement.presentation.assignment.assignmentview
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentAssignmentViewBinding
@@ -10,8 +10,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class AssignmentViewFragment : BaseFragment<FragmentAssignmentViewBinding>(
     viewBindingFactory = FragmentAssignmentViewBinding::inflate
 ) {
-    private val viewModel: AssignmentViewViewModel by lazy {
-        ViewModelProvider(this)[AssignmentViewViewModel::class.java]
+    private val viewModel: AssignmentViewViewModel by viewModels {
+        AssignmentViewViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

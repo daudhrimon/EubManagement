@@ -1,6 +1,8 @@
 package com.polok.eubmanagement.presentation.module.moduleadd
 
 import android.widget.EditText
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
@@ -40,6 +42,13 @@ class ModuleAddViewModel : BaseViewModel() {
                 fireMessageEvent(task.exception!!.localizedMessage)
             }
             fireLoadingEvent(false)
+        }
+    }
+
+    class Factory : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return ModuleAddViewModel() as T
         }
     }
 }

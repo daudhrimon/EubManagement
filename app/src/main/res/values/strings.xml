@@ -61,4 +61,7 @@
     <string name="phone_number_or_email_address">Phone number or Email address</string>
     <string name="password">Password</string>
     <string name="forgotten_password">Forgotten Password?</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="download">Download</string>
 </resources>

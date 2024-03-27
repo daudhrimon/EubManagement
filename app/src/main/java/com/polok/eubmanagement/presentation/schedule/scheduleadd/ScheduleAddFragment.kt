@@ -3,7 +3,7 @@ package com.polok.eubmanagement.presentation.schedule.scheduleadd
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
@@ -14,8 +14,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class ScheduleAddFragment : BaseFragment<FragmentScheduleAddBinding>(
     viewBindingFactory = FragmentScheduleAddBinding::inflate
 ) {
-    private val viewModel: ScheduleAddViewModel by lazy {
-        ViewModelProvider(this)[ScheduleAddViewModel::class.java]
+    private val viewModel: ScheduleAddViewModel by viewModels {
+        ScheduleAddViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

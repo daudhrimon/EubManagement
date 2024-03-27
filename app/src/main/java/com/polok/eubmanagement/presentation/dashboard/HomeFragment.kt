@@ -2,7 +2,7 @@ package com.polok.eubmanagement.presentation.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentHomeBinding
@@ -18,8 +18,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class HomeFragment : BaseFragment<FragmentHomeBinding>(
     viewBindingFactory = FragmentHomeBinding::inflate
 ) {
-    private val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+    private val viewModel: HomeViewModel by viewModels {
+        HomeViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

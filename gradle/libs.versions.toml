@@ -10,7 +10,7 @@ targetSdk = "34"
 plugin-ver = "8.2.2"
 kotlin-ver = "1.9.21"
 googleServices-ver = "4.4.1"
-firebaseBom-ver = "32.7.3"
+firebaseBom-ver = "32.8.0"
 crashlyticsPlugin-ver = "2.9.9"
 
 ### androidx common
@@ -21,7 +21,7 @@ material-ver = "1.11.0"
 lifecycle-ver = "2.7.0"
 navigation-ver = "2.7.7"
 
-gson-ver = "2.8.9"
+gson-ver = "2.10.1"
 
 ### Coil
 coil-ver = "2.4.0"

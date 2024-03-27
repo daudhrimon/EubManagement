@@ -2,7 +2,7 @@ package com.polok.eubmanagement.presentation.auth.signin
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.R
@@ -15,9 +15,9 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 
 class SignInFragment : BaseFragment<FragmentSigninBinding>(
     viewBindingFactory = FragmentSigninBinding::inflate
-){
-    private val viewModel: SignInViewModel by lazy {
-        ViewModelProvider(this)[SignInViewModel::class.java]
+) {
+    private val viewModel: SignInViewModel by viewModels {
+        SignInViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

@@ -1,7 +1,7 @@
 package com.polok.eubmanagement.presentation.schedule.schedulelist
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
@@ -14,8 +14,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
     viewBindingFactory = FragmentScheduleListBinding::inflate
 ) {
-    private val viewModel: ScheduleListViewModel by lazy {
-        ViewModelProvider(this)[ScheduleListViewModel::class.java]
+    private val viewModel: ScheduleListViewModel by viewModels {
+        ScheduleListViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

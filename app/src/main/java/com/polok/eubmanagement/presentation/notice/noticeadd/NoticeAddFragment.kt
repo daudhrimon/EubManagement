@@ -1,7 +1,7 @@
 package com.polok.eubmanagement.presentation.notice.noticeadd
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentNoticeAddBinding
@@ -11,8 +11,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class NoticeAddFragment : BaseFragment<FragmentNoticeAddBinding>(
     viewBindingFactory = FragmentNoticeAddBinding::inflate
 ) {
-    private val viewModel: NoticeAddViewModel by lazy {
-        ViewModelProvider(this)[NoticeAddViewModel::class.java]
+    private val viewModel: NoticeAddViewModel by viewModels {
+        NoticeAddViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

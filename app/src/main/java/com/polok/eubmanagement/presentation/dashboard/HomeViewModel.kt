@@ -2,6 +2,8 @@ package com.polok.eubmanagement.presentation.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -78,6 +80,13 @@ class HomeViewModel : BaseViewModel() {
         } finally {
             fireNavigateEvent(0, null)
             fireLoadingEvent(false)
+        }
+    }
+
+    class Factory : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return HomeViewModel() as T
         }
     }
 }

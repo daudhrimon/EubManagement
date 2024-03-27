@@ -1,7 +1,7 @@
 package com.polok.eubmanagement.presentation.module.moduleadd
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentModuleAddBinding
@@ -12,8 +12,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class ModuleAddFragment : BaseFragment<FragmentModuleAddBinding>(
     viewBindingFactory = FragmentModuleAddBinding::inflate
 ) {
-    private val viewModel: ModuleAddViewModel by lazy {
-        ViewModelProvider(this)[ModuleAddViewModel::class.java]
+    private val viewModel: ModuleAddViewModel by viewModels {
+        ModuleAddViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

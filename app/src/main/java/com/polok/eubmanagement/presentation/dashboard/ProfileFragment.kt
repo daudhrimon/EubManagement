@@ -1,7 +1,7 @@
 package com.polok.eubmanagement.presentation.dashboard
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
@@ -12,8 +12,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(
     viewBindingFactory = FragmentProfileBinding::inflate
 ) {
-    private val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+    private val viewModel: HomeViewModel by viewModels {
+        HomeViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

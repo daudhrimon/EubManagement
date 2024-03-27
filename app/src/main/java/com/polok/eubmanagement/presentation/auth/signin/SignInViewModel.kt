@@ -1,18 +1,17 @@
 package com.polok.eubmanagement.presentation.auth.signin
 
-import android.util.Log
 import android.util.Patterns
 import android.widget.EditText
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.gson.Gson
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
 import com.polok.eubmanagement.model.UserProfileData
-import com.polok.eubmanagement.util.SharedPref.saveUserBatch
-import com.polok.eubmanagement.util.SharedPref.saveUserProfile
+import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.showErrorOnUi
 
 class SignInViewModel : BaseViewModel() {
@@ -59,7 +58,9 @@ class SignInViewModel : BaseViewModel() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         try {
-                            saveUserBatch(snapshot.getValue(String::class.java))
+                            SharedPref.saveUserBatch(
+                                snapshot.getValue(String::class.java)
+                            )
                         } catch (_: Exception) {
                             fireMessageEvent("Something went wrong")
                             fireLoadingEvent(false)
@@ -86,7 +87,9 @@ class SignInViewModel : BaseViewModel() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         try {
-                            saveUserProfile(snapshot.getValue(UserProfileData::class.java))
+                            SharedPref.saveUserProfile(
+                                snapshot.getValue(UserProfileData::class.java)
+                            )
                         } catch (e: Exception) {
                             fireMessageEvent("Something went wrong")
                         } finally {
@@ -104,5 +107,12 @@ class SignInViewModel : BaseViewModel() {
                 }
             }
         )
+    }
+
+    class Factory : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return SignInViewModel() as T
+        }
     }
 }

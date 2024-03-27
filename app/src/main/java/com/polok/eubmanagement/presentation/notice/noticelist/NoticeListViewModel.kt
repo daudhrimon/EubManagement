@@ -3,6 +3,8 @@ package com.polok.eubmanagement.presentation.notice.noticelist
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -56,5 +58,12 @@ class NoticeListViewModel : BaseViewModel() {
                 Bundle().apply { putString("notice_data", Gson().toJson(noticeData)) }
             )
         } else fireMessageEvent("Something went wrong")
+    }
+
+    class Factory : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return NoticeListViewModel() as T
+        }
     }
 }

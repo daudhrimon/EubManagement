@@ -1,7 +1,7 @@
 package com.polok.eubmanagement.presentation.notice.noticelist
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
@@ -14,8 +14,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
     viewBindingFactory = FragmentNoticeListBinding::inflate
 ) {
-    private val viewModel: NoticeListViewModel by lazy {
-        ViewModelProvider(this)[NoticeListViewModel::class.java]
+    private val viewModel: NoticeListViewModel by viewModels {
+        NoticeListViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel

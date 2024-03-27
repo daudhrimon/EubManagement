@@ -1,6 +1,8 @@
 package com.polok.eubmanagement.presentation.assignment.assignmentadd
 
 import android.widget.EditText
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef.provideAssignmentRef
 import com.polok.eubmanagement.model.AssignmentData
@@ -40,6 +42,13 @@ class AssignmentAddViewModel : BaseViewModel() {
                 fireMessageEvent(task.exception?.localizedMessage)
             }
             fireLoadingEvent(false)
+        }
+    }
+
+    class Factory : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return AssignmentAddViewModel() as T
         }
     }
 }

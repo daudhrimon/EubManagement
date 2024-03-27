@@ -1,13 +1,12 @@
 package com.polok.eubmanagement.presentation.assignment.assignmentlist
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentAssignmentListBinding
-import com.polok.eubmanagement.model.AssignmentData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.makeVisible
 import com.polok.eubmanagement.widget.PrimaryLoader
@@ -15,8 +14,8 @@ import com.polok.eubmanagement.widget.PrimaryLoader
 class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
     viewBindingFactory = FragmentAssignmentListBinding::inflate
 ) {
-    private val viewModel: AssignmentListViewModel by lazy {
-        ViewModelProvider(this)[AssignmentListViewModel::class.java]
+    private val viewModel: AssignmentListViewModel by viewModels {
+        AssignmentListViewModel.Factory()
     }
     private val adapter: AssignmentListAdapter by lazy {
         AssignmentListAdapter {
