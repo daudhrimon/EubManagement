@@ -3,7 +3,7 @@ package com.polok.eubmanagement.presentation.assignment.assignmentadd
 import android.widget.EditText
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef.provideAssignmentRef
-import com.polok.eubmanagement.presentation.assignment.modal.AssignmentData
+import com.polok.eubmanagement.model.AssignmentData
 import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi
 

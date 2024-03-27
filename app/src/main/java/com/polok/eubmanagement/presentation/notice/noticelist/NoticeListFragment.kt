@@ -17,10 +17,13 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
     private val viewModel: NoticeListViewModel by lazy {
         ViewModelProvider(this)[NoticeListViewModel::class.java]
     }
+    private val adapter: NoticeListAdapter by lazy {
+        NoticeListAdapter {
+            viewModel.navigateToViewNoticeFragment(it)
+        }
+    }
 
     override fun initViewModel(): BaseViewModel = viewModel
-
-    private var noticeListAdapter: NoticeListAdapter? = null
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
@@ -28,15 +31,10 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
 
         viewModel.fetchNoticeListFromFirebase()
 
+        binding.noticeRecycler.adapter = adapter
+
         viewModel.noticeLiveData.observe(viewLifecycleOwner) {
-            if (it?.isNotEmpty() == true) {
-                noticeListAdapter = NoticeListAdapter(it) { _ ->
-                    viewModel.navigateToViewNoticeFragment(
-                        it[noticeListAdapter?.adapterPosition ?: 0]
-                    )
-                }
-                binding.noticeRecycler.setAdapter(noticeListAdapter)
-            }
+            if (it?.isNotEmpty() == true) adapter.submitList(it)
         }
 
         binding.addNoticeButton.setOnClickListener {

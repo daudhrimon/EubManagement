@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.presentation.assignment.modal.AssignmentData
+import com.polok.eubmanagement.model.AssignmentData
 
 class AssignmentViewViewModel : BaseViewModel() {
     private val _assignmentLiveData = MutableLiveData<AssignmentData?>()

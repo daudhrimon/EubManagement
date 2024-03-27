@@ -10,7 +10,7 @@ import com.polok.eubmanagement.databinding.ActivityAssignmentBinding
 
 class AssignmentActivity : BaseActivity<ActivityAssignmentBinding>(
     viewBindingFactory = ActivityAssignmentBinding::inflate
-){
+) {
     override fun initOnCreate(savedInstanceState: Bundle?) {
         try {
             (supportFragmentManager.findFragmentById(

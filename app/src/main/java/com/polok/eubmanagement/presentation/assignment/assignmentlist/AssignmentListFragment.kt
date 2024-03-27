@@ -17,10 +17,13 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
     private val viewModel: AssignmentListViewModel by lazy {
         ViewModelProvider(this)[AssignmentListViewModel::class.java]
     }
+    private val adapter: AssignmentListAdapter by lazy {
+        AssignmentListAdapter {
+            viewModel.navigateToViewAssignmentFragment(it)
+        }
+    }
 
     override fun initViewModel(): BaseViewModel = viewModel
-
-    private var assignmentListAdapter: AssignmentListAdapter? = null
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
@@ -28,15 +31,10 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
 
         viewModel.fetchAssignmentListFromFirebase()
 
+        binding.assignmentRecycler.adapter = adapter
+
         viewModel.assignmentLiveData.observe(viewLifecycleOwner) {
-            if (it?.isNotEmpty() == true) {
-                assignmentListAdapter = AssignmentListAdapter(it) { _ ->
-                    viewModel.navigateToViewAssignmentFragment(
-                        it[assignmentListAdapter?.adapterPosition ?: 0]
-                    )
-                }
-                binding.assignmentRecycler.setAdapter(assignmentListAdapter)
-            }
+            if (it?.isNotEmpty() == true) adapter.submitList(it)
         }
 
         binding.addAssignmentButton.setOnClickListener {

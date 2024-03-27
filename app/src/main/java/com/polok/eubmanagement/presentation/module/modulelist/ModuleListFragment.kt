@@ -19,10 +19,19 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
     private val viewModel: ModuleListViewModel by lazy {
         ViewModelProvider(this)[ModuleListViewModel::class.java]
     }
+    private val adapter: ModuleListAdapter by lazy {
+        ModuleListAdapter {
+            try {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(it?.link))
+                )
+            } catch (e: Exception) {
+                context.showToast(e.localizedMessage)
+            }
+        }
+    }
 
     override fun initViewModel(): BaseViewModel = viewModel
-
-    private var moduleListAdapter: ModuleListAdapter? = null
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
@@ -30,21 +39,10 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
 
         viewModel.fetchModuleListFromFirebase()
 
+        binding.moduleRecycler.adapter = adapter
+
         viewModel.moduleLiveData.observe(viewLifecycleOwner) {
-            if (it?.isNotEmpty() == true) {
-                moduleListAdapter = ModuleListAdapter(it) {
-                        try {
-                            binding.root.context.startActivity(
-                                Intent(
-                                    Intent.ACTION_VIEW, Uri.parse(moduleListAdapter?.moduleLink)
-                                )
-                            )
-                        } catch (e: Exception) {
-                            binding.root.context.showToast(e.localizedMessage)
-                        }
-                    }
-                binding.moduleRecycler.setAdapter(moduleListAdapter)
-            }
+            if (it?.isNotEmpty() == true) adapter.submitList(it)
         }
 
         binding.addModuleButton.setOnClickListener {
