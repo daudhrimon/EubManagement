@@ -43,18 +43,19 @@
     <View
         android:id="@+id/user_avatar_bottom"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_semi_large"
+        android:layout_height="@dimen/spacing_large"
         app:layout_constraintTop_toBottomOf="@id/user_avatar" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_avatar_bottom">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.helper.widget.Layer
                 android:id="@+id/recent_notice_layer"
@@ -101,7 +102,9 @@
                 android:layout_marginHorizontal="@dimen/spacing_primary"
                 android:layout_marginTop="@dimen/spacing_primary_half"
                 android:background="@drawable/rounded_background_white"
+                android:overScrollMode="never"
                 android:paddingHorizontal="@dimen/spacing_small"
+                android:scrollbars="none"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/recent_notice_label"
                 tools:itemCount="3"

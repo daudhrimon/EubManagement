@@ -32,7 +32,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
-                binding.userNameAndBatch.text = String.format("%s\n%s", it.fullName ?: "", String.format(
+                binding.userNameAndBatch.text = String.format(
+                    "%s\n%s", it.fullName ?: "", String.format(
                         "%s, Section %s",
                         SharedPref.getUserBatch(),
                         it.section ?: ""
@@ -49,12 +50,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 ).apply {
                     submitList(it)
                 }
-
                 binding.viewAllButton.setOnClickListener {
                     openAnotherActivity(NoticeActivity::class.java)
                 }
             }
         }
+
         binding.classScheduleButton.setOnClickListener {
             openAnotherActivity(ScheduleActivity::class.java)
         }
