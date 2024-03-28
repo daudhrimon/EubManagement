@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/spacing_small"
+    android:background="@drawable/rounded_background_white"
+    android:paddingHorizontal="@dimen/spacing_12dp"
+    android:paddingVertical="@dimen/spacing_small">
+
+    <TextView
+        android:id="@+id/module_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/created_at"
+        app:layout_constraintEnd_toStartOf="@id/download_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="This is a Course Module" />
+
+    <TextView
+        android:id="@+id/created_at"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:textSize="@dimen/font_tiny"
+        app:layout_constraintBottom_toTopOf="@id/download_button"
+        app:layout_constraintEnd_toStartOf="@id/download_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/module_title"
+        tools:text="Created At: 01 January, 2024" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/download_button"
+        style="@style/AppSmallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginVertical="@dimen/spacing_small"
+        android:backgroundTint="@color/color_primary"
+        android:text="@string/download"
+        android:textSize="@dimen/font_small"
+        app:icon="@drawable/ic_download"
+        app:iconPadding="@dimen/spacing_small"
+        app:iconSize="@dimen/spacing_secondary"
+        app:layout_constraintBottom_toBottomOf="@id/created_at"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/module_title" />
+
+    <include
+        android:id="@+id/update_delete"
+        layout="@layout/item_update_or_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/created_at"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

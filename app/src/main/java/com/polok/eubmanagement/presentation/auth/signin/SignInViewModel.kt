@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideStudentRef
 import com.polok.eubmanagement.model.UserProfileData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.showErrorOnUi
@@ -82,7 +83,7 @@ class SignInViewModel : BaseViewModel() {
     }
 
     private fun attemptFetchUserProfileDataFrom(firebaseUid: String) {
-        FirebaseDataRef.provideStudentRef()?.child(firebaseUid)?.addValueEventListener(
+        provideStudentRef()?.child(firebaseUid)?.addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {

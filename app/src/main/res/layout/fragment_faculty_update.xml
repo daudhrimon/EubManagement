@@ -4,46 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:paddingHorizontal="@dimen/spacing_primary"
     android:paddingTop="@dimen/spacing_semi_large"
     android:paddingBottom="@dimen/spacing_primary"
-    tools:context=".presentation.assignment.assignmentadd.AssignmentAddFragment">
+    tools:context=".presentation.faculty.facultyupdate.FacultyUpdateFragment">
 
     <EditText
-        android:id="@+id/assignment_title"
+        android:id="@+id/module_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_primary"
         android:background="@drawable/rounded_background_white"
-        android:hint="@string/assignment_subject"
+        android:hint="@string/course_module_title"
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:textAppearance="@style/EditTextPrimary"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/module_link"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/assignment_details"
+        android:id="@+id/module_link"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_primary"
-        android:layout_marginBottom="@dimen/spacing_primary"
+        android:layout_marginBottom="@dimen/spacing_large"
         android:background="@drawable/rounded_background_white"
         android:gravity="start"
-        android:hint="@string/assignment_details"
+        android:hint="@string/course_module_link"
         android:inputType="textMultiLine"
+        android:minHeight="100dp"
         android:padding="20dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:textAppearance="@style/EditTextPrimary"
-        app:layout_constraintBottom_toTopOf="@id/save_button"
-        app:layout_constraintTop_toBottomOf="@id/assignment_title" />
+        app:layout_constraintBottom_toTopOf="@id/update_button"
+        app:layout_constraintTop_toBottomOf="@id/module_title" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/save_button"
+        android:id="@+id/update_button"
         style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/save"
+        android:layout_marginTop="@dimen/spacing_semi_large"
+        android:text="@string/update"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.polok.eubmanagement.widget.PrimaryLoader

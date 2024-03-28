@@ -1,7 +1,6 @@
 package com.polok.eubmanagement.presentation.module.modulelist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.polok.eubmanagement.databinding.ItemModuleListBinding

@@ -42,7 +42,7 @@ class NoticeAddViewModel : BaseViewModel() {
             )
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Notice Submitted Successfully")
+                fireMessageEvent("Notice Saved Successfully")
                 fireNavigateEvent(0, null)
             } else {
                 fireMessageEvent(task.exception?.localizedMessage)

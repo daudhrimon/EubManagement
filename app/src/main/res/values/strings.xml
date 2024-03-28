@@ -65,7 +65,7 @@
     <string name="update">Update</string>
     <string name="download">Download</string>
     <string name="back">Back</string>
-    <string name="submit">Submit</string>
+    <string name="save">Save</string>
     <string name="assignment_details">Assignment Details</string>
     <string name="assignment_subject">Assignment Subject</string>
     <string name="course_module_title">Course Module Title</string>
@@ -82,4 +82,5 @@
     <string name="recent_notices">Recent Notices</string>
     <string name="view_all">View All</string>
     <string name="label_student_portal">Student Portal</string>
+    <string name="add_faculty_s_info">Add Faculty\'s Info</string>
 </resources>

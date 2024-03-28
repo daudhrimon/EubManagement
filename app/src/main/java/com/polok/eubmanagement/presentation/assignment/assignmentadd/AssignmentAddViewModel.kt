@@ -41,7 +41,7 @@ class AssignmentAddViewModel : BaseViewModel() {
             )
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Assignment Submitted Successfully")
+                fireMessageEvent("Assignment Saved Successfully")
                 fireNavigateEvent(0, null)
             } else {
                 fireMessageEvent(task.exception?.localizedMessage)

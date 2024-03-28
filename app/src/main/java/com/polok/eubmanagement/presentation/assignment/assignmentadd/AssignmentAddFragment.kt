@@ -19,7 +19,7 @@ class AssignmentAddFragment : BaseFragment<FragmentAssignmentAddBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        binding.submitButton.setOnClickListener {
+        binding.saveButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateAssignmentInputAndUploadToFirebase(
                 binding.assignmentTitle, binding.assignmentDetails

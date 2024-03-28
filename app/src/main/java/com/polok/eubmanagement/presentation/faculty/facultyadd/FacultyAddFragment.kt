@@ -1,18 +1,19 @@
-package com.polok.eubmanagement.presentation.notice.noticeadd
+package com.polok.eubmanagement.presentation.faculty.facultyadd
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.databinding.FragmentNoticeAddBinding
+import com.polok.eubmanagement.databinding.FragmentFacultyAddBinding
 import com.polok.eubmanagement.util.SharedPref
+import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.widget.PrimaryLoader
 
-class NoticeAddFragment : BaseFragment<FragmentNoticeAddBinding>(
-    viewBindingFactory = FragmentNoticeAddBinding::inflate
+class FacultyAddFragment : BaseFragment<FragmentFacultyAddBinding>(
+    viewBindingFactory = FragmentFacultyAddBinding::inflate
 ) {
-    private val viewModel: NoticeAddViewModel by viewModels {
-        NoticeAddViewModel.Factory()
+    private val viewModel: FacultyAddViewModel by viewModels {
+        FacultyAddViewModel.Factory()
     }
 
     override fun initViewModel(): BaseViewModel = viewModel
@@ -21,8 +22,8 @@ class NoticeAddFragment : BaseFragment<FragmentNoticeAddBinding>(
 
         binding.saveButton.setOnClickListener {
             SharedPref.init(context)
-            viewModel.validateNoticeInputAndUploadToFirebase(
-                binding.noticeTitle, binding.noticeDetails
+            viewModel.validateFacultyInputsAndUploadToFirebase(
+                binding.moduleTitle, binding.moduleLink, getCurrentDate()
             )
         }
     }

@@ -75,7 +75,7 @@ class ScheduleAddViewModel : BaseViewModel() {
             )
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Class Schedule Submitted Successfully")
+                fireMessageEvent("Class Schedule Saved Successfully")
                 fireNavigateEvent(0, null)
             } else {
                 fireMessageEvent(task.exception?.localizedMessage)

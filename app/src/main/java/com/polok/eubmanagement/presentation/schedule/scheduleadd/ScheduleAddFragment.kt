@@ -34,14 +34,14 @@ class ScheduleAddFragment : BaseFragment<FragmentScheduleAddBinding>(
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
 
-        binding.submitButton.setOnClickListener {
+        binding.saveButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateScheduleInputAndUploadToFirebase(
-                binding.courseTitle,
-                binding.courseCode,
-                binding.lecturerName,
-                binding.startEndTime,
-                binding.roomNo
+                courseTitleEt = binding.courseTitle,
+                courseCodeEt = binding.courseCode,
+                lecturerNameEt = binding.lecturerName,
+                startEndTimeEt = binding.startEndTime,
+                roomNoEt = binding.roomNo
             )
         }
     }

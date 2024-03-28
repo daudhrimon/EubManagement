@@ -20,7 +20,7 @@ class ModuleAddFragment : BaseFragment<FragmentModuleAddBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        binding.submitButton.setOnClickListener {
+        binding.saveButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateModuleInputsAndUploadToFirebase(
                 binding.moduleTitle, binding.moduleLink, getCurrentDate()

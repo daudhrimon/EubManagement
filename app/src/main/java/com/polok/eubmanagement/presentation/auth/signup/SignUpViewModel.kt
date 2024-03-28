@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideStudentRef
 import com.polok.eubmanagement.model.UserProfileData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.showErrorOnUi
@@ -51,7 +52,7 @@ class SignUpViewModel : BaseViewModel() {
             passwordInputEt.showErrorOnUi("Enter at Least 6 Digit Password")
             return
         }
-        if (gender == null || gender!!.isEmpty() || gender == genderZero) {
+        if (gender == null || gender?.isEmpty() == true || gender == genderZero) {
             fireMessageEvent(genderZero)
             return
         }
@@ -68,12 +69,12 @@ class SignUpViewModel : BaseViewModel() {
             return
         }
         attemptSignupUserToFirebase(
-            firebaseAuth,
-            studentIdEt.getText().toString(),
-            fullNameEt.getText().toString(),
-            mobileInputEt.getText().toString(),
-            emailInputEt.getText().toString(),
-            passwordInputEt.getText().toString()
+            firebaseAuth = firebaseAuth,
+            studentId = studentIdEt.text.toString(),
+            fullName = fullNameEt.text.toString(),
+            mobileInput = mobileInputEt.text.toString(),
+            emailInput = emailInputEt.text.toString(),
+            passwordInput = passwordInputEt.text.toString()
         )
     }
 
@@ -103,7 +104,10 @@ class SignUpViewModel : BaseViewModel() {
 
     private fun attemptPostUserBatchToFirebase(
         firebaseUid: String,
-        studentId: String, fullName: String, mobileInput: String, emailInput: String
+        studentId: String,
+        fullName: String,
+        mobileInput: String,
+        emailInput: String
     ) {
         FirebaseDataRef.provideBatchRef()?.child(firebaseUid)?.setValue(batch)
             ?.addOnCompleteListener { task ->
@@ -115,11 +119,11 @@ class SignUpViewModel : BaseViewModel() {
                         fireLoadingEvent(false)
                     } finally {
                         attemptPostUserProfileDataToFirebase(
-                            firebaseUid,
-                            studentId,
-                            fullName,
-                            mobileInput,
-                            emailInput
+                            firebaseUid = firebaseUid,
+                            studentId = studentId,
+                            fullName = fullName,
+                            mobileInput = mobileInput,
+                            emailInput = emailInput
                         )
                     }
                 } else {
@@ -131,20 +135,24 @@ class SignUpViewModel : BaseViewModel() {
 
     private fun attemptPostUserProfileDataToFirebase(
         firebaseUid: String,
-        studentId: String, fullName: String, mobileInput: String, emailInput: String
+        studentId: String,
+        fullName: String,
+        mobileInput: String,
+        emailInput: String
     ) {
-        val userProfileData = UserProfileData(
-            studentId,
-            fullName,
-            mobileInput,
-            emailInput,
-            gender,
-            section,
-            bloodGroup,
-            false
-        )
-        FirebaseDataRef.provideStudentRef()?.child(firebaseUid)?.setValue(userProfileData)
-            ?.addOnCompleteListener { task ->
+        provideStudentRef()?.child(firebaseUid)?.setValue(
+            UserProfileData(
+                studentId = studentId,
+                fullName = fullName,
+                mobileNumber = mobileInput,
+                email = emailInput,
+                gender = gender,
+                section = section,
+                bloodGroup = bloodGroup,
+                image = "",
+                isAdmin = false
+            )
+        )?.addOnCompleteListener { task ->
                 if (task.isComplete) {
                     fireMessageEvent("Sign up Successfully")
                     fireNavigateEvent(0, null)
