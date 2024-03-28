@@ -79,4 +79,6 @@
     <string name="room_number">Room Number</string>
     <string name="add_course_module">Add Course Module</string>
     <string name="add_class_schedule">Add Class Schedule</string>
+    <string name="recent_notices">Recent Notices</string>
+    <string name="view_all">View All</string>
 </resources>

@@ -5,13 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:paddingHorizontal="@dimen/spacing_semi_large"
     tools:context=".presentation.dashboard.HomeFragment">
+
+    <View
+        android:id="@+id/top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/dashboard_top_bg"
+        app:layout_constraintBottom_toBottomOf="@id/user_avatar_bottom"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/user_avatar"
         android:layout_width="@dimen/primary_icon_size"
         android:layout_height="@dimen/primary_icon_size"
+        android:layout_marginStart="@dimen/spacing_semi_large"
         android:src="@drawable/avaterprof"
         app:layout_constraintBottom_toBottomOf="@id/user_name_and_batch"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,136 +32,172 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/spacing_semi_large"
+        android:textColor="@color/color_white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/user_avatar"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Welcome User\nCSE Batch-23 (EVE)" />
 
-    <androidx.constraintlayout.helper.widget.Layer
-        android:id="@+id/recent_notice_layer"
+    <View
+        android:id="@+id/user_avatar_bottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:constraint_referenced_ids="recent_notice_label,view_all_button,recent_notice_recycler" />
+        android:layout_height="@dimen/spacing_semi_large"
+        app:layout_constraintTop_toBottomOf="@id/user_avatar" />
 
-    <TextView
-        android:id="@+id/recent_notice_label"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:paddingStart="@dimen/spacing_6dp"
-        android:text="Recent Notices"
-        android:textSize="@dimen/font_secondary"
-        app:layout_constraintTop_toBottomOf="@id/user_name_and_batch" />
-
-    <TextView
-        android:id="@+id/view_all_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingEnd="@dimen/spacing_6dp"
-        android:text="View All"
-        android:textSize="@dimen/font_secondary"
-        app:layout_constraintBottom_toBottomOf="@id/recent_notice_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/user_name_and_batch"
-        app:layout_constraintTop_toTopOf="@id/recent_notice_label" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recent_notice_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_primary_half"
-        android:background="@drawable/rounded_background_white"
-        android:paddingHorizontal="@dimen/spacing_small"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/recent_notice_label"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_notice_list" />
-
-    <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/class_schedule_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_primary"
-        android:layout_marginEnd="@dimen/spacing_6dp"
-        app:image="@drawable/ic_calendar"
-        app:layout_constraintEnd_toStartOf="@id/notice_button"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recent_notice_recycler"
-        app:layout_goneMarginTop="@dimen/spacing_large"
-        app:text="Class\nSchedule" />
-
-    <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/notice_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_6dp"
-        android:layout_marginEnd="@dimen/spacing_6dp"
-        app:image="@drawable/ic_notice"
-        app:layout_constraintBottom_toBottomOf="@id/class_schedule_button"
-        app:layout_constraintEnd_toStartOf="@id/assignment_button"
-        app:layout_constraintStart_toEndOf="@id/class_schedule_button"
-        app:layout_constraintTop_toTopOf="@id/class_schedule_button"
-        app:text="Notice\n" />
-
-    <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/assignment_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_6dp"
-        app:image="@drawable/ic_assignment"
-        app:layout_constraintBottom_toBottomOf="@id/notice_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/notice_button"
-        app:layout_constraintTop_toTopOf="@id/notice_button"
-        app:text="Assignment\n" />
-
-    <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/course_module_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_primary"
-        android:layout_marginEnd="@dimen/spacing_6dp"
-        app:image="@drawable/ic_course"
-        app:layout_constraintEnd_toStartOf="@id/Student_portal_button"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/class_schedule_button"
-        app:text="Course\nModule" />
-
-    <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/Student_portal_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_6dp"
-        android:layout_marginEnd="@dimen/spacing_6dp"
-        app:image="@drawable/ic_student"
-        app:layout_constraintBottom_toBottomOf="@id/course_module_button"
-        app:layout_constraintEnd_toStartOf="@id/faculty_button"
-        app:layout_constraintStart_toEndOf="@id/course_module_button"
-        app:layout_constraintTop_toTopOf="@id/course_module_button"
-        app:text="Student\nPortal" />
-
-    <com.polok.eubmanagement.widget.DashboardButton
-        android:id="@+id/faculty_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_6dp"
-        app:image="@drawable/ic_facalty"
-        app:layout_constraintBottom_toBottomOf="@id/Student_portal_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/Student_portal_button"
-        app:layout_constraintTop_toTopOf="@id/Student_portal_button"
-        app:text="Faculty\n" />
-
-    <com.polok.eubmanagement.widget.PrimaryLoader
-        android:id="@+id/primary_loader"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/user_avatar_bottom">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.helper.widget.Layer
+                android:id="@+id/recent_notice_layer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:constraint_referenced_ids="recent_notice_label,view_all_button,recent_notice_recycler"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/recent_notice_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_primary"
+                android:layout_marginTop="@dimen/spacing_primary"
+                android:gravity="start"
+                android:paddingStart="@dimen/spacing_6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/recent_notices"
+                android:textSize="@dimen/font_secondary"
+                app:layout_constraintEnd_toStartOf="@id/view_all_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/view_all_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_primary"
+                android:gravity="end"
+                android:paddingStart="0dp"
+                android:paddingEnd="@dimen/spacing_6dp"
+                android:text="@string/view_all"
+                android:textSize="@dimen/font_secondary"
+                app:layout_constraintBottom_toBottomOf="@id/recent_notice_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/recent_notice_label"
+                app:layout_constraintTop_toTopOf="@id/recent_notice_label" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recent_notice_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_primary"
+                android:layout_marginTop="@dimen/spacing_primary_half"
+                android:background="@drawable/rounded_background_white"
+                android:paddingHorizontal="@dimen/spacing_small"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/recent_notice_label"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_notice_list" />
+
+            <com.polok.eubmanagement.widget.DashboardButton
+                android:id="@+id/class_schedule_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_primary"
+                android:layout_marginTop="@dimen/spacing_primary"
+                android:layout_marginEnd="@dimen/spacing_6dp"
+                app:image="@drawable/ic_calendar"
+                app:layout_constraintEnd_toStartOf="@id/notice_button"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recent_notice_recycler"
+                app:layout_goneMarginTop="@dimen/spacing_large"
+                app:text="Class\nSchedule" />
+
+            <com.polok.eubmanagement.widget.DashboardButton
+                android:id="@+id/notice_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_6dp"
+                android:layout_marginEnd="@dimen/spacing_6dp"
+                app:image="@drawable/ic_notice"
+                app:layout_constraintBottom_toBottomOf="@id/class_schedule_button"
+                app:layout_constraintEnd_toStartOf="@id/assignment_button"
+                app:layout_constraintStart_toEndOf="@id/class_schedule_button"
+                app:layout_constraintTop_toTopOf="@id/class_schedule_button"
+                app:text="Notice\n" />
+
+            <com.polok.eubmanagement.widget.DashboardButton
+                android:id="@+id/assignment_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_6dp"
+                android:layout_marginEnd="@dimen/spacing_primary"
+                app:image="@drawable/ic_assignment"
+                app:layout_constraintBottom_toBottomOf="@id/notice_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/notice_button"
+                app:layout_constraintTop_toTopOf="@id/notice_button"
+                app:text="Assignment\n" />
+
+            <com.polok.eubmanagement.widget.DashboardButton
+                android:id="@+id/course_module_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_primary"
+                android:layout_marginTop="@dimen/spacing_primary"
+                android:layout_marginEnd="@dimen/spacing_6dp"
+                app:image="@drawable/ic_course"
+                app:layout_constraintEnd_toStartOf="@id/Student_portal_button"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/class_schedule_button"
+                app:text="Course\nModule" />
+
+            <com.polok.eubmanagement.widget.DashboardButton
+                android:id="@+id/Student_portal_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_6dp"
+                android:layout_marginEnd="@dimen/spacing_6dp"
+                app:image="@drawable/ic_student"
+                app:layout_constraintBottom_toBottomOf="@id/course_module_button"
+                app:layout_constraintEnd_toStartOf="@id/faculty_button"
+                app:layout_constraintStart_toEndOf="@id/course_module_button"
+                app:layout_constraintTop_toTopOf="@id/course_module_button"
+                app:text="Student\nPortal" />
+
+            <com.polok.eubmanagement.widget.DashboardButton
+                android:id="@+id/faculty_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_6dp"
+                android:layout_marginEnd="@dimen/spacing_primary"
+                app:image="@drawable/ic_facalty"
+                app:layout_constraintBottom_toBottomOf="@id/Student_portal_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/Student_portal_button"
+                app:layout_constraintTop_toTopOf="@id/Student_portal_button"
+                app:text="Faculty\n" />
+
+            <com.polok.eubmanagement.widget.PrimaryLoader
+                android:id="@+id/primary_loader"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
