@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/noticeUpdateFragment"
         android:name="com.polok.eubmanagement.presentation.notice.noticeupdate.NoticeUpdateFragment"
-        android:label="fragment_notice_update"
+        android:label="Update Notice"
         tools:layout="@layout/fragment_notice_update" />
 
 </navigation>

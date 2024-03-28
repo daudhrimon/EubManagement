@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/moduleUpdateFragment"
         android:name="com.polok.eubmanagement.presentation.module.moduleupdate.ModuleUpdateFragment"
-        android:label="fragment_module_update"
+        android:label="Update Course Module"
         tools:layout="@layout/fragment_module_update" />
 
 </navigation>

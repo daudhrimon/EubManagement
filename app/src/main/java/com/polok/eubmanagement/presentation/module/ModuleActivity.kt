@@ -15,7 +15,8 @@ class ModuleActivity : BaseActivity<ActivityModuleBinding>(
         try {
             (supportFragmentManager.findFragmentById(
                 R.id.fragment_container
-            ) as NavHostFragment?)?.navController?.addOnDestinationChangedListener { _: NavController?, destination: NavDestination, _: Bundle? ->
+            ) as NavHostFragment?)?.navController?.addOnDestinationChangedListener {
+                _: NavController?, destination: NavDestination, _: Bundle? ->
                 binding.toolBar.title.text = destination.label
             }
         } catch (_: Exception) { }

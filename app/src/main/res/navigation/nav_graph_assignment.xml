@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/assignmentUpdateFragment"
         android:name="com.polok.eubmanagement.presentation.assignment.assignmentupdate.AssignmentUpdateFragment"
-        android:label="fragment_assignment_update"
+        android:label="Update Assignment"
         tools:layout="@layout/fragment_assignment_update" />
 
 </navigation>

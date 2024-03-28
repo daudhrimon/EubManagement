@@ -7,6 +7,7 @@ import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentHomeBinding
 import com.polok.eubmanagement.presentation.assignment.AssignmentActivity
+import com.polok.eubmanagement.presentation.faculty.FacultyActivity
 import com.polok.eubmanagement.presentation.module.ModuleActivity
 import com.polok.eubmanagement.presentation.notice.NoticeActivity
 import com.polok.eubmanagement.presentation.notice.noticelist.NoticeListAdapter
@@ -70,6 +71,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         }
         binding.StudentPortalButton.setOnClickListener {
             openAnotherActivity(PortalActivity::class.java)
+        }
+        binding.facultyButton.setOnClickListener {
+            openAnotherActivity(FacultyActivity::class.java)
         }
     }
 

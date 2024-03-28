@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/scheduleUpdateFragment"
         android:name="com.polok.eubmanagement.presentation.schedule.scheduleupdate.ScheduleUpdateFragment"
-        android:label="fragment_schedule_update"
+        android:label="Update Class Schedule"
         tools:layout="@layout/fragment_schedule_update" />
 
 </navigation>
