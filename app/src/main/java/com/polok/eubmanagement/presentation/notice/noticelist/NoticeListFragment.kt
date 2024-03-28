@@ -20,10 +20,10 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
     private val adapter: NoticeListAdapter by lazy {
         NoticeListAdapter(
             onClickListener = {
-                viewModel.navigateToViewNoticeFragment(it)
+                viewModel.navigateToNoticeViewFragment(it)
             },
             onUpdateClickListener = {
-
+                viewModel.navigateToNoticeUpdateFragment(it)
             }
         )
     }
@@ -47,7 +47,7 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
 
         binding.addNoticeButton.setOnClickListener {
             viewModel.fireNavigateEvent(
-                R.id.action_viewNoticeFragment_to_addNoticeFragment, null
+                R.id.action_noticeListFragment_to_addNoticeFragment, null
             )
         }
     }

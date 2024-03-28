@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_primary"
         android:background="@drawable/rounded_background_white"
-        android:hint="Course Module Title"
+        android:hint="@string/course_module_title"
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
@@ -35,22 +35,22 @@
         android:layout_marginBottom="@dimen/spacing_large"
         android:background="@drawable/rounded_background_white"
         android:gravity="start"
-        android:hint="Course Module Link"
+        android:hint="@string/course_module_link"
         android:inputType="textMultiLine"
         android:minHeight="100dp"
         android:padding="20dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:textAppearance="@style/EditTextPrimary"
-        app:layout_constraintBottom_toTopOf="@id/add_module_button"
+        app:layout_constraintBottom_toTopOf="@id/submit_button"
         app:layout_constraintTop_toBottomOf="@id/module_title" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_module_button"
+        android:id="@+id/submit_button"
         style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_semi_large"
-        android:text="Add Course Module"
+        android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.polok.eubmanagement.widget.PrimaryLoader

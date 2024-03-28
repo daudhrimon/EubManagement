@@ -13,6 +13,7 @@ import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
 import com.polok.eubmanagement.model.NoticeData
+import com.polok.eubmanagement.presentation.notice.noticeupdate.NoticeUpdateFragment
 
 class NoticeListViewModel : BaseViewModel() {
     private val _noticeLiveData = MutableLiveData<List<NoticeData?>?>()
@@ -51,11 +52,20 @@ class NoticeListViewModel : BaseViewModel() {
         )
     }
 
-    fun navigateToViewNoticeFragment(noticeData: NoticeData?) {
+    fun navigateToNoticeViewFragment(noticeData: NoticeData?) {
         if (noticeData != null) {
             fireNavigateEvent(
-                R.id.action_viewNoticeFragment_to_noticeViewFragment,
+                R.id.action_noticeListFragment_to_noticeViewFragment,
                 Bundle().apply { putString("notice_data", Gson().toJson(noticeData)) }
+            )
+        } else fireMessageEvent("Something went wrong")
+    }
+
+    fun navigateToNoticeUpdateFragment(noticeData: NoticeData?) {
+        if (noticeData != null) {
+            fireNavigateEvent(
+                R.id.action_noticeListFragment_to_noticeUpdateFragment,
+                NoticeUpdateFragment.generateBundle(noticeData)
             )
         } else fireMessageEvent("Something went wrong")
     }

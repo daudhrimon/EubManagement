@@ -19,7 +19,7 @@ class NoticeAddFragment : BaseFragment<FragmentNoticeAddBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        binding.saveNoticeButton.setOnClickListener {
+        binding.submitButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateNoticeInputAndUploadToFirebase(
                 binding.noticeTitle, binding.noticeDetails

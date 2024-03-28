@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
 import com.polok.eubmanagement.model.ModuleData
+import com.polok.eubmanagement.presentation.module.moduleupdate.ModuleUpdateFragment
 
 class ModuleListViewModel : BaseViewModel() {
     private val _moduleLiveData = MutableLiveData<List<ModuleData?>?>()
@@ -46,6 +48,15 @@ class ModuleListViewModel : BaseViewModel() {
                 }
             }
         )
+    }
+
+    fun navigateToModuleUpdateFragment(moduleData: ModuleData?) {
+        if (moduleData != null) {
+            fireNavigateEvent(
+                R.id.action_moduleListFragment_to_moduleUpdateFragment,
+                ModuleUpdateFragment.generateBundle(moduleData)
+            )
+        } else fireMessageEvent("Something went wrong")
     }
 
     class Factory : ViewModelProvider.Factory {

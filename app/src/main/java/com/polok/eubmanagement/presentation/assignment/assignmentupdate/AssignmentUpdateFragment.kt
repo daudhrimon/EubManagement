@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.databinding.FragmentAssignmentAddBinding
+import com.polok.eubmanagement.databinding.FragmentAssignmentUpdateBinding
 import com.polok.eubmanagement.model.AssignmentData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.widget.PrimaryLoader
 
-class AssignmentUpdateFragment : BaseFragment<FragmentAssignmentAddBinding>(
-    viewBindingFactory = FragmentAssignmentAddBinding::inflate
+class AssignmentUpdateFragment : BaseFragment<FragmentAssignmentUpdateBinding>(
+    viewBindingFactory = FragmentAssignmentUpdateBinding::inflate
 ) {
     private val viewModel: AssignmentUpdateViewModel by viewModels {
         AssignmentUpdateViewModel.Factory()
@@ -23,7 +23,7 @@ class AssignmentUpdateFragment : BaseFragment<FragmentAssignmentAddBinding>(
         binding.assignmentTitle.setText(arguments?.getString("title"))
         binding.assignmentDetails.setText(arguments?.getString("details"))
 
-        binding.saveAssignmentButton.setOnClickListener {
+        binding.updateButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateAssignmentInputAndUploadToFirebase(
                 key = arguments?.getString("key"),
@@ -42,7 +42,7 @@ class AssignmentUpdateFragment : BaseFragment<FragmentAssignmentAddBinding>(
 
     companion object {
 
-        fun processBundle(assignmentData: AssignmentData?) : Bundle = Bundle().apply {
+        fun generateBundle(assignmentData: AssignmentData?) : Bundle = Bundle().apply {
             putString("title", assignmentData?.title)
             putString("details", assignmentData?.details)
             putString("created_at", assignmentData?.createdAt)

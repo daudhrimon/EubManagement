@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
@@ -31,7 +32,7 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
                 }
             },
             onUpdateClickListener = {
-
+                viewModel.navigateToModuleUpdateFragment(it)
             }
         )
     }
@@ -43,7 +44,7 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
         viewModel.fetchModuleListFromFirebase()
 
         adapter.isAdmin = SharedPref.getUserProfile().isAdmin
-        if (adapter.isAdmin == true) binding.addModuleButton.makeVisible()
+        if (adapter.isAdmin == true) binding.addButton.makeVisible()
 
         viewModel.moduleLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
@@ -53,7 +54,7 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
             }
         }
 
-        binding.addModuleButton.setOnClickListener {
+        binding.addButton.setOnClickListener {
             viewModel.fireNavigateEvent(
                 R.id.action_moduleListFragment_to_moduleAddFragment,null
             )
@@ -61,4 +62,9 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
     }
 
     override fun initPrimaryLoader(): PrimaryLoader = binding.primaryLoader
+
+    override fun onNavigateEvent(id: Int, bundle: Bundle?) {
+        super.onNavigateEvent(id, bundle)
+        findNavController().navigate(id, bundle)
+    }
 }

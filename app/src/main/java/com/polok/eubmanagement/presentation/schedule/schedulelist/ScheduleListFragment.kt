@@ -20,7 +20,7 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
     private val adapter: ScheduleListAdapter by lazy {
         ScheduleListAdapter(
             onUpdateClickListener = {
-
+                viewModel.navigateToScheduleUpdateFragment(it)
             }
         )
     }
@@ -32,7 +32,7 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
         viewModel.fetchScheduleListFromFirebase()
 
         adapter.isAdmin = SharedPref.getUserProfile().isAdmin
-        if (adapter.isAdmin == true) binding.addScheduleButton.makeVisible()
+        if (adapter.isAdmin == true) binding.addButton.makeVisible()
 
         viewModel.scheduleLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
@@ -42,7 +42,7 @@ class ScheduleListFragment : BaseFragment<FragmentScheduleListBinding>(
             }
         }
 
-        binding.addScheduleButton.setOnClickListener {
+        binding.addButton.setOnClickListener {
             viewModel.fireNavigateEvent(
                 R.id.action_scheduleListFragment_to_scheduleAddFragment, null
             )

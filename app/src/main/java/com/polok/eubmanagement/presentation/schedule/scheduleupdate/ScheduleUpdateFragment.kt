@@ -7,13 +7,13 @@ import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.databinding.FragmentScheduleAddBinding
+import com.polok.eubmanagement.databinding.FragmentScheduleUpdateBinding
 import com.polok.eubmanagement.model.ScheduleData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.widget.PrimaryLoader
 
-class ScheduleUpdateFragment : BaseFragment<FragmentScheduleAddBinding>(
-    viewBindingFactory = FragmentScheduleAddBinding::inflate
+class ScheduleUpdateFragment : BaseFragment<FragmentScheduleUpdateBinding>(
+    viewBindingFactory = FragmentScheduleUpdateBinding::inflate
 ) {
     private val viewModel: ScheduleUpdateViewModel by viewModels {
         ScheduleUpdateViewModel.Factory()
@@ -46,7 +46,7 @@ class ScheduleUpdateFragment : BaseFragment<FragmentScheduleAddBinding>(
             }
         }
 
-        binding.addScheduleButton.setOnClickListener {
+        binding.updateButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateScheduleInputAndUploadToFirebase(
                 key = arguments?.getString("key"),
@@ -68,7 +68,7 @@ class ScheduleUpdateFragment : BaseFragment<FragmentScheduleAddBinding>(
 
     companion object {
 
-        fun processBundle(scheduleData: ScheduleData?) : Bundle = Bundle().apply {
+        fun generateBundle(scheduleData: ScheduleData?) : Bundle = Bundle().apply {
             putString("course_title", scheduleData?.courseTitle)
             putString("course_code", scheduleData?.courseCode)
             putString("lecturer_name", scheduleData?.lecturerName)

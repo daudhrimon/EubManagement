@@ -20,10 +20,10 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
     private val adapter: AssignmentListAdapter by lazy {
         AssignmentListAdapter(
             onClickListener = {
-                viewModel.navigateToViewAssignmentFragment(it)
+                viewModel.navigateToAssignmentViewFragment(it)
             },
             onUpdateClickListener = {
-
+                viewModel.navigateToAssignmentUpdateFragment(it)
             }
         )
     }
@@ -47,7 +47,7 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
 
         binding.addAssignmentButton.setOnClickListener {
             viewModel.fireNavigateEvent(
-               R.id.action_viewAssignmentFragment_to_addAssignmentFragment, null
+               R.id.action_assignmentListFragment_to_addAssignmentFragment, null
             )
         }
     }

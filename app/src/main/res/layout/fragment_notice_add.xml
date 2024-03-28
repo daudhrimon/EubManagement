@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_background_white"
-        android:hint="Notice Title"
+        android:hint="@string/notice_title"
         android:inputType="text"
         android:maxLines="1"
         android:padding="20dp"
@@ -30,20 +30,20 @@
         android:layout_marginBottom="@dimen/spacing_primary"
         android:background="@drawable/rounded_background_white"
         android:gravity="start"
-        android:hint="Notice Details"
+        android:hint="@string/notice_details"
         android:inputType="textMultiLine"
         android:padding="20dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:textAppearance="@style/EditTextPrimary"
-        app:layout_constraintBottom_toTopOf="@id/save_notice_button"
+        app:layout_constraintBottom_toTopOf="@id/submit_button"
         app:layout_constraintTop_toBottomOf="@id/notice_title" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/save_notice_button"
+        android:id="@+id/submit_button"
         style="@style/AppPrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Notice"
+        android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.polok.eubmanagement.widget.PrimaryLoader

@@ -44,7 +44,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         viewModel.noticeLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) {
                 binding.recentNoticeLayer.makeVisible()
-                binding.recentNoticeRecycler.adapter = NoticeListAdapter(null).apply {
+                binding.recentNoticeRecycler.adapter = NoticeListAdapter(
+                    null,null
+                ).apply {
                     submitList(it)
                 }
 

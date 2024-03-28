@@ -9,14 +9,21 @@
         android:id="@+id/scheduleListFragment"
         android:name="com.polok.eubmanagement.presentation.schedule.schedulelist.ScheduleListFragment"
         android:label="Class Schedules"
-        tools:layout="@layout/fragment_schedule_list" >
+        tools:layout="@layout/fragment_schedule_list">
         <action
             android:id="@+id/action_scheduleListFragment_to_scheduleAddFragment"
             app:destination="@id/scheduleAddFragment"
             app:enterAnim="@anim/enter_anim"
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
-            app:popExitAnim="@anim/pop_exit_anim"/>
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_scheduleListFragment_to_scheduleUpdateFragment"
+            app:destination="@id/scheduleUpdateFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -24,5 +31,11 @@
         android:name="com.polok.eubmanagement.presentation.schedule.scheduleadd.ScheduleAddFragment"
         android:label="Add Class Schedule"
         tools:layout="@layout/fragment_schedule_add" />
+
+    <fragment
+        android:id="@+id/scheduleUpdateFragment"
+        android:name="com.polok.eubmanagement.presentation.schedule.scheduleupdate.ScheduleUpdateFragment"
+        android:label="fragment_schedule_update"
+        tools:layout="@layout/fragment_schedule_update" />
 
 </navigation>

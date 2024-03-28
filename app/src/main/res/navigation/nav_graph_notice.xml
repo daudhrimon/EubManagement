@@ -11,15 +11,22 @@
         android:label="Notices"
         tools:layout="@layout/fragment_notice_list">
         <action
-            android:id="@+id/action_viewNoticeFragment_to_noticeViewFragment"
+            android:id="@+id/action_noticeListFragment_to_noticeViewFragment"
             app:destination="@id/noticeViewFragment"
             app:enterAnim="@anim/enter_anim"
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
-            app:popExitAnim="@anim/pop_exit_anim"/>
+            app:popExitAnim="@anim/pop_exit_anim" />
         <action
-            android:id="@+id/action_viewNoticeFragment_to_addNoticeFragment"
+            android:id="@+id/action_noticeListFragment_to_addNoticeFragment"
             app:destination="@id/noticeAddFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_noticeListFragment_to_noticeUpdateFragment"
+            app:destination="@id/noticeUpdateFragment"
             app:enterAnim="@anim/enter_anim"
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
@@ -36,6 +43,12 @@
         android:id="@+id/noticeViewFragment"
         android:name="com.polok.eubmanagement.presentation.notice.noticeview.NoticeViewFragment"
         android:label="Notice"
-        tools:layout="@layout/fragment_notice_view"/>
+        tools:layout="@layout/fragment_notice_view" />
+
+    <fragment
+        android:id="@+id/noticeUpdateFragment"
+        android:name="com.polok.eubmanagement.presentation.notice.noticeupdate.NoticeUpdateFragment"
+        android:label="fragment_notice_update"
+        tools:layout="@layout/fragment_notice_update" />
 
 </navigation>

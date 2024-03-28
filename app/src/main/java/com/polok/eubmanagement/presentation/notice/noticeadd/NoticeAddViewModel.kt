@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideNoticeRef
 import com.polok.eubmanagement.model.NoticeData
 import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi
@@ -32,14 +32,21 @@ class NoticeAddViewModel : BaseViewModel() {
 
     private fun uploadNoticeTOFirebase(title: String, details: String, date: String) {
         fireLoadingEvent(true)
-        val pushNoticeRef: DatabaseReference? = FirebaseDataRef.provideNoticeRef()?.push()
-        pushNoticeRef?.setValue(
-            NoticeData(title, details, date, pushNoticeRef.getKey().toString())
+        val dbPushRef: DatabaseReference? = provideNoticeRef()?.push()
+        dbPushRef?.setValue(
+            NoticeData(
+                title = title,
+                details = details,
+                createdAt = date,
+                key = dbPushRef.key
+            )
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Notice Added Successfully")
+                fireMessageEvent("Notice Submitted Successfully")
                 fireNavigateEvent(0, null)
-            } else fireMessageEvent(task.exception!!.localizedMessage)
+            } else {
+                fireMessageEvent(task.exception?.localizedMessage)
+            }
             fireLoadingEvent(false)
         }
     }

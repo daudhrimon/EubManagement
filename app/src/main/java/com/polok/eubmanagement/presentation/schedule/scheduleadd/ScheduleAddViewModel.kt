@@ -45,7 +45,7 @@ class ScheduleAddViewModel : BaseViewModel() {
             return
         }
         uploadScheduleTOFirebase(
-            day!!, courseTitleEt.getText().toString(),
+            day, courseTitleEt.getText().toString(),
             courseCodeEt.getText().toString(),
             lecturerNameEt.getText().toString(),
             startEndTimeEt.getText().toString(),
@@ -54,7 +54,7 @@ class ScheduleAddViewModel : BaseViewModel() {
     }
 
     private fun uploadScheduleTOFirebase(
-        day: String,
+        day: String?,
         courseTitle: String,
         courseCode: String,
         lecturerName: String,
@@ -62,14 +62,24 @@ class ScheduleAddViewModel : BaseViewModel() {
         roomNo: String
     ) {
         fireLoadingEvent(true)
-        val pushNoticeRef: DatabaseReference? = FirebaseDataRef.provideScheduleRef()?.push()
-        pushNoticeRef?.setValue(
-            ScheduleData(day, courseTitle, courseCode, lecturerName, startEndTime, roomNo)
+        val dbRef: DatabaseReference? = FirebaseDataRef.provideScheduleRef()?.push()
+        dbRef?.setValue(
+            ScheduleData(
+                courseTitle = courseTitle,
+                courseCode = courseCode,
+                lecturerName = lecturerName,
+                startEndTime = startEndTime,
+                roomNo = roomNo,
+                day = day,
+                key = dbRef.key
+            )
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Class Schedule Added Successfully")
+                fireMessageEvent("Class Schedule Submitted Successfully")
                 fireNavigateEvent(0, null)
-            } else fireMessageEvent(task.exception!!.localizedMessage)
+            } else {
+                fireMessageEvent(task.exception?.localizedMessage)
+            }
             fireLoadingEvent(false)
         }
     }

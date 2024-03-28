@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.databinding.FragmentNoticeAddBinding
+import com.polok.eubmanagement.databinding.FragmentNoticeUpdateBinding
 import com.polok.eubmanagement.model.NoticeData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.widget.PrimaryLoader
 
-class NoticeUpdateFragment : BaseFragment<FragmentNoticeAddBinding>(
-    viewBindingFactory = FragmentNoticeAddBinding::inflate
+class NoticeUpdateFragment : BaseFragment<FragmentNoticeUpdateBinding>(
+    viewBindingFactory = FragmentNoticeUpdateBinding::inflate
 ) {
     private val viewModel: NoticeUpdateViewModel by viewModels {
         NoticeUpdateViewModel.Factory()
@@ -23,7 +23,7 @@ class NoticeUpdateFragment : BaseFragment<FragmentNoticeAddBinding>(
         binding.noticeTitle.setText(arguments?.getString("title"))
         binding.noticeDetails.setText(arguments?.getString("details"))
 
-        binding.saveNoticeButton.setOnClickListener {
+        binding.updateButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateNoticeInputAndUploadToFirebase(
                 key = arguments?.getString("key"),
@@ -42,7 +42,7 @@ class NoticeUpdateFragment : BaseFragment<FragmentNoticeAddBinding>(
 
     companion object {
 
-        fun processBundle(noticeData: NoticeData?) : Bundle = Bundle().apply {
+        fun generateBundle(noticeData: NoticeData?) : Bundle = Bundle().apply {
             putString("title", noticeData?.title)
             putString("details", noticeData?.details)
             putString("created_at", noticeData?.createdAt)

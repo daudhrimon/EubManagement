@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideModuleRef
 import com.polok.eubmanagement.model.ModuleData
 import com.polok.eubmanagement.util.showErrorOnUi
 
@@ -31,15 +31,20 @@ class ModuleAddViewModel : BaseViewModel() {
 
     private fun uploadModuleTOFirebase(moduleTitle: String, moduleLink: String, createdAt: String) {
         fireLoadingEvent(true)
-        val pushNoticeRef: DatabaseReference? = FirebaseDataRef.provideModuleRef()?.push()
-        pushNoticeRef?.setValue(
-            ModuleData(moduleTitle, moduleLink, createdAt, pushNoticeRef.getKey())
+        val dbPushRef: DatabaseReference? = provideModuleRef()?.push()
+        dbPushRef?.setValue(
+            ModuleData(
+                title = moduleTitle,
+                link = moduleLink,
+                createdAt = createdAt,
+                dbPushRef.key
+            )
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Course Module Added Successfully")
+                fireMessageEvent("Course Module Submitted Successfully")
                 fireNavigateEvent(0, null)
             } else {
-                fireMessageEvent(task.exception!!.localizedMessage)
+                fireMessageEvent(task.exception?.localizedMessage)
             }
             fireLoadingEvent(false)
         }

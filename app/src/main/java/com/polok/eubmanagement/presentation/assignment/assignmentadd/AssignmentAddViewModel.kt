@@ -31,12 +31,17 @@ class AssignmentAddViewModel : BaseViewModel() {
 
     private fun uploadAssignmentTOFirebase(title: String, details: String, date: String) {
         fireLoadingEvent(true)
-        val pushAssignmentRef = provideAssignmentRef()!!.push()
-        pushAssignmentRef.setValue(
-            AssignmentData(title, details, date, pushAssignmentRef.getKey())
-        ).addOnCompleteListener { task ->
+        val dbPushRes = provideAssignmentRef()?.push()
+        dbPushRes?.setValue(
+            AssignmentData(
+                title = title,
+                details = details,
+                createdAt = date,
+                key = dbPushRes.key
+            )
+        )?.addOnCompleteListener { task ->
             if (task.isComplete) {
-                fireMessageEvent("Assignment Added Successfully")
+                fireMessageEvent("Assignment Submitted Successfully")
                 fireNavigateEvent(0, null)
             } else {
                 fireMessageEvent(task.exception?.localizedMessage)

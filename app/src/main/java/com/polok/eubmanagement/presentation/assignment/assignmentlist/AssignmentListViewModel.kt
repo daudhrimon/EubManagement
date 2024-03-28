@@ -13,6 +13,7 @@ import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef
 import com.polok.eubmanagement.model.AssignmentData
+import com.polok.eubmanagement.presentation.assignment.assignmentupdate.AssignmentUpdateFragment
 
 class AssignmentListViewModel : BaseViewModel() {
 
@@ -46,11 +47,20 @@ class AssignmentListViewModel : BaseViewModel() {
         )
     }
 
-    fun navigateToViewAssignmentFragment(assignmentData: AssignmentData?) {
+    fun navigateToAssignmentViewFragment(assignmentData: AssignmentData?) {
         if (assignmentData != null) {
             fireNavigateEvent(
-                R.id.action_viewAssignmentFragment_to_assignmentViewFragment,
+                R.id.action_assignmentListFragment_to_assignmentViewFragment,
                 Bundle().apply { putString("assignment_data", Gson().toJson(assignmentData)) }
+            )
+        } else fireMessageEvent("Something went wrong")
+    }
+
+    fun navigateToAssignmentUpdateFragment(assignmentData: AssignmentData?) {
+        if (assignmentData != null) {
+            fireNavigateEvent(
+                R.id.action_assignmentListFragment_to_assignmentUpdateFragment,
+                AssignmentUpdateFragment.generateBundle(assignmentData)
             )
         } else fireMessageEvent("Something went wrong")
     }

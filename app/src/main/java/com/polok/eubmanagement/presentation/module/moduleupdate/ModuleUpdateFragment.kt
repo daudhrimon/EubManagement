@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.databinding.FragmentModuleAddBinding
+import com.polok.eubmanagement.databinding.FragmentModuleUpdateBinding
 import com.polok.eubmanagement.model.ModuleData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.widget.PrimaryLoader
 
-class ModuleUpdateFragment : BaseFragment<FragmentModuleAddBinding>(
-    viewBindingFactory = FragmentModuleAddBinding::inflate
+class ModuleUpdateFragment : BaseFragment<FragmentModuleUpdateBinding>(
+    viewBindingFactory = FragmentModuleUpdateBinding::inflate
 ) {
     private val viewModel: ModuleUpdateViewModel by viewModels {
         ModuleUpdateViewModel.Factory()
@@ -23,7 +23,7 @@ class ModuleUpdateFragment : BaseFragment<FragmentModuleAddBinding>(
         binding.moduleTitle.setText(arguments?.getString("title"))
         binding.moduleLink.setText(arguments?.getString("link"))
 
-        binding.addModuleButton.setOnClickListener {
+        binding.updateButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateModuleInputsAndUploadToFirebase(
                 key = arguments?.getString("key"),
@@ -42,7 +42,7 @@ class ModuleUpdateFragment : BaseFragment<FragmentModuleAddBinding>(
 
     companion object {
 
-        fun processBundle(moduleData: ModuleData?) : Bundle = Bundle().apply {
+        fun generateBundle(moduleData: ModuleData?) : Bundle = Bundle().apply {
             putString("title", moduleData?.title)
             putString("link", moduleData?.link)
             putString("created_at", moduleData?.createdAt)
