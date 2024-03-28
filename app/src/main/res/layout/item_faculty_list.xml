@@ -9,43 +9,73 @@
     android:paddingHorizontal="@dimen/spacing_12dp"
     android:paddingVertical="@dimen/spacing_small">
 
-    <TextView
-        android:id="@+id/module_title"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/primary_icon_size"
+        android:layout_height="@dimen/primary_icon_size"
+        android:src="@drawable/avaterprof"
+        app:layout_constraintBottom_toBottomOf="@id/faculty_designation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/faculty_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/faculty_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/created_at"
-        app:layout_constraintEnd_toStartOf="@id/download_button"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/spacing_12dp"
+        android:paddingTop="@dimen/spacing_small"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_secondary"
+        app:layout_constraintBottom_toTopOf="@id/faculty_phone"
+        app:layout_constraintEnd_toStartOf="@id/call_now_button"
+        app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="This is a Course Module" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Daud Hoshen Rimon" />
 
-    <TextView
-        android:id="@+id/created_at"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/faculty_phone"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_tiny"
-        android:textSize="@dimen/font_tiny"
-        app:layout_constraintBottom_toTopOf="@id/download_button"
-        app:layout_constraintEnd_toStartOf="@id/download_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/module_title"
-        tools:text="Created At: 01 January, 2024" />
+        android:drawableEnd="@drawable/ic_copy"
+        android:drawablePadding="@dimen/spacing_small"
+        android:gravity="center_vertical"
+        android:textColor="@color/color_primary"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintBottom_toTopOf="@id/faculty_designation"
+        app:layout_constraintEnd_toEndOf="@id/faculty_name"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/faculty_name"
+        app:layout_constraintTop_toBottomOf="@id/faculty_name"
+        tools:text="01779808900" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/faculty_designation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/spacing_primary_half"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/spacing_tiny"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/faculty_name"
+        app:layout_constraintTop_toBottomOf="@id/faculty_phone"
+        tools:text="01779808900" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/download_button"
+        android:id="@+id/call_now_button"
         style="@style/AppSmallButton"
         android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginVertical="@dimen/spacing_small"
+        android:layout_height="24dp"
         android:backgroundTint="@color/color_primary"
-        android:text="@string/download"
-        android:textSize="@dimen/font_small"
-        app:icon="@drawable/ic_download"
-        app:iconPadding="@dimen/spacing_small"
-        app:iconSize="@dimen/spacing_secondary"
-        app:layout_constraintBottom_toBottomOf="@id/created_at"
+        android:text="@string/call_now"
+        app:icon="@drawable/ic_call"
+        app:layout_constraintBottom_toBottomOf="@id/faculty_phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/module_title" />
+        app:layout_constraintTop_toTopOf="@id/faculty_name" />
+
 
     <include
         android:id="@+id/update_delete"
@@ -53,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/created_at"
+        app:layout_constraintTop_toBottomOf="@id/faculty_designation"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

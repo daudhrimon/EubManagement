@@ -1,5 +1,7 @@
 package com.polok.eubmanagement.presentation.faculty.facultylist
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -9,6 +11,7 @@ import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentFacultyListBinding
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.makeVisible
+import com.polok.eubmanagement.util.showToast
 import com.polok.eubmanagement.widget.PrimaryLoader
 
 class FacultyListFragment : BaseFragment<FragmentFacultyListBinding>(
@@ -19,8 +22,18 @@ class FacultyListFragment : BaseFragment<FragmentFacultyListBinding>(
     }
     private val adapter: FacultyListAdapter by lazy {
         FacultyListAdapter(
-            onClickListener = {
-
+            onCallNowClickListener = {
+                try {
+                    startActivity(
+                        Intent().apply {
+                            action = Intent.ACTION_DIAL
+                            data = Uri.parse("tel:$it")
+                        }
+                    )
+                } catch (e: Exception) {
+                    context?.showToast("something went wrong")
+                    e.printStackTrace()
+                }
             },
             onUpdateClickListener = {
                 viewModel.navigateToFacultyUpdateFragment(it)

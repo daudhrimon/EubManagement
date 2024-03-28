@@ -86,4 +86,5 @@
     <string name="faculty_s_name">Faculty\'s Name</string>
     <string name="faculty_s_designation">Faculty\'s Designation</string>
     <string name="faculty_s_phone">Faculty\'s Phone</string>
+    <string name="call_now">Call Now</string>
 </resources>
