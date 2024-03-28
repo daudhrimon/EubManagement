@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.databinding.FragmentModuleUpdateBinding
+import com.polok.eubmanagement.databinding.FragmentFacultyUpdateBinding
 import com.polok.eubmanagement.model.FacultyData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.widget.PrimaryLoader
 
-class FacultyUpdateFragment : BaseFragment<FragmentModuleUpdateBinding>(
-    viewBindingFactory = FragmentModuleUpdateBinding::inflate
+class FacultyUpdateFragment : BaseFragment<FragmentFacultyUpdateBinding>(
+    viewBindingFactory = FragmentFacultyUpdateBinding::inflate
 ) {
     private val viewModel: FacultyUpdateViewModel by viewModels {
         FacultyUpdateViewModel.Factory()
@@ -20,15 +20,17 @@ class FacultyUpdateFragment : BaseFragment<FragmentModuleUpdateBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        binding.moduleTitle.setText(arguments?.getString("name"))
-        binding.moduleLink.setText(arguments?.getString("designation"))
+        binding.facultyName.setText(arguments?.getString("name"))
+        binding.facultyDesignation.setText(arguments?.getString("details"))
+        binding.facultyPhone.setText(arguments?.getString("phone"))
 
         binding.updateButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateFacultyInputsAndUploadToFirebase(
                 key = arguments?.getString("key"),
-                moduleTitleEt = binding.moduleTitle,
-                moduleLinkEt = binding.moduleLink
+                facultyNameEt = binding.facultyName,
+                facultyDesignationEt = binding.facultyDesignation,
+                facultyPhoneEt = binding.facultyPhone
             )
         }
     }
@@ -44,7 +46,7 @@ class FacultyUpdateFragment : BaseFragment<FragmentModuleUpdateBinding>(
 
         fun generateBundle(facultyData: FacultyData?) : Bundle = Bundle().apply {
             putString("name", facultyData?.name)
-            putString("designation", facultyData?.designation)
+            putString("details", facultyData?.details)
             putString("phone", facultyData?.phone)
             putString("key", facultyData?.key)
         }

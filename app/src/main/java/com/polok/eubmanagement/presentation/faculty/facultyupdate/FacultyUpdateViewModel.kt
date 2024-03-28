@@ -4,36 +4,42 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef.provideModuleRef
+import com.polok.eubmanagement.firebase.FirebaseDataRef.provideFacultyRef
 import com.polok.eubmanagement.model.FacultyData
-import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi
 
 class FacultyUpdateViewModel : BaseViewModel() {
 
     fun validateFacultyInputsAndUploadToFirebase(
-        key: String?, moduleTitleEt: EditText, moduleLinkEt: EditText
+        key: String?,
+        facultyNameEt: EditText,
+        facultyDesignationEt: EditText,
+        facultyPhoneEt: EditText
     ) {
-        if (moduleTitleEt.text.toString().isEmpty()) {
-            moduleTitleEt.showErrorOnUi("Enter Course Module Title")
+        if (facultyNameEt.text.toString().isEmpty()) {
+            facultyNameEt.showErrorOnUi("Enter Faculty's Name")
             return
         }
-        if (moduleLinkEt.text.toString().isEmpty()) {
-            moduleLinkEt.showErrorOnUi("Enter Course Module Link")
+        if (facultyDesignationEt.text.toString().isEmpty()) {
+            facultyDesignationEt.showErrorOnUi("Enter Faculty's Designation")
+            return
+        }
+        if (facultyPhoneEt.text.toString().isEmpty()) {
+            facultyPhoneEt.showErrorOnUi("Enter Faculty's Phone")
             return
         }
         uploadFacultyTOFirebase(
             facultyData = FacultyData(
-                name = moduleTitleEt.text.toString(),
-                designation = moduleLinkEt.text.toString(),
-                phone = getCurrentDate(), key = key
+                name = facultyNameEt.text.toString(),
+                details = facultyDesignationEt.text.toString(),
+                phone = facultyPhoneEt.text.toString(), key = key
             )
         )
     }
 
     private fun uploadFacultyTOFirebase(facultyData: FacultyData) {
         fireLoadingEvent(true)
-        provideModuleRef()?.child(facultyData.key ?: "")?.setValue(
+        provideFacultyRef()?.child(facultyData.key ?: "")?.setValue(
             facultyData
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {

@@ -6,7 +6,6 @@ import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentFacultyAddBinding
 import com.polok.eubmanagement.util.SharedPref
-import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.widget.PrimaryLoader
 
 class FacultyAddFragment : BaseFragment<FragmentFacultyAddBinding>(
@@ -23,7 +22,9 @@ class FacultyAddFragment : BaseFragment<FragmentFacultyAddBinding>(
         binding.saveButton.setOnClickListener {
             SharedPref.init(context)
             viewModel.validateFacultyInputsAndUploadToFirebase(
-                binding.moduleTitle, binding.moduleLink, getCurrentDate()
+                facultyNameEt = binding.facultyName,
+                facultyDesignationEt = binding.facultyDesignation,
+                facultyPhoneEt = binding.facultyPhone
             )
         }
     }

@@ -83,4 +83,7 @@
     <string name="view_all">View All</string>
     <string name="label_student_portal">Student Portal</string>
     <string name="add_faculty_s_info">Add Faculty\'s Info</string>
+    <string name="faculty_s_name">Faculty\'s Name</string>
+    <string name="faculty_s_designation">Faculty\'s Designation</string>
+    <string name="faculty_s_phone">Faculty\'s Phone</string>
 </resources>

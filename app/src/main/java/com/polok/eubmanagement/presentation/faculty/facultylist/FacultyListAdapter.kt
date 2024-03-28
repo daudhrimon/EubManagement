@@ -39,7 +39,7 @@ class FacultyListAdapter(
 
         fun bind(facultyData: FacultyData?) {
             binding.moduleTitle.text = facultyData?.name ?: ""
-            binding.createdAt.text = String.format("Created At: %s", facultyData?.designation ?: "")
+            binding.createdAt.text = String.format("Created At: %s", facultyData?.details ?: "")
 
             itemView.setOnClickListener {
                 onClickListener(facultyData)

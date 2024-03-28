@@ -12,20 +12,26 @@ import com.polok.eubmanagement.util.showErrorOnUi
 class FacultyAddViewModel : BaseViewModel() {
 
     fun validateFacultyInputsAndUploadToFirebase(
-        moduleTitleEt: EditText,
-        moduleLinkEt: EditText,
-        createdAt: String
+        facultyNameEt: EditText,
+        facultyDesignationEt: EditText,
+        facultyPhoneEt: EditText
     ) {
-        if (moduleTitleEt.getText().toString().isEmpty()) {
-            moduleTitleEt.showErrorOnUi("Enter Course Module Title")
+        if (facultyNameEt.text.toString().isEmpty()) {
+            facultyNameEt.showErrorOnUi("Enter Faculty's Name")
             return
         }
-        if (moduleLinkEt.getText().toString().isEmpty()) {
-            moduleLinkEt.showErrorOnUi("Enter Course Module Link")
+        if (facultyDesignationEt.text.toString().isEmpty()) {
+            facultyDesignationEt.showErrorOnUi("Enter Faculty's Designation")
+            return
+        }
+        if (facultyPhoneEt.text.toString().isEmpty()) {
+            facultyPhoneEt.showErrorOnUi("Enter Faculty's Phone")
             return
         }
         uploadFacultyTOFirebase(
-            moduleTitleEt.getText().toString(), moduleLinkEt.getText().toString(), createdAt
+            facultyName = facultyNameEt.text.toString(),
+            facultyDesignation = facultyDesignationEt.text.toString(),
+            facultyPhone = facultyPhoneEt.text.toString()
         )
     }
 
@@ -37,7 +43,7 @@ class FacultyAddViewModel : BaseViewModel() {
         dbPushRef?.setValue(
             FacultyData(
                 name = facultyName,
-                designation = facultyDesignation,
+                details = facultyDesignation,
                 phone = facultyPhone,
                 dbPushRef.key
             )
