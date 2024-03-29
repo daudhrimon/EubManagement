@@ -215,5 +215,30 @@
         app:layout_constraintTop_toBottomOf="@id/blood_label"
         tools:text="A+" />
 
+    <com.polok.eubmanagement.widget.DashboardButton
+        android:id="@+id/sign_out_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/spacing_6dp"
+        app:image="@drawable/ic_logout"
+        app:layout_constraintEnd_toStartOf="@id/class_mates_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blood"
+        app:text="Sign out" />
+
+    <com.polok.eubmanagement.widget.DashboardButton
+        android:id="@+id/class_mates_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_6dp"
+        android:layout_marginEnd="@dimen/spacing_12dp"
+        app:image="@drawable/ic_mates"
+        app:layout_constraintBottom_toBottomOf="@id/sign_out_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sign_out_button"
+        app:layout_constraintTop_toTopOf="@id/sign_out_button"
+        app:text="Class Mates" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
