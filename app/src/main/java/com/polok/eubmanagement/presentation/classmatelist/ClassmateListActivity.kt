@@ -5,10 +5,11 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
+import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseActivity
 import com.polok.eubmanagement.base.event.EventObserver
 import com.polok.eubmanagement.databinding.ActivityClassmateListBinding
-import com.polok.eubmanagement.presentation.dashboard.chat.ChatActivity
+import com.polok.eubmanagement.presentation.dashboard.chat.ChatTextActivity
 import com.polok.eubmanagement.util.makeGone
 import com.polok.eubmanagement.util.makeVisible
 import com.polok.eubmanagement.util.showToast
@@ -25,7 +26,9 @@ class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
         ClassMateListAdapter(
             onClickListener = {
                 startActivity(
-                    Intent(this, ChatActivity::class.java)
+                    Intent(this, ChatTextActivity::class.java).apply {
+                        putExtra("name", it?.name)
+                    }
                 )
             },
             onCallNowClickListener = {
@@ -45,6 +48,9 @@ class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
     }
 
     override fun initOnCreate(savedInstanceState: Bundle?) {
+
+        binding.toolBar.title.text = getString(R.string.class_mates)
+
         viewModel.loadingEvent?.observe(this, EventObserver {
             if (it) binding.primaryLoader.makeVisible()
             else binding.primaryLoader.makeGone()

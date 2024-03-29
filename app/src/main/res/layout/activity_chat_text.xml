@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.dashboard.chat.ChatActivity">
+    tools:context=".presentation.dashboard.chat.ChatTextActivity">
 
     <include
         android:id="@+id/tool_bar"
@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="@dimen/spacing_12dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tool_bar" />
 
@@ -23,8 +24,9 @@
         style="@style/EditTextAuth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_12dp"
-        android:layout_marginBottom="@dimen/spacing_primary"
+        android:layout_marginStart="@dimen/spacing_12dp"
+        android:layout_marginEnd="@dimen/spacing_6dp"
+        android:layout_marginBottom="@dimen/spacing_12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/send_button"
         app:layout_constraintStart_toStartOf="parent" />
@@ -33,6 +35,7 @@
         android:id="@+id/send_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="@dimen/spacing_tiny"
         android:layout_marginEnd="@dimen/spacing_12dp"
         android:background="@drawable/rounded_background_white_clickable"
         android:padding="@dimen/spacing_primary_half"
