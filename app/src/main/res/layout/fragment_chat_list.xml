@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.dashboard.ChatFragment">
+    tools:context=".presentation.dashboard.chat.chatlist.ChatListFragment">
 
     <TextView
         android:layout_width="match_parent"

@@ -1,13 +1,13 @@
-package com.polok.eubmanagement.presentation.dashboard
+package com.polok.eubmanagement.presentation.dashboard.chat.chatlist
 
 import android.os.Bundle
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.databinding.FragmentChatBinding
+import com.polok.eubmanagement.databinding.FragmentChatListBinding
 import com.polok.eubmanagement.widget.PrimaryLoader
 
-class ChatFragment : BaseFragment<FragmentChatBinding>(
-    viewBindingFactory = FragmentChatBinding::inflate
+class ChatListFragment : BaseFragment<FragmentChatListBinding>(
+    viewBindingFactory = FragmentChatListBinding::inflate
 ) {
     override fun initViewModel(): BaseViewModel? = null
 

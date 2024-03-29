@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/chat"
-        android:name="com.polok.eubmanagement.presentation.dashboard.ChatFragment"
+        android:name="com.polok.eubmanagement.presentation.dashboard.chat.chatlist.ChatListFragment"
         android:label="Chat"
-        tools:layout="@layout/fragment_chat"/>
+        tools:layout="@layout/fragment_chat_list"/>
 
     <fragment
         android:id="@+id/profile"
