@@ -143,8 +143,8 @@ class SignUpViewModel : BaseViewModel() {
         provideStudentRef()?.child(firebaseUid)?.setValue(
             UserProfileData(
                 studentId = studentId,
-                fullName = fullName,
-                mobileNumber = mobileInput,
+                name = fullName,
+                phone = mobileInput,
                 email = emailInput,
                 gender = gender,
                 section = section,

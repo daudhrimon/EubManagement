@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.dashboard
+package com.polok.eubmanagement.presentation.dashboard.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.userNameAndBatch.text = String.format(
-                    "%s\n%s", it.fullName ?: "", String.format(
+                    "%s\n%s", it.name ?: "", String.format(
                         "%s, Section %s",
                         SharedPref.getUserBatch(),
                         it.section ?: ""

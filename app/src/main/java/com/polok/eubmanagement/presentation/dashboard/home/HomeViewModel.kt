@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.dashboard
+package com.polok.eubmanagement.presentation.dashboard.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/spacing_small"
+    android:background="@drawable/rounded_background_white"
+    android:paddingHorizontal="@dimen/spacing_12dp"
+    android:paddingVertical="@dimen/spacing_small">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/primary_icon_size"
+        android:layout_height="@dimen/primary_icon_size"
+        android:src="@drawable/avaterprof"
+        app:layout_constraintBottom_toBottomOf="@id/mate_details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mate_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mate_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_12dp"
+        android:paddingTop="@dimen/spacing_small"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_secondary"
+        app:layout_constraintBottom_toTopOf="@id/mate_phone"
+        app:layout_constraintEnd_toStartOf="@id/call_now_button"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Daud Hoshen Rimon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mate_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:drawableEnd="@drawable/ic_copy"
+        android:drawablePadding="@dimen/spacing_small"
+        android:gravity="center_vertical"
+        android:textColor="@color/color_primary"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintBottom_toTopOf="@id/mate_details"
+        app:layout_constraintEnd_toEndOf="@id/mate_name"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/mate_name"
+        app:layout_constraintTop_toBottomOf="@id/mate_name"
+        tools:text="01779808900" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mate_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="@dimen/spacing_primary_half"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/spacing_tiny"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mate_name"
+        app:layout_constraintTop_toBottomOf="@id/mate_phone"
+        tools:text="01779808900" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/call_now_button"
+        style="@style/AppSmallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:backgroundTint="@color/color_primary"
+        android:text="@string/call_now"
+        app:icon="@drawable/ic_call"
+        app:layout_constraintBottom_toBottomOf="@id/mate_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mate_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

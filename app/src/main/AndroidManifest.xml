@@ -64,6 +64,11 @@
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />
 
+        <activity
+            android:name=".presentation.classmatelist.ClassmateListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EubMenagement" />
+
     </application>
 
 </manifest>

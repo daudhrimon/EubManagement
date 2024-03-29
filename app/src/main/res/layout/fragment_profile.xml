@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/spacing_primary"
-    tools:context=".presentation.dashboard.ProfileFragment">
+    tools:context=".presentation.dashboard.profile.ProfileFragment">
 
     <ImageView
         android:id="@+id/user_avatar"

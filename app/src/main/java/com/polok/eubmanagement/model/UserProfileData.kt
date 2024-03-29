@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class UserProfileData(
     @SerializedName("student_id") val studentId: String? = null,
-    @SerializedName("full_name") val fullName: String? = null,
-    @SerializedName("mobile_number") val mobileNumber: String? = null,
+    @SerializedName("name") val name: String? = null,
+    @SerializedName("phone") val phone: String? = null,
     @SerializedName("email") val email: String? = null,
     @SerializedName("gender") val gender: String? = null,
     @SerializedName("section") val section: String? = null,
