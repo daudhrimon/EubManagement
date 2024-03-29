@@ -215,4 +215,5 @@
         app:layout_constraintTop_toBottomOf="@id/blood_label"
         tools:text="A+" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
