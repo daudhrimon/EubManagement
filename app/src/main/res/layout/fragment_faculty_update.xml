@@ -14,18 +14,33 @@
         android:id="@+id/faculty_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_primary"
+        android:layout_marginTop="@dimen/spacing_large"
         android:background="@drawable/rounded_background_white"
         android:hint="@string/faculty_s_name"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:maxLines="1"
-        android:padding="20dp"
+        android:padding="@dimen/spacing_12dp"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:textAppearance="@style/EditTextPrimary"
-        app:layout_constraintBottom_toTopOf="@id/faculty_designation"
+        app:layout_constraintBottom_toTopOf="@id/faculty_phone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/faculty_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_primary"
+        android:background="@drawable/rounded_background_white"
+        android:gravity="start"
+        android:hint="@string/faculty_s_phone"
+        android:inputType="phone"
+        android:padding="@dimen/spacing_12dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:textAppearance="@style/EditTextPrimary"
+        app:layout_constraintBottom_toTopOf="@id/faculty_designation"
+        app:layout_constraintTop_toBottomOf="@id/faculty_name" />
 
     <EditText
         android:id="@+id/faculty_designation"
@@ -36,25 +51,22 @@
         android:gravity="start"
         android:hint="@string/faculty_s_designation"
         android:inputType="textMultiLine"
-        android:padding="20dp"
+        android:padding="@dimen/spacing_12dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:textAppearance="@style/EditTextPrimary"
-        app:layout_constraintBottom_toTopOf="@id/faculty_phone"
-        app:layout_constraintTop_toBottomOf="@id/faculty_name" />
+        app:layout_constraintBottom_toTopOf="@id/gender_spinner"
+        app:layout_constraintTop_toBottomOf="@id/faculty_phone" />
 
-    <EditText
-        android:id="@+id/faculty_phone"
+    <Spinner
+        android:id="@+id/gender_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_primary"
         android:layout_marginBottom="@dimen/spacing_large"
-        android:background="@drawable/rounded_background_white"
-        android:gravity="start"
-        android:hint="@string/faculty_s_phone"
-        android:inputType="phone"
-        android:padding="20dp"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:textAppearance="@style/EditTextPrimary"
+        android:background="@drawable/edit_text_rounded_primary_border_bg"
+        android:entries="@array/gender_spinner"
+        android:padding="@dimen/spacing_12dp"
+        android:textColor="@color/color_white"
         app:layout_constraintBottom_toTopOf="@id/update_button"
         app:layout_constraintTop_toBottomOf="@id/faculty_designation" />
 
@@ -64,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_semi_large"
-        android:text="@string/update"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.polok.eubmanagement.widget.PrimaryLoader

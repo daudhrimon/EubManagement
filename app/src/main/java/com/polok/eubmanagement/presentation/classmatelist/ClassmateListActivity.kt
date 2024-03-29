@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.base.BaseActivity
 import com.polok.eubmanagement.base.event.EventObserver
 import com.polok.eubmanagement.databinding.ActivityClassmateListBinding
+import com.polok.eubmanagement.presentation.dashboard.chat.ChatActivity
 import com.polok.eubmanagement.util.makeGone
 import com.polok.eubmanagement.util.makeVisible
 import com.polok.eubmanagement.util.showToast
@@ -22,6 +23,11 @@ class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
     }
     private val adapter: ClassMateListAdapter by lazy {
         ClassMateListAdapter(
+            onClickListener = {
+                startActivity(
+                    Intent(this, ChatActivity::class.java)
+                )
+            },
             onCallNowClickListener = {
                 try {
                     startActivity(

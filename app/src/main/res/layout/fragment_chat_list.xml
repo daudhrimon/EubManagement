@@ -29,8 +29,8 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/add_chat_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/primary_icon_size"
+        android:layout_height="@dimen/primary_icon_size"
         android:layout_margin="@dimen/spacing_primary"
         android:insetLeft="0dp"
         android:insetTop="0dp"

@@ -27,7 +27,7 @@
         <activity
             android:name=".presentation.auth.AuthActivity"
             android:exported="false"
-            android:theme="@style/Theme.EubMenagement"/>
+            android:theme="@style/Theme.EubMenagement" />
 
         <activity
             android:name=".presentation.dashboard.DashboardActivity"
@@ -66,6 +66,11 @@
 
         <activity
             android:name=".presentation.classmatelist.ClassmateListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EubMenagement" />
+
+        <activity
+            android:name=".presentation.dashboard.chat.ChatActivity"
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />
 

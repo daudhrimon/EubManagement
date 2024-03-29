@@ -1,7 +1,10 @@
 package com.polok.eubmanagement.presentation.faculty.facultyadd
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import androidx.fragment.app.viewModels
+import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentFacultyAddBinding
@@ -18,6 +21,17 @@ class FacultyAddFragment : BaseFragment<FragmentFacultyAddBinding>(
     override fun initViewModel(): BaseViewModel = viewModel
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
+
+        viewModel.genderZero = resources.getStringArray(R.array.gender_spinner)[0]
+
+        binding.genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?, view: View, pos: Int, l: Long
+            ) {
+                viewModel.gender = resources.getStringArray(R.array.gender_spinner)[pos]
+            }
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {}
+        }
 
         binding.saveButton.setOnClickListener {
             SharedPref.init(context)

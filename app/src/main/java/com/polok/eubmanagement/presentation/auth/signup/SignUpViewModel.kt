@@ -44,8 +44,8 @@ class SignUpViewModel : BaseViewModel() {
             emailInputEt.showErrorOnUi("Enter A Valid Email Address")
             return
         }
-        if (passwordInputEt.getText().toString()
-                .isEmpty() || passwordInputEt.getText().length < 6
+        if (
+            passwordInputEt.getText().toString().isEmpty() || passwordInputEt.getText().length < 6
         ) {
             passwordInputEt.showErrorOnUi("Enter at Least 6 Digit Password")
             return

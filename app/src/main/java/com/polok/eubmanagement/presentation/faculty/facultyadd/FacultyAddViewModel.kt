@@ -10,6 +10,8 @@ import com.polok.eubmanagement.model.FacultyData
 import com.polok.eubmanagement.util.showErrorOnUi
 
 class FacultyAddViewModel : BaseViewModel() {
+    var gender: String? = null
+    var genderZero: String? = null
 
     fun validateFacultyInputsAndUploadToFirebase(
         facultyNameEt: EditText,
@@ -20,23 +22,28 @@ class FacultyAddViewModel : BaseViewModel() {
             facultyNameEt.showErrorOnUi("Enter Faculty's Name")
             return
         }
+        if (facultyPhoneEt.text.toString().isEmpty()) {
+            facultyPhoneEt.showErrorOnUi("Enter Faculty's Phone")
+            return
+        }
         if (facultyDesignationEt.text.toString().isEmpty()) {
             facultyDesignationEt.showErrorOnUi("Enter Faculty's Designation")
             return
         }
-        if (facultyPhoneEt.text.toString().isEmpty()) {
-            facultyPhoneEt.showErrorOnUi("Enter Faculty's Phone")
+        if (gender.isNullOrEmpty() || gender == genderZero) {
+            fireMessageEvent(genderZero)
             return
         }
         uploadFacultyTOFirebase(
             facultyName = facultyNameEt.text.toString(),
             facultyDesignation = facultyDesignationEt.text.toString(),
-            facultyPhone = facultyPhoneEt.text.toString()
+            facultyPhone = facultyPhoneEt.text.toString(),
+            facultyGender = gender.toString()
         )
     }
 
     private fun uploadFacultyTOFirebase(
-        facultyName: String, facultyDesignation: String, facultyPhone: String
+        facultyName: String, facultyDesignation: String, facultyPhone: String, facultyGender: String
     ) {
         fireLoadingEvent(true)
         val dbPushRef: DatabaseReference? = provideFacultyRef()?.push()
@@ -45,7 +52,8 @@ class FacultyAddViewModel : BaseViewModel() {
                 name = facultyName,
                 details = facultyDesignation,
                 phone = facultyPhone,
-                dbPushRef.key
+                gender = facultyGender,
+                key = dbPushRef.key
             )
         )?.addOnCompleteListener { task ->
             if (task.isComplete) {

@@ -12,6 +12,7 @@ import com.polok.eubmanagement.presentation.classmatelist.ClassMateListAdapter.C
 import com.polok.eubmanagement.util.showToast
 
 class ClassMateListAdapter(
+    private val onClickListener: (UserProfileData?) -> Unit,
     private val onCallNowClickListener: (String?) -> Unit
 ) : RecyclerView.Adapter<ClassMateViewHolder>() {
     private var classMateList: List<UserProfileData?>? = null
@@ -42,6 +43,10 @@ class ClassMateListAdapter(
             binding.mateName.text = userProfileData?.name ?: ""
             binding.matePhone.text = userProfileData?.phone ?: ""
             binding.mateDetails.text = userProfileData?.bloodGroup ?: ""
+
+            itemView.setOnClickListener {
+                onClickListener(userProfileData)
+            }
 
             binding.callNowButton.setOnClickListener {
                 onCallNowClickListener(userProfileData?.phone)
