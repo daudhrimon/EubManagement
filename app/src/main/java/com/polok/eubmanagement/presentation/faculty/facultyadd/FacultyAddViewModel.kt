@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef.provideFacultyRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideFacultyRef
 import com.polok.eubmanagement.model.FacultyData
 import com.polok.eubmanagement.util.showErrorOnUi
 

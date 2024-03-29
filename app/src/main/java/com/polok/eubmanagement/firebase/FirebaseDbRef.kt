@@ -4,7 +4,7 @@ import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseApp
 import com.polok.eubmanagement.util.SharedPref.getUserBatch
 
-object FirebaseDataRef {
+object FirebaseDbRef {
 
     fun provideBatchRef(): DatabaseReference? {
         return BaseApp.firebaseDataRef?.child("BATCH_REF")
@@ -32,5 +32,9 @@ object FirebaseDataRef {
 
     fun provideFacultyRef(): DatabaseReference? {
         return BaseApp.firebaseDataRef?.child("FACULTY")?.child(getUserBatch())
+    }
+
+    fun provideChatRef(): DatabaseReference? {
+        return BaseApp.firebaseDataRef?.child("CHAT")?.child(getUserBatch())
     }
 }

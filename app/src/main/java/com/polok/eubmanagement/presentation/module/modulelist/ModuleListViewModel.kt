@@ -9,7 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef
 import com.polok.eubmanagement.model.ModuleData
 import com.polok.eubmanagement.presentation.module.moduleupdate.ModuleUpdateFragment
 
@@ -19,7 +19,7 @@ class ModuleListViewModel : BaseViewModel() {
 
     fun fetchModuleListFromFirebase() {
         fireLoadingEvent(true)
-        FirebaseDataRef.provideModuleRef()?.addValueEventListener(
+        FirebaseDbRef.provideModuleRef()?.addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {

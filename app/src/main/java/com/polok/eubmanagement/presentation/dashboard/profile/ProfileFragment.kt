@@ -29,8 +29,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.userInfo.text = String.format(
-                    "%s\n%s", "${it.name} ${if (it.isAdmin == true) "(Admin)" else ""}",
-                    String.format("%s, Section %s", SharedPref.getUserBatch(), it.section ?: "")
+                    "%s\n%s",
+                    "${it.name} ${if (it.isAdmin == true) "(Admin)" else ""}",
+                    SharedPref.getUserBatch()
                 )
                 binding.studentId.text = it.studentId ?: ""
                 binding.mobileNumber.text = it.phone ?: ""

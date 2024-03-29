@@ -8,7 +8,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef.provideStudentRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideStudentRef
 import com.polok.eubmanagement.model.UserProfileData
 
 class ClassMateListViewModel(

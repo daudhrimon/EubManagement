@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
-import com.polok.eubmanagement.firebase.FirebaseDataRef.provideStudentRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideStudentRef
 import com.polok.eubmanagement.model.UserProfileData
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.showErrorOnUi
@@ -15,11 +15,9 @@ import com.polok.eubmanagement.util.showErrorOnUi
 class SignUpViewModel : BaseViewModel() {
     var gender: String? = null
     var batch: String? = null
-    var section: String? = null
     var bloodGroup: String? = null
     var genderZero: String? = null
     var batchZero: String? = null
-    var sectionZero: String? = null
     var bloodGroupZero: String? = null
 
     fun validateInputItemsAndExecuteSignup(
@@ -58,10 +56,6 @@ class SignUpViewModel : BaseViewModel() {
         }
         if (batch == null || batch?.isEmpty() == true || batch == batchZero) {
             fireMessageEvent(batchZero)
-            return
-        }
-        if (section == null || section?.isEmpty() == true || section == sectionZero) {
-            fireMessageEvent(sectionZero)
             return
         }
         if (bloodGroup == null || bloodGroup?.isEmpty() == true || bloodGroup == bloodGroupZero) {
@@ -109,7 +103,7 @@ class SignUpViewModel : BaseViewModel() {
         mobileInput: String,
         emailInput: String
     ) {
-        FirebaseDataRef.provideBatchRef()?.child(firebaseUid)?.setValue(batch)
+        FirebaseDbRef.provideBatchRef()?.child(firebaseUid)?.setValue(batch)
             ?.addOnCompleteListener { task ->
                 if (task.isComplete) {
                     try {
@@ -147,7 +141,6 @@ class SignUpViewModel : BaseViewModel() {
                 phone = mobileInput,
                 email = emailInput,
                 gender = gender,
-                section = section,
                 bloodGroup = bloodGroup,
                 image = "",
                 userId = firebaseUid,

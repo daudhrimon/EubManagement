@@ -11,7 +11,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef
 import com.polok.eubmanagement.model.NoticeData
 import com.polok.eubmanagement.presentation.notice.noticeupdate.NoticeUpdateFragment
 
@@ -21,7 +21,7 @@ class NoticeListViewModel : BaseViewModel() {
 
     fun fetchNoticeListFromFirebase() {
         fireLoadingEvent(true)
-        FirebaseDataRef.provideNoticeRef()?.addValueEventListener(
+        FirebaseDbRef.provideNoticeRef()?.addValueEventListener(
             object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {

@@ -9,7 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef.provideFacultyRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideFacultyRef
 import com.polok.eubmanagement.model.FacultyData
 import com.polok.eubmanagement.presentation.faculty.facultyupdate.FacultyUpdateFragment
 

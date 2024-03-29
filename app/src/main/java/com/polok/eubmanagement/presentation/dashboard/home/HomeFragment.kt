@@ -34,8 +34,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.userInfo.text = String.format(
-                    "%s\n%s", "${it.name} ${if (it.isAdmin == true) "(Admin)" else ""}",
-                    String.format("%s, Section %s", SharedPref.getUserBatch(), it.section ?: "")
+                    "%s\n%s",
+                    "${it.name} ${if (it.isAdmin == true) "(Admin)" else ""}",
+                    SharedPref.getUserBatch()
                 )
             }
         }

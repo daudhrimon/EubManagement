@@ -23,11 +23,11 @@ object SharedPref {
     }
 
     fun saveUserBatch(batch: String?) {
-        write("user_batch", batch)
+        write("user_batch_sec", batch)
     }
 
     fun getUserBatch(): String {
-        return read("user_batch", "")
+        return read("user_batch_sec", "")
     }
 
     fun saveUserProfile(userProfileData: UserProfileData?) {

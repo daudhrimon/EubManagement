@@ -11,7 +11,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef
 import com.polok.eubmanagement.model.AssignmentData
 import com.polok.eubmanagement.presentation.assignment.assignmentupdate.AssignmentUpdateFragment
 
@@ -22,7 +22,7 @@ class AssignmentListViewModel : BaseViewModel() {
 
     fun fetchAssignmentListFromFirebase() {
         fireLoadingEvent(true)
-        FirebaseDataRef.provideAssignmentRef()?.addValueEventListener(
+        FirebaseDbRef.provideAssignmentRef()?.addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {

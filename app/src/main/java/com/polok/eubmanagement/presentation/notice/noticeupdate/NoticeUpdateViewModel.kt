@@ -4,7 +4,7 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef.provideNoticeRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideNoticeRef
 import com.polok.eubmanagement.model.NoticeData
 import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi

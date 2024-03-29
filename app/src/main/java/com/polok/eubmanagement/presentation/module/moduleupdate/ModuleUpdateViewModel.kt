@@ -3,10 +3,8 @@ package com.polok.eubmanagement.presentation.module.moduleupdate
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
-import com.polok.eubmanagement.firebase.FirebaseDataRef.provideModuleRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideModuleRef
 import com.polok.eubmanagement.model.ModuleData
 import com.polok.eubmanagement.util.getCurrentDate
 import com.polok.eubmanagement.util.showErrorOnUi

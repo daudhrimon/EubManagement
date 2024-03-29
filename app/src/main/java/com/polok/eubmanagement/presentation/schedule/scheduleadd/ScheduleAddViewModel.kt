@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef
 import com.polok.eubmanagement.model.ScheduleData
 import com.polok.eubmanagement.util.showErrorOnUi
 
@@ -62,7 +62,7 @@ class ScheduleAddViewModel : BaseViewModel() {
         roomNo: String
     ) {
         fireLoadingEvent(true)
-        val dbRef: DatabaseReference? = FirebaseDataRef.provideScheduleRef()?.push()
+        val dbRef: DatabaseReference? = FirebaseDbRef.provideScheduleRef()?.push()
         dbRef?.setValue(
             ScheduleData(
                 courseTitle = courseTitle,

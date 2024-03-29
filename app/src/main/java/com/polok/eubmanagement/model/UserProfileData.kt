@@ -8,7 +8,6 @@ data class UserProfileData(
     @SerializedName("phone") val phone: String? = null,
     @SerializedName("email") val email: String? = null,
     @SerializedName("gender") val gender: String? = null,
-    @SerializedName("section") val section: String? = null,
     @SerializedName("blood_group") val bloodGroup: String? = null,
     @SerializedName("image") val image: String? = null,
     @SerializedName("user_id") val userId: String? = null,

@@ -134,20 +134,8 @@
                 android:entries="@array/batch_spinner"
                 android:padding="@dimen/spacing_12dp"
                 android:textColor="@color/color_white"
-                app:layout_constraintBottom_toTopOf="@id/section_spinner"
-                app:layout_constraintTop_toBottomOf="@id/gender_spinner" />
-
-            <Spinner
-                android:id="@+id/section_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_12dp"
-                android:background="@drawable/edit_text_rounded_primary_border_bg"
-                android:entries="@array/section_spinner"
-                android:padding="@dimen/spacing_12dp"
-                android:textColor="@color/color_white"
                 app:layout_constraintBottom_toTopOf="@id/blood_group_spinner"
-                app:layout_constraintTop_toBottomOf="@id/batch_spinner" />
+                app:layout_constraintTop_toBottomOf="@id/gender_spinner" />
 
             <Spinner
                 android:id="@+id/blood_group_spinner"
@@ -159,7 +147,7 @@
                 android:padding="@dimen/spacing_12dp"
                 android:textColor="@color/color_white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/section_spinner" />
+                app:layout_constraintTop_toBottomOf="@id/batch_spinner" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

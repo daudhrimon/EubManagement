@@ -9,7 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDataRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef
 import com.polok.eubmanagement.model.NoticeData
 import com.polok.eubmanagement.model.UserProfileData
 import com.polok.eubmanagement.util.SharedPref
@@ -30,7 +30,7 @@ class HomeViewModel : BaseViewModel() {
 
     fun fetchNoticeListFromFirebase() {
         fireLoadingEvent(true)
-        FirebaseDataRef.provideNoticeRef()?.addValueEventListener(
+        FirebaseDbRef.provideNoticeRef()?.addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
