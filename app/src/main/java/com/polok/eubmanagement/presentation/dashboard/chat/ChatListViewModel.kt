@@ -11,7 +11,6 @@ import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDbRef.provideChatRef
 import com.polok.eubmanagement.model.FacultyData
-import com.polok.eubmanagement.presentation.faculty.facultylist.FacultyListViewModel
 import com.polok.eubmanagement.presentation.faculty.facultyupdate.FacultyUpdateFragment
 
 class ChatListViewModel  : BaseViewModel() {
@@ -63,7 +62,7 @@ class ChatListViewModel  : BaseViewModel() {
     class Factory : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return FacultyListViewModel() as T
+            return ChatListViewModel() as T
         }
     }
 }

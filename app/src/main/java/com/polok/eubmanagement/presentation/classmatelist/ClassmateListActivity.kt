@@ -27,7 +27,8 @@ class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
             onClickListener = {
                 startActivity(
                     Intent(this, ChatTextActivity::class.java).apply {
-                        putExtra("name", it?.name)
+                        putExtra(ChatTextActivity.CLIENT_NAME, it?.name)
+                        putExtra(ChatTextActivity.CLIENT_USER_ID, it?.userId)
                     }
                 )
             },
