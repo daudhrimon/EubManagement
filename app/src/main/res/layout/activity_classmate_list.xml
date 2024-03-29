@@ -19,4 +19,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tool_bar" />
 
+    <com.polok.eubmanagement.widget.PrimaryLoader
+        android:id="@+id/primary_loader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tool_bar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

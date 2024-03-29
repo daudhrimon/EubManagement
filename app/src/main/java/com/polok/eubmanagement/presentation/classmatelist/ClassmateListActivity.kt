@@ -4,15 +4,21 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.base.BaseActivity
+import com.polok.eubmanagement.base.event.EventObserver
 import com.polok.eubmanagement.databinding.ActivityClassmateListBinding
+import com.polok.eubmanagement.util.makeGone
+import com.polok.eubmanagement.util.makeVisible
 import com.polok.eubmanagement.util.showToast
 
 class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
     viewBindingFactory = ActivityClassmateListBinding::inflate
 ) {
     private val viewModel: ClassMateListViewModel by viewModels {
-        ClassMateListViewModel.Factory()
+        ClassMateListViewModel.Factory(
+            ownUserId = FirebaseAuth.getInstance().currentUser?.uid
+        )
     }
     private val adapter: ClassMateListAdapter by lazy {
         ClassMateListAdapter(
@@ -33,6 +39,10 @@ class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
     }
 
     override fun initOnCreate(savedInstanceState: Bundle?) {
+        viewModel.loadingEvent?.observe(this, EventObserver {
+            if (it) binding.primaryLoader.makeVisible()
+            else binding.primaryLoader.makeGone()
+        })
 
         viewModel.fetchClassMateListFromFirebase()
 
@@ -43,6 +53,10 @@ class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
                 }
             }
         }
+
+        viewModel.messageEvent?.observe(this, EventObserver {
+            if (it.isNotEmpty()) showToast(it)
+        })
 
         binding.toolBar.backButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

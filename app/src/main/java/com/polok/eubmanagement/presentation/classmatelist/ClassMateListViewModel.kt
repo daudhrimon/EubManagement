@@ -11,7 +11,9 @@ import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDataRef.provideStudentRef
 import com.polok.eubmanagement.model.UserProfileData
 
-class ClassMateListViewModel : BaseViewModel() {
+class ClassMateListViewModel(
+    private val ownUserId: String?
+) : BaseViewModel() {
     private val _classMateLiveData = MutableLiveData<List<UserProfileData?>?>()
     val classMateLiveData: LiveData<List<UserProfileData?>?> get() = _classMateLiveData
 
@@ -24,9 +26,9 @@ class ClassMateListViewModel : BaseViewModel() {
                         val classMateList: MutableList<UserProfileData?> = ArrayList()
                         for (moduleSnapshot in snapshot.getChildren()) {
                             if (moduleSnapshot.exists()) {
-                                classMateList.add(
-                                    moduleSnapshot.getValue(UserProfileData::class.java)
-                                )
+                                moduleSnapshot.getValue(UserProfileData::class.java)?.apply {
+                                    if (userId != ownUserId) classMateList.add(this)
+                                }
                             }
                         }
                         try {
@@ -57,10 +59,12 @@ class ClassMateListViewModel : BaseViewModel() {
         } else fireMessageEvent("Something went wrong")
     }*/
 
-    class Factory : ViewModelProvider.Factory {
+    class Factory(
+        private val ownUserId: String?
+    ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return ClassMateListViewModel() as T
+            return ClassMateListViewModel(ownUserId) as T
         }
     }
 }
