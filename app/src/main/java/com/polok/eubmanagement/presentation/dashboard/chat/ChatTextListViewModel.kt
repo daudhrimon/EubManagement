@@ -13,8 +13,8 @@ import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.firebase.FirebaseDbRef.provideChatRef
 import com.polok.eubmanagement.model.ChatTextData
 
-class ChatTextViewModel(
-    private val ownUserId: String?
+class ChatTextListViewModel(
+    val ownUserId: String?
 ) : BaseViewModel() {
     private val _chatTextLiveData = MutableLiveData<List<ChatTextData?>?>()
     val chatTextLiveData: LiveData<List<ChatTextData?>?> get() = _chatTextLiveData
@@ -59,13 +59,7 @@ class ChatTextViewModel(
                                 )
                             }
                         }
-                        try {
-                            chatTextList.reverse()
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        } finally {
-                            _chatTextLiveData.postValue(chatTextList)
-                        }
+                        _chatTextLiveData.postValue(chatTextList)
                         fireLoadingEvent(false)
                     } else {
                         fireLoadingEvent(false)
@@ -146,7 +140,7 @@ class ChatTextViewModel(
     ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return ChatTextViewModel(ownUserId) as T
+            return ChatTextListViewModel(ownUserId) as T
         }
     }
 }

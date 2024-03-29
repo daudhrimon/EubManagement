@@ -9,7 +9,7 @@ import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseActivity
 import com.polok.eubmanagement.base.event.EventObserver
 import com.polok.eubmanagement.databinding.ActivityClassmateListBinding
-import com.polok.eubmanagement.presentation.dashboard.chat.ChatTextActivity
+import com.polok.eubmanagement.presentation.dashboard.chat.ChatTextListActivity
 import com.polok.eubmanagement.util.makeGone
 import com.polok.eubmanagement.util.makeVisible
 import com.polok.eubmanagement.util.showToast
@@ -26,9 +26,9 @@ class ClassmateListActivity : BaseActivity<ActivityClassmateListBinding>(
         ClassMateListAdapter(
             onClickListener = {
                 startActivity(
-                    Intent(this, ChatTextActivity::class.java).apply {
-                        putExtra(ChatTextActivity.CLIENT_NAME, it?.name)
-                        putExtra(ChatTextActivity.CLIENT_USER_ID, it?.userId)
+                    Intent(this, ChatTextListActivity::class.java).apply {
+                        putExtra(ChatTextListActivity.CLIENT_NAME, it?.name)
+                        putExtra(ChatTextListActivity.CLIENT_USER_ID, it?.userId)
                     }
                 )
             },

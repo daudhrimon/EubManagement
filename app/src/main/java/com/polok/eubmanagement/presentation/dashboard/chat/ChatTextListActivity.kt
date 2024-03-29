@@ -1,22 +1,20 @@
 package com.polok.eubmanagement.presentation.dashboard.chat
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import com.google.gson.Gson
 import com.polok.eubmanagement.base.BaseActivity
 import com.polok.eubmanagement.base.event.EventObserver
-import com.polok.eubmanagement.databinding.ActivityChatTextBinding
+import com.polok.eubmanagement.databinding.ActivityChatTextListBinding
 import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.makeGone
 import com.polok.eubmanagement.util.makeVisible
 import com.polok.eubmanagement.util.showToast
 
-class ChatTextActivity : BaseActivity<ActivityChatTextBinding> (
-    viewBindingFactory = ActivityChatTextBinding::inflate
+class ChatTextListActivity : BaseActivity<ActivityChatTextListBinding> (
+    viewBindingFactory = ActivityChatTextListBinding::inflate
 ) {
-    private val viewModel: ChatTextViewModel by viewModels {
-        ChatTextViewModel.Factory(
+    private val viewModel: ChatTextListViewModel by viewModels {
+        ChatTextListViewModel.Factory(
             ownUserId = SharedPref.getUserProfile().userId
         )
     }
@@ -34,7 +32,9 @@ class ChatTextActivity : BaseActivity<ActivityChatTextBinding> (
         )
 
         viewModel.chatTextLiveData.observe(this) {
-            Log.wtf("DATA", Gson().toJson(it))
+            binding.chatRecycler.adapter = ChatTextListAdapter().apply {
+                submitList(facultyList = it, ownUserId = viewModel.ownUserId)
+            }
         }
 
         binding.sendButton.setOnClickListener {

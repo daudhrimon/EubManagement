@@ -1,6 +1,7 @@
 package com.polok.eubmanagement.base
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.polok.eubmanagement.base.event.EventObserver
+import com.polok.eubmanagement.util.SharedPref
 import com.polok.eubmanagement.util.hideSoftKeyBoard
 import com.polok.eubmanagement.util.makeGone
 import com.polok.eubmanagement.util.makeVisible
@@ -20,6 +22,11 @@ abstract class BaseFragment<VB: ViewBinding>(
 
     protected val binding: VB by lazy {
         viewBindingFactory(layoutInflater)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        SharedPref.init(context)
     }
 
     @SuppressLint("ClickableViewAccessibility")

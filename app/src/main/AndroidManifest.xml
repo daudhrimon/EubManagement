@@ -70,7 +70,7 @@
             android:theme="@style/Theme.EubMenagement" />
 
         <activity
-            android:name=".presentation.dashboard.chat.ChatTextActivity"
+            android:name=".presentation.dashboard.chat.ChatTextListActivity"
             android:exported="false"
             android:theme="@style/Theme.EubMenagement" />
 
