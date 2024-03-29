@@ -6,13 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".presentation.dashboard.chat.ChatListFragment">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/header_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dashboard_top_bg"
+        android:paddingHorizontal="@dimen/spacing_semi_large"
+        android:paddingVertical="@dimen/spacing_large"
+        android:text="@string/chats"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_extra_large"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="@dimen/spacing_12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_chat_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="@dimen/spacing_primary"
-        android:gravity="center"
-        android:text="Chat Feature Coming Soon..."
-        android:textSize="@dimen/font_large"
-        android:textStyle="bold" />
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:cornerRadius="@dimen/spacing_primary"
+        app:icon="@drawable/ic_add_chat"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.polok.eubmanagement.widget.PrimaryLoader
+        android:id="@+id/primary_loader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

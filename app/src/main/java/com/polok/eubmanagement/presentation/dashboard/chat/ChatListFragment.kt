@@ -14,10 +14,13 @@ class ChatListFragment : BaseFragment<FragmentChatListBinding>(
     override fun initViewModel(): BaseViewModel? = null
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
-        binding.root.setOnClickListener {
-            startActivity(Intent(requireContext(), ClassmateListActivity::class.java))
+
+        binding.addChatButton.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), ClassmateListActivity::class.java)
+            )
         }
     }
 
-    override fun initPrimaryLoader(): PrimaryLoader? = null
+    override fun initPrimaryLoader(): PrimaryLoader = binding.primaryLoader
 }

@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/chat"
+        android:id="@+id/chats"
         android:name="com.polok.eubmanagement.presentation.dashboard.chat.ChatListFragment"
-        android:label="Chat"
+        android:label="Chats"
         tools:layout="@layout/fragment_chat_list"/>
 
     <fragment
