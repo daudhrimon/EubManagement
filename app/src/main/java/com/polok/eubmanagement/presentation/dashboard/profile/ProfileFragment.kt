@@ -2,7 +2,6 @@ package com.polok.eubmanagement.presentation.dashboard.profile
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import com.google.firebase.auth.FirebaseAuth
 import com.polok.eubmanagement.base.BaseFragment
 import com.polok.eubmanagement.base.BaseViewModel
 import com.polok.eubmanagement.databinding.FragmentProfileBinding
@@ -25,11 +24,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(
 
         viewModel.userProfileDataLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
-                binding.userNameAndBatch.text = String.format(
-                    "%s\n%s", it.name ?: "",
-                    String.format(
-                        "%s, Section %s", SharedPref.getUserBatch(), it.section ?: ""
-                    )
+                binding.userInfo.text = String.format(
+                    "%s\n%s", "${it.name} ${if (it.isAdmin == true) "(Admin)" else ""}",
+                    String.format("%s, Section %s", SharedPref.getUserBatch(), it.section ?: "")
                 )
                 binding.studentId.text = it.studentId ?: ""
                 binding.mobileNumber.text = it.phone ?: ""
@@ -38,9 +35,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(
                 binding.blood.text = it.bloodGroup ?: ""
             }
         }
-        binding.signOutButton.setOnClickListener {
+        /*binding.signOutButton.setOnClickListener {
             viewModel.attemptSignOutUser(FirebaseAuth.getInstance())
-        }
+        }*/
     }
 
     override fun initPrimaryLoader(): PrimaryLoader? = null

@@ -21,13 +21,13 @@
         android:layout_height="@dimen/primary_icon_size"
         android:layout_marginStart="@dimen/spacing_semi_large"
         android:src="@drawable/avaterprof"
-        app:layout_constraintBottom_toBottomOf="@id/user_name_and_batch"
+        app:layout_constraintBottom_toBottomOf="@id/user_info"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/user_name_and_batch"
+        app:layout_constraintTop_toTopOf="@id/user_info"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/user_name_and_batch"
+        android:id="@+id/user_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"

@@ -11,5 +11,6 @@ data class UserProfileData(
     @SerializedName("section") val section: String? = null,
     @SerializedName("blood_group") val bloodGroup: String? = null,
     @SerializedName("image") val image: String? = null,
+    @SerializedName("user_id") val userId: String? = null,
     @SerializedName("is_admin") val isAdmin: Boolean? = true
 )

@@ -4,56 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacing_primary"
     tools:context=".presentation.dashboard.profile.ProfileFragment">
+
+    <View
+        android:id="@+id/top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/dashboard_top_bg"
+        app:layout_constraintBottom_toBottomOf="@id/user_avatar_bottom"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/user_avatar"
         android:layout_width="@dimen/primary_icon_size"
         android:layout_height="@dimen/primary_icon_size"
-        android:layout_marginStart="@dimen/spacing_primary_half"
+        android:layout_marginStart="@dimen/spacing_semi_large"
         android:src="@drawable/avaterprof"
-        app:layout_constraintBottom_toBottomOf="@id/user_name_and_batch"
+        app:layout_constraintBottom_toBottomOf="@id/user_info"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/user_name_and_batch"
+        app:layout_constraintTop_toTopOf="@id/user_info"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/user_name_and_batch"
+        android:id="@+id/user_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
-        android:textSize="16sp"
+        android:layout_marginEnd="@dimen/spacing_semi_large"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/user_avatar"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="UserName\nCSE Batch-23 (EVE)" />
+        tools:text="Welcome User\nCSE Batch-23 (EVE)" />
+
+    <View
+        android:id="@+id/user_avatar_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_large"
+        app:layout_constraintTop_toBottomOf="@id/user_avatar" />
 
     <androidx.constraintlayout.helper.widget.Layer
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rounded_background_white"
-        android:padding="@dimen/spacing_12dp"
+        android:paddingHorizontal="@dimen/spacing_12dp"
+        android:paddingVertical="@dimen/spacing_primary_half"
         app:constraint_referenced_ids="student_id_label, student_id" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/student_id_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_large_plus"
-        android:text="Student ID"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="28dp"
+        android:drawableStart="@drawable/dot_primary"
+        android:drawablePadding="@dimen/spacing_6dp"
+        android:gravity="center_vertical"
+        android:text="@string/student_id"
+        android:textColor="@color/color_primary"
         android:textSize="@dimen/font_small"
-        app:layout_constraintTop_toBottomOf="@id/user_avatar" />
+        app:layout_constraintTop_toBottomOf="@id/user_avatar_bottom" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/student_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/font_secondary"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/student_id_label"
         tools:text="123456" />
 
@@ -61,26 +83,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rounded_background_white"
-        android:padding="@dimen/spacing_12dp"
+        android:paddingHorizontal="@dimen/spacing_12dp"
+        android:paddingVertical="@dimen/spacing_primary_half"
         app:constraint_referenced_ids="mobile_number_label, mobile_number" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mobile_number_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_large_plus"
-        android:text="Mobile Number"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="28dp"
+        android:drawableStart="@drawable/dot_primary"
+        android:drawablePadding="@dimen/spacing_6dp"
+        android:gravity="center_vertical"
+        android:text="@string/mobile_number"
+        android:textColor="@color/color_primary"
         android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/student_id" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mobile_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/font_secondary"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/mobile_number_label"
         tools:text="01777777777777" />
 
@@ -88,26 +117,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rounded_background_white"
-        android:padding="@dimen/spacing_12dp"
+        android:paddingHorizontal="@dimen/spacing_12dp"
+        android:paddingVertical="@dimen/spacing_primary_half"
         app:constraint_referenced_ids="email_label, email" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/email_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_large_plus"
-        android:text="Email Address"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="28dp"
+        android:drawableStart="@drawable/dot_primary"
+        android:drawablePadding="@dimen/spacing_6dp"
+        android:gravity="center_vertical"
+        android:text="@string/email_address"
+        android:textColor="@color/color_primary"
         android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/mobile_number" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/font_secondary"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/email_label"
         tools:text="abc@cd.com" />
 
@@ -115,26 +151,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rounded_background_white"
-        android:padding="@dimen/spacing_12dp"
+        android:paddingHorizontal="@dimen/spacing_12dp"
+        android:paddingVertical="@dimen/spacing_primary_half"
         app:constraint_referenced_ids="gender_label, gender" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/gender_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_large_plus"
-        android:text="Gender"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="28dp"
+        android:drawableStart="@drawable/dot_primary"
+        android:drawablePadding="@dimen/spacing_6dp"
+        android:gravity="center_vertical"
+        android:text="@string/gender"
+        android:textColor="@color/color_primary"
         android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/email" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/font_secondary"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/gender_label"
         tools:text="Male" />
 
@@ -142,35 +185,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rounded_background_white"
-        android:padding="@dimen/spacing_12dp"
+        android:paddingHorizontal="@dimen/spacing_12dp"
+        android:paddingVertical="@dimen/spacing_primary_half"
         app:constraint_referenced_ids="blood_label, blood" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/blood_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_large_plus"
-        android:text="Blood Group"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="28dp"
+        android:drawableStart="@drawable/dot_primary"
+        android:drawablePadding="@dimen/spacing_6dp"
+        android:gravity="center_vertical"
+        android:text="@string/blood_group"
+        android:textColor="@color/color_primary"
         android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/gender" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/blood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_primary"
-        android:layout_marginTop="@dimen/spacing_primary_half"
-        android:textSize="@dimen/font_secondary"
+        android:layout_marginHorizontal="@dimen/spacing_semi_large"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:paddingHorizontal="@dimen/spacing_12dp"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/font_small"
         app:layout_constraintTop_toBottomOf="@id/blood_label"
         tools:text="A+" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/sign_out_button"
-        style="@style/AppPrimaryButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign out"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
