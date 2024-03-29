@@ -70,7 +70,7 @@
                 android:drawableStart="@drawable/baseline_person_24"
                 android:hint="@string/full_name"
                 android:importantForAutofill="no"
-                android:inputType="text"
+                android:inputType="textCapWords"
                 app:layout_constraintBottom_toTopOf="@id/mobile_input"
                 app:layout_constraintTop_toBottomOf="@id/student_id" />
 
@@ -83,7 +83,7 @@
                 android:drawableStart="@drawable/baseline_phone_android_24"
                 android:hint="@string/mobile_number"
                 android:importantForAutofill="no"
-                android:inputType="number"
+                android:inputType="phone"
                 app:layout_constraintBottom_toTopOf="@id/email_input"
                 app:layout_constraintTop_toBottomOf="@id/full_name" />
 
