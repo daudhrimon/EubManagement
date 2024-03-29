@@ -1,4 +1,4 @@
-package com.polok.eubmanagement.presentation.dashboard.chat.chatlist
+package com.polok.eubmanagement.presentation.dashboard.chat
 
 import android.os.Bundle
 import com.polok.eubmanagement.base.BaseFragment

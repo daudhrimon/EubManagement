@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/chat"
-        android:name="com.polok.eubmanagement.presentation.dashboard.chat.chatlist.ChatListFragment"
+        android:name="com.polok.eubmanagement.presentation.dashboard.chat.ChatListFragment"
         android:label="Chat"
         tools:layout="@layout/fragment_chat_list"/>
 

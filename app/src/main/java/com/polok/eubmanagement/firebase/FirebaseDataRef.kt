@@ -27,10 +27,10 @@ object FirebaseDataRef {
     }
 
     fun provideModuleRef(): DatabaseReference? {
-        return BaseApp.firebaseDataRef?.child("MODULE")
+        return BaseApp.firebaseDataRef?.child("MODULE")?.child(getUserBatch())
     }
 
     fun provideFacultyRef(): DatabaseReference? {
-        return BaseApp.firebaseDataRef?.child("FACULTY")
+        return BaseApp.firebaseDataRef?.child("FACULTY")?.child(getUserBatch())
     }
 }
