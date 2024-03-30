@@ -42,7 +42,11 @@ class ClassMateListAdapter(
         fun bind(userProfileData: UserProfileData?) {
             binding.mateName.text = userProfileData?.name ?: ""
             binding.matePhone.text = userProfileData?.phone ?: ""
-            binding.mateDetails.text = userProfileData?.bloodGroup ?: ""
+            binding.mateDetails.text = String.format(
+                "Student ID %s\nBlood Group %s",
+                userProfileData?.studentId,
+                userProfileData?.bloodGroup
+            )
 
             itemView.setOnClickListener {
                 onClickListener(userProfileData)
