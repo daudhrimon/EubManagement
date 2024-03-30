@@ -20,7 +20,11 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/dashboard_bottom_bg"
+        app:itemIconTint="@drawable/dashboard_bottom_nav_icon_color"
+        app:itemRippleColor="@color/color_primary"
+        app:itemTextColor="@color/color_white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_home"/>
+        app:menu="@menu/menu_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
