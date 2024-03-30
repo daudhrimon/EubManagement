@@ -4,17 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.polok.eubmanagement.databinding.ItemChatListBinding
-import com.polok.eubmanagement.model.FacultyData
+import com.polok.eubmanagement.model.UserProfileData
 import com.polok.eubmanagement.presentation.dashboard.chat.ChatListAdapter.ChatListViewHolder
 
 class ChatListAdapter(
-    private val onClickListener: (String?) -> Unit
+    private val onClickListener: (UserProfileData?) -> Unit
 ) : RecyclerView.Adapter<ChatListViewHolder>() {
-    var isAdmin: Boolean? = null
-    private var facultyList: List<FacultyData?>? = null
+    private var chatList: List<UserProfileData?>? = null
 
-    fun submitList(facultyList: List<FacultyData?>?) {
-        this.facultyList = facultyList
+    fun submitList(facultyList: List<UserProfileData?>?) {
+        this.chatList = facultyList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatListViewHolder {
@@ -26,21 +25,20 @@ class ChatListAdapter(
     }
 
     override fun onBindViewHolder(holder: ChatListViewHolder, position: Int) {
-        holder.bind(facultyList?.get(position))
+        holder.bind(chatList?.get(position))
     }
 
-    override fun getItemCount(): Int = facultyList?.size ?: 0
+    override fun getItemCount(): Int = chatList?.size ?: 0
 
     inner class ChatListViewHolder(
         private val binding: ItemChatListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(facultyData: FacultyData?) {
-            binding.name.text = facultyData?.name ?: ""
-            binding.text.text = facultyData?.phone ?: ""
+        fun bind(userProfileData: UserProfileData?) {
+            binding.name.text = userProfileData?.name ?: ""
 
             itemView.setOnClickListener {
-                onClickListener("")
+                onClickListener(userProfileData)
             }
         }
     }

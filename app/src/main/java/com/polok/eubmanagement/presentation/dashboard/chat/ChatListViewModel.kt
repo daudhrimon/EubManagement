@@ -1,5 +1,6 @@
 package com.polok.eubmanagement.presentation.dashboard.chat
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,36 +8,65 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.polok.eubmanagement.R
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDbRef.provideChatRef
-import com.polok.eubmanagement.model.FacultyData
-import com.polok.eubmanagement.presentation.faculty.facultyupdate.FacultyUpdateFragment
+import com.polok.eubmanagement.firebase.FirebaseDbRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideStudentRef
+import com.polok.eubmanagement.model.UserProfileData
 
-class ChatListViewModel  : BaseViewModel() {
-    private val _facultyLiveData = MutableLiveData<List<FacultyData?>?>()
-    val facultyLiveData: LiveData<List<FacultyData?>?> get() = _facultyLiveData
+class ChatListViewModel(
+    private val ownUserId: String?
+) : BaseViewModel() {
+    private val _chatsLiveData = MutableLiveData<List<UserProfileData?>?>()
+    val chatsLiveData: LiveData<List<UserProfileData?>?> get() = _chatsLiveData
 
-    fun fetchFacultyListFromFirebase() {
+    fun fetchChatListThatContainsMyId() {
         fireLoadingEvent(true)
-        provideChatRef()?.addValueEventListener(
+        FirebaseDbRef.provideChatRef()?.addListenerForSingleValueEvent(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    when {
+                        snapshot.exists() && snapshot?.hasChild(clientUserId + ownUserId) == true -> {
+                            fetchChatTextListFromFirebase(
+                                combinedUserId = clientUserId + ownUserId
+                            )
+                        }
+
+                        else -> {
+                            fetchChatTextListFromFirebase(
+                                combinedUserId = ownUserId + clientUserId
+                            )
+                        }
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    fireMessageEvent(error.message)
+                    fireLoadingEvent(false)
+                }
+            }
+        )
+    }
+
+    fun fetchChatListFromFirebase() {
+        fireLoadingEvent(true)
+        provideStudentRef()?.addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-                        val facultyList: MutableList<FacultyData?> = ArrayList()
-                        for (moduleSnapshot in snapshot.getChildren()) {
-                            if (moduleSnapshot.exists()) {
-                                facultyList.add(
-                                    moduleSnapshot.getValue(FacultyData::class.java)
+                        val chatList: MutableList<UserProfileData?> = ArrayList()
+                        for (dataSnapshot in snapshot.getChildren()) {
+                            if (dataSnapshot.exists()) {
+                                Log.wtf("dataSnapshot", dataSnapshot.key)
+                                chatList.add(
+                                    dataSnapshot.getValue(UserProfileData::class.java)
                                 )
                             }
                         }
                         try {
-                            facultyList.reverse()
+                            chatList.reverse()
                         } catch (e: Exception) {
                             e.printStackTrace()
                         } finally {
-                            _facultyLiveData.postValue(facultyList)
+                            _chatsLiveData.postValue(chatList)
                         }
                         fireLoadingEvent(false)
                     } else fireLoadingEvent(false)
@@ -50,19 +80,12 @@ class ChatListViewModel  : BaseViewModel() {
         )
     }
 
-    fun navigateToFacultyUpdateFragment(facultyData: FacultyData?) {
-        if (facultyData != null) {
-            fireNavigateEvent(
-                R.id.action_facultyListFragment_to_facultyUpdateFragment,
-                FacultyUpdateFragment.generateBundle(facultyData)
-            )
-        } else fireMessageEvent("Something went wrong")
-    }
-
-    class Factory : ViewModelProvider.Factory {
+    class Factory(
+        private val ownUserId: String?
+    ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return ChatListViewModel() as T
+            return ChatListViewModel(ownUserId) as T
         }
     }
 }

@@ -9,7 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.polok.eubmanagement.base.BaseViewModel
-import com.polok.eubmanagement.firebase.FirebaseDbRef
+import com.polok.eubmanagement.firebase.FirebaseDbRef.provideBatchRef
 import com.polok.eubmanagement.firebase.FirebaseDbRef.provideStudentRef
 import com.polok.eubmanagement.model.UserProfileData
 import com.polok.eubmanagement.util.SharedPref
@@ -23,8 +23,8 @@ class SignInViewModel : BaseViewModel() {
             emailInputEt.showErrorOnUi("Enter A Valid Email Address")
             return
         }
-        if (passwordInputEt.getText().toString()
-                .isEmpty() || passwordInputEt.getText().length < 6
+        if (passwordInputEt.getText().toString().isEmpty()
+            || passwordInputEt.getText().length < 6
         ) {
             passwordInputEt.showErrorOnUi("Enter at Least 6 Digit Password")
             return
@@ -54,7 +54,7 @@ class SignInViewModel : BaseViewModel() {
     }
 
     private fun attemptFetchUserBatchFromFirebase(firebaseUid: String) {
-        FirebaseDbRef.provideBatchRef()?.child(firebaseUid)?.addValueEventListener(
+        provideBatchRef()?.child(firebaseUid)?.addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
