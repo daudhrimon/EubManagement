@@ -34,7 +34,7 @@ class NoticeListFragment : BaseFragment<FragmentNoticeListBinding>(
 
         viewModel.fetchNoticeListFromFirebase()
 
-        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        adapter.isAdmin = SharedPref.getUserProfile().admin
         if (adapter.isAdmin == true) binding.addNoticeButton.makeVisible()
 
         viewModel.noticeLiveData.observe(viewLifecycleOwner) {

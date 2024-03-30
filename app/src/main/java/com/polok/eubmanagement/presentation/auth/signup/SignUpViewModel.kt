@@ -144,7 +144,7 @@ class SignUpViewModel : BaseViewModel() {
                 bloodGroup = bloodGroup,
                 image = "",
                 userId = firebaseUid,
-                isAdmin = false
+                admin = false
             )
         )?.addOnCompleteListener { task ->
                 if (task.isComplete) {

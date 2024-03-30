@@ -34,7 +34,7 @@ class AssignmentListFragment : BaseFragment<FragmentAssignmentListBinding>(
 
         viewModel.fetchAssignmentListFromFirebase()
 
-        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        adapter.isAdmin = SharedPref.getUserProfile().admin
         if (adapter.isAdmin == true) binding.addAssignmentButton.makeVisible()
 
         viewModel.assignmentLiveData.observe(viewLifecycleOwner) {

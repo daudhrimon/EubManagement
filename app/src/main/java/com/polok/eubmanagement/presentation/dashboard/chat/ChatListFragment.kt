@@ -35,7 +35,7 @@ class ChatListFragment : BaseFragment<FragmentChatListBinding>(
 
     override fun initOnCreateView(savedInstanceState: Bundle?) {
 
-        viewModel.fetchChatListFromFirebase()
+        viewModel.fetchChatListThatContainsMyId()
 
         viewModel.chatsLiveData.observe(viewLifecycleOwner) {
             if (it?.isNotEmpty() == true) binding.chatRecycler.adapter = adapter.apply {

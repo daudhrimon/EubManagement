@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             if (it != null) {
                 binding.userInfo.text = String.format(
                     "%s\n%s",
-                    "${it.name} ${if (it.isAdmin == true) "(Admin)" else ""}",
+                    "${it.name} ${if (it.admin == true) "(Admin)" else ""}",
                     SharedPref.getUserBatch()
                 )
             }

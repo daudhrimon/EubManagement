@@ -47,7 +47,7 @@ class FacultyListFragment : BaseFragment<FragmentFacultyListBinding>(
 
         viewModel.fetchFacultyListFromFirebase()
 
-        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        adapter.isAdmin = SharedPref.getUserProfile().admin
         if (adapter.isAdmin == true) binding.addButton.makeVisible()
 
         viewModel.facultyLiveData.observe(viewLifecycleOwner) {

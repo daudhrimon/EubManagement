@@ -30,7 +30,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(
             if (it != null) {
                 binding.userInfo.text = String.format(
                     "%s\n%s",
-                    "${it.name} ${if (it.isAdmin == true) "(Admin)" else ""}",
+                    "${it.name} ${if (it.admin == true) "(Admin)" else ""}",
                     SharedPref.getUserBatch()
                 )
                 binding.studentId.text = it.studentId ?: ""

@@ -43,7 +43,7 @@ class ModuleListFragment : BaseFragment<FragmentModuleListBinding>(
 
         viewModel.fetchModuleListFromFirebase()
 
-        adapter.isAdmin = SharedPref.getUserProfile().isAdmin
+        adapter.isAdmin = SharedPref.getUserProfile().admin
         if (adapter.isAdmin == true) binding.addButton.makeVisible()
 
         viewModel.moduleLiveData.observe(viewLifecycleOwner) {
