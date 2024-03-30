@@ -29,17 +29,11 @@ class ChatListViewModel(
 
                         for (dataSnapshot in snapshot.getChildren()) {
                             if (dataSnapshot.exists() && dataSnapshot?.key?.contains(ownUserId.toString()) == true) {
+
                                 fetchClientProfileDataAndAddToChatList(
-                                    clientUserId = dataSnapshot.key?.replace(ownUserId.toString(), "")
+                                    clientUserId = dataSnapshot?.key?.replace(ownUserId.toString(),"")
                                 )
                             }
-                        }
-                        try {
-                            chatList.reverse()
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        } finally {
-                            _chatsLiveData.postValue(chatList)
                         }
                         fireLoadingEvent(false)
                     } else fireLoadingEvent(false)
@@ -59,10 +53,13 @@ class ChatListViewModel(
             clientUserId.toString()
         )?.addListenerForSingleValueEvent(
             object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) chatList.add(
-                        snapshot.getValue(UserProfileData::class.java)
-                    )
+                override fun onDataChange(profileSnapshot: DataSnapshot) {
+                    if (profileSnapshot.exists()) {
+                        profileSnapshot.getValue(UserProfileData::class.java)?.apply {
+                           if (this.userId?.isNotEmpty() == true) chatList.add(this)
+                        }
+                        _chatsLiveData.postValue(chatList.apply { reverse() })
+                    }
                 }
                 override fun onCancelled(error: DatabaseError) {
                     fireMessageEvent(error.message)
@@ -70,6 +67,11 @@ class ChatListViewModel(
                 }
             }
         )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        chatList.clear()
     }
 
     class Factory(
