@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:padding="@dimen/spacing_12dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text_input"
         app:layout_constraintTop_toBottomOf="@id/tool_bar" />
 
     <androidx.appcompat.widget.AppCompatEditText
