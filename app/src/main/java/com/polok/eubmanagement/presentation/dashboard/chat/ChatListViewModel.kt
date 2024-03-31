@@ -15,7 +15,6 @@ import com.polok.eubmanagement.model.UserProfileData
 class ChatListViewModel(
     private val ownUserId: String?
 ) : BaseViewModel() {
-    val chatList = mutableListOf<UserProfileData?>()
     private val _chatsLiveData = MutableLiveData<List<UserProfileData?>?>()
     val chatsLiveData: LiveData<List<UserProfileData?>?> get() = _chatsLiveData
 
@@ -25,13 +24,14 @@ class ChatListViewModel(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
-                        chatList.clear()
+                        val chatList = mutableListOf<UserProfileData?>()
 
                         for (dataSnapshot in snapshot.getChildren()) {
                             if (dataSnapshot.exists() && dataSnapshot?.key?.contains(ownUserId.toString()) == true) {
 
                                 fetchClientProfileDataAndAddToChatList(
-                                    clientUserId = dataSnapshot?.key?.replace(ownUserId.toString(),"")
+                                    clientUserId = dataSnapshot?.key?.replace(ownUserId.toString(),""),
+                                    chatList = chatList
                                 )
                             }
                         }
@@ -47,7 +47,8 @@ class ChatListViewModel(
     }
 
     private fun fetchClientProfileDataAndAddToChatList(
-        clientUserId: String?
+        clientUserId: String?,
+        chatList: MutableList<UserProfileData?>?
     ) {
         provideStudentRef()?.child(
             clientUserId.toString()
@@ -58,7 +59,7 @@ class ChatListViewModel(
                         profileSnapshot.getValue(UserProfileData::class.java)?.apply {
                            if (this.userId?.isNotEmpty() == true) chatList.add(this)
                         }
-                        _chatsLiveData.postValue(chatList.apply { reverse() })
+                        _chatsLiveData.postValue(chatList?.apply { reverse() })
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -67,11 +68,6 @@ class ChatListViewModel(
                 }
             }
         )
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        chatList.clear()
     }
 
     class Factory(
