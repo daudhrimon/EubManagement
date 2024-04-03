@@ -2,6 +2,8 @@ package com.polok.eubmanagement.presentation.dashboard.chat
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.polok.eubmanagement.databinding.ItemChatListBinding
 import com.polok.eubmanagement.model.UserProfileData
@@ -10,10 +12,10 @@ import com.polok.eubmanagement.presentation.dashboard.chat.ChatListAdapter.ChatL
 class ChatListAdapter(
     private val onClickListener: (UserProfileData?) -> Unit
 ) : RecyclerView.Adapter<ChatListViewHolder>() {
-    private var chatList: List<UserProfileData?>? = null
+    private val differ = AsyncListDiffer(this, diffCallback)
 
-    fun submitList(facultyList: List<UserProfileData?>?) {
-        this.chatList = facultyList
+    fun submitList(chatList: List<UserProfileData?>?) {
+        differ.submitList(chatList)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatListViewHolder {
@@ -25,10 +27,10 @@ class ChatListAdapter(
     }
 
     override fun onBindViewHolder(holder: ChatListViewHolder, position: Int) {
-        holder.bind(chatList?.get(position))
+        holder.bind(differ.currentList[position])
     }
 
-    override fun getItemCount(): Int = chatList?.size ?: 0
+    override fun getItemCount(): Int = differ.currentList.size
 
     inner class ChatListViewHolder(
         private val binding: ItemChatListBinding
@@ -40,6 +42,18 @@ class ChatListAdapter(
             itemView.setOnClickListener {
                 onClickListener(userProfileData)
             }
+        }
+    }
+
+    companion object {
+        private val diffCallback = object : DiffUtil.ItemCallback<UserProfileData?>() {
+            override fun areItemsTheSame(
+                oldItem: UserProfileData, newItem: UserProfileData
+            ): Boolean = oldItem.userId == newItem.userId
+
+            override fun areContentsTheSame(
+                oldItem: UserProfileData, newItem: UserProfileData
+            ): Boolean = oldItem == newItem
         }
     }
 }

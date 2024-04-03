@@ -56,10 +56,13 @@ class ChatListViewModel(
             object : ValueEventListener {
                 override fun onDataChange(profileSnapshot: DataSnapshot) {
                     if (profileSnapshot.exists()) {
-                        profileSnapshot.getValue(UserProfileData::class.java)?.apply {
-                           if (this.userId?.isNotEmpty() == true) chatList.add(this)
+                        profileSnapshot.getValue(UserProfileData::class.java)?.also { value ->
+                           if (value.userId?.isNotEmpty() == true) {
+                               _chatsLiveData.postValue(
+                                   chatList?.apply { add(value) }?.reversed()
+                               )
+                           }
                         }
-                        _chatsLiveData.postValue(chatList?.apply { reverse() })
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {

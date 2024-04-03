@@ -37,10 +37,10 @@ class ChatListFragment : BaseFragment<FragmentChatListBinding>(
 
         viewModel.fetchChatListThatContainsMyId()
 
+        binding.chatRecycler.adapter = adapter
+
         viewModel.chatsLiveData.observe(viewLifecycleOwner) {
-            if (it?.isNotEmpty() == true) binding.chatRecycler.adapter = adapter.apply {
-                submitList(it)
-            }
+            if (it?.isNotEmpty() == true) adapter.submitList(it)
         }
 
         binding.addChatButton.setOnClickListener {
